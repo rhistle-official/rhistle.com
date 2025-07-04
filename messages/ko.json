@@ -1,0 +1,11 @@
+{
+  "LocaleSwitcher": {
+    "locale": "{locale, select, ko {KR} en {EN} other {Unknown}}"
+  },
+  "NavBar": {
+    "vision": { "title": "비전 " },
+    "solution": { "title": "서비스 및 솔루션" },
+    "support": { "title": "고객지원" },
+    "company": { "title": "회사소개" }
+  }
+}

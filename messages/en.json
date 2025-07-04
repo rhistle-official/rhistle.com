@@ -1,0 +1,30 @@
+{
+  "LocaleSwitcher": {
+    "locale": "{locale, select, ko {KR} en {EN} other {Unknown}}"
+  },
+  "NavBar": {
+    "vision": {
+      "title": "Vision"
+    },
+    "solution": {
+      "title": "Service & Solution"
+    },
+    "support": {
+      "title": "Supports",
+      "items": {
+        "dataRoom": "Data Room",
+        "directions": "Directions",
+        "noticeBoard": "Notice Board"
+      }
+    },
+    "company": {
+      "title": "About Us",
+      "items": {
+        "name": "NaMooINC",
+        "greetings": "Greetings",
+        "vision": "Vision",
+        "history": "History"
+      }
+    }
+  }
+}
