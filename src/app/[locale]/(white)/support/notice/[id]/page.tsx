@@ -4,11 +4,11 @@ import NoticeDetail from '@/components/notice/NoticeDetail';
 import Link from 'next/link';
 
 interface Props {
-  params: { id: string; locale: string };
+  params: Promise<{ id: string; locale: string }>;
 }
 
 export default async function NoticeDetailPage({ params }: Props) {
-  const { id, locale } = params;
+  const { id, locale } = await params;
   const { detailPost } = await dynamicFetchPost(Number(id));
   if (!detailPost) return notFound();
 

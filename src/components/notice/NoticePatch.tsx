@@ -11,7 +11,7 @@ const NoticePatch = async ({ params }: { params: Promise<{ id: number }> }) => {
         수정하기
       </div>
       <div className="mx-auto max-w-xs space-y-5 md:max-w-2xl lg:max-w-6xl">
-        <NoticePatchForm post={detailPost} />
+        <NoticePatchForm id={String(id)} />
       </div>
     </div>
   );

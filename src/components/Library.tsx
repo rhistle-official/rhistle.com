@@ -8,21 +8,21 @@ const pdfFiles = [
   {
     title: "CoreCode Brochure (국문)",
     description: "코어코드 브로셔 (국문)",
-    file: "/pdf/corecode_kr.pdf",
+    file: "corecode_kr.pdf",
     icon: "📄",
     color: "from-blue-50 to-blue-100 border-blue-400"
   },
   {
     title: "CoreCode Suite",
     description: "코어코드 제품소개서",
-    file: "/pdf/corecode_suite.pdf",
+    file: "corecode_suite.pdf",
     icon: "📋",
     color: "from-green-50 to-green-100 border-green-400"
   },
   {
     title: "Reference",
     description: "고객사 Reference",
-    file: "/pdf/Reference.pdf",
+    file: "Reference.pdf",
     icon: "📊",
     color: "from-purple-50 to-purple-100 border-purple-400"
   },
@@ -30,10 +30,38 @@ const pdfFiles = [
 
 const Library = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [downloading, setDownloading] = useState<string | null>(null);
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
+
+  const handleDownload = (filename: string) => {
+    console.log('다운로드 시도:', filename);
+    
+    try {
+      setDownloading(filename);
+      
+      // 직접 링크 생성하여 다운로드
+      const link = document.createElement('a');
+      link.href = `/pdf/${filename}`;
+      link.download = filename;
+      link.style.display = 'none';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      console.log('다운로드 링크 생성 완료');
+      
+    } catch (error) {
+      console.error('다운로드 오류:', error);
+      alert('다운로드에 실패했습니다. 다시 시도해 주세요.');
+    } finally {
+      setTimeout(() => {
+        setDownloading(null);
+      }, 1000);
+    }
+  };
 
   const fadeInUp = {
     hidden: { opacity: 0, y: 60 },
@@ -113,7 +141,6 @@ const Library = () => {
                 key={pdf.title}
                 className={`group relative overflow-hidden rounded-2xl bg-gradient-to-br ${pdf.color} p-8 shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2`}
                 variants={fadeInUp}
-                whileHover={{ scale: 1.02 }}
               >
                 <div className="text-center">
                   <div className="mb-6 text-6xl">{pdf.icon}</div>
@@ -123,13 +150,19 @@ const Library = () => {
                   <p className="mb-6 text-sm text-gray-600 leading-relaxed">
                     {pdf.description}
                   </p>
-                  <a
-                    href={pdf.file}
-                    download
-                    className="inline-block px-6 py-3 rounded-full bg-[#78b237] text-white font-semibold hover:bg-[#5a8a2a] transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      handleDownload(pdf.file);
+                    }}
+                    disabled={downloading === pdf.file}
+                    className="inline-block px-6 py-3 rounded-full bg-[#78b237] text-white font-semibold hover:bg-[#5a8a2a] transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl disabled:opacity-50 cursor-pointer"
+                    style={{ position: 'relative', zIndex: 10 }}
                   >
-                    다운로드
-                  </a>
+                    {downloading === pdf.file ? '다운로드 중...' : '다운로드'}
+                  </button>
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-br from-[#78b237]/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
               </motion.div>
@@ -152,7 +185,7 @@ const Library = () => {
                 전문 상담사가 도움을 드리겠습니다.
               </p>
               <a
-                href="/inquiry/corecode-inquiry"
+                href="/corecode-inquiry"
                 className="inline-block px-8 py-4 rounded-full bg-[#78b237] text-white font-semibold hover:bg-[#5a8a2a] transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
               >
                 문의하기
