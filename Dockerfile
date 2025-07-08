@@ -6,9 +6,10 @@ WORKDIR /app
 
 # package.json과 lock 파일 복사 후 의존성 설치
 COPY package.json package-lock.json* ./
-RUN npm install
 
-COPY .env.dev .env
+RUN npm install --legacy-peer-deps
+
+COPY .env.development .env
 
 # 전체 소스 복사 및 빌드
 COPY . .
