@@ -21,7 +21,7 @@ const HomeItem3 = () => {
       title: "VACI",
       description: "생산 라인 최적화 솔루션",
       features: ["라인 밸런싱", "효율성 분석", "품질 관리"],
-      link: "/product/lmp",
+      link: "/product/vaci",
       color: "from-emerald-500 to-teal-500"
     },
     {
