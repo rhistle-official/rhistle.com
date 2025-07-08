@@ -35,7 +35,7 @@ const SolutionConcept = () => {
           <span className="text-[#78b237]">Concept</span>
         </h2>
         <h3 className="mb-8 text-2xl font-semibold text-gray-700 md:text-3xl">
-          CoreCode "Manufacturing Message Bus Framework"
+          VEXU "Manufacturing Message Bus Framework"
         </h3>
       </motion.div>
 
@@ -45,7 +45,7 @@ const SolutionConcept = () => {
       >
         <div className="space-y-6 text-lg leading-relaxed text-gray-700 md:text-xl">
           <p>
-            CoreCode는 Plant Floor에서 발생하는 모든 데이터들을 실시간으로 장비로부터 직접 수집하여 
+            VEXU는 Plant Floor에서 발생하는 모든 데이터들을 실시간으로 장비로부터 직접 수집하여 
             IT 시스템에 표준화된 방식으로 연계 시켜주는 Manufacturing Message Bus로, 
             Smart Factory를 실현시켜 주는 표준 프레임워크를 제공합니다.
           </p>

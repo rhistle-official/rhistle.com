@@ -14,7 +14,7 @@ const HomeItem3 = () => {
       title: "VEXU",
       description: "플랫폼 기반 통합생산관리 시스템",
       features: ["실시간 모니터링", "데이터 분석", "자동화 관리"],
-      link: "/product/corecode",
+      link: "/product/vexu",
       color: "from-blue-500 to-cyan-500"
     },
     {

@@ -31,9 +31,9 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">비즈니스</h3>
             <ul className="space-y-2 text-sm text-gray-300">
-              <li><Link href="/product/consulting" className="hover:text-white transition-colors">SFC</Link></li>
-              <li><Link href="/product/corecode" className="hover:text-white transition-colors">CoreCode</Link></li>
-              <li><Link href="/product/lmp" className="hover:text-white transition-colors">LMP</Link></li>
+              <li><Link href="/product/vexu" className="hover:text-white transition-colors">VEXU</Link></li>
+              <li><Link href="/product/lmp" className="hover:text-white transition-colors">VACI</Link></li>
+              <li><Link href="/product/consulting" className="hover:text-white transition-colors">MEXI</Link></li>
             </ul>
           </div>
 

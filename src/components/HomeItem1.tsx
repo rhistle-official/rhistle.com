@@ -21,7 +21,7 @@ const HomeItem1 = () => {
       subtitle: "for Tomorrow",
       description: "고객의 가치를 최우선으로 실현하는 최고의 전문 파트너",
       ctaText: "솔루션 보기",
-      ctaLink: "/product/corecode"
+      ctaLink: "/product/vexu"
     },
     {
       image: "/image/main3.mp4",
@@ -31,7 +31,7 @@ const HomeItem1 = () => {
       subtitle: "Factory",
       description: "AI 기반 스마트팩토리로 생산성 혁신을 이끌어갑니다",
       ctaText: "자세히 보기",
-      ctaLink: "/product/corecode"
+      ctaLink: "/product/vexu"
     },
     {
       image: "/image/main4.mp4",

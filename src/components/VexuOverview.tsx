@@ -80,17 +80,17 @@ const SolutionOverview = () => {
         variants={fadeInUp}
       >
         <h3 className="mb-6 text-2xl font-bold text-[#78b237]">
-          CoreCode의 해결책
+          VEXU의 해결책
         </h3>
         <div className="space-y-4 text-lg leading-relaxed text-gray-100">
           <p>
-            CoreCode는 하나의 표준화된 Manufacturing Message Bus로 레고블럭처럼 손쉽게 장비나 시스템의 변경 및 추가가 가능합니다.
+            VEXU는 하나의 표준화된 Manufacturing Message Bus로 레고블럭처럼 손쉽게 장비나 시스템의 변경 및 추가가 가능합니다.
           </p>
           <p>
             또한, 현장에서 검증된 다양한 내장 컨포넌트(어댑터)를 제공하며, Custom 컴포넌트 개발을 위한 API를 제공합니다.
           </p>
           <p>
-            이러한 CoreCode 엔진의 핵심 기능은 국내 특허와 미국, 일본 특허를 모두 보유하고 있습니다.
+            이러한 VEXU 엔진의 핵심 기능은 국내 특허와 미국, 일본 특허를 모두 보유하고 있습니다.
           </p>
         </div>
       </motion.div>

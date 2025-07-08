@@ -129,7 +129,7 @@ const HomeItem2 = () => {
                 className="border-cyan-500 text-cyan-500 hover:bg-cyan-500 hover:text-white"
                 asChild
               >
-                <a href="/product/corecode">솔루션 보기</a>
+                <a href="/product/vexu">솔루션 보기</a>
               </Button>
             </div>
           </motion.div>
