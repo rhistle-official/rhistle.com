@@ -11,24 +11,24 @@ const HomeItem3 = () => {
 
   const services = [
     {
-      title: "CoreCode",
+      title: "VEXU",
       description: "플랫폼 기반 통합생산관리 시스템",
       features: ["실시간 모니터링", "데이터 분석", "자동화 관리"],
       link: "/product/corecode",
       color: "from-blue-500 to-cyan-500"
     },
     {
-      title: "LMP",
+      title: "VACI",
       description: "생산 라인 최적화 솔루션",
       features: ["라인 밸런싱", "효율성 분석", "품질 관리"],
       link: "/product/lmp",
       color: "from-emerald-500 to-teal-500"
     },
     {
-      title: "MES",
+      title: "MEXI",
       description: "제조 실행 시스템",
       features: ["생산 계획", "공정 관리", "품질 검사"],
-      link: "/product/mes",
+      link: "/product/consulting",
       color: "from-purple-500 to-pink-500"
     }
   ];
