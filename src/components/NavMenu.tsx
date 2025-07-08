@@ -20,7 +20,6 @@ const navMenus: NavMenu[] = [
       { title: "SF Consulting", subTitle: "스마트 팩토리 컨설팅", href: "/product/consulting" },
       { title: "CoreCode", subTitle: "설비/센서 연계 기술", href: "/product/corecode" },
       { title: "LMP", subTitle: "관제 Digital Twin 시스템", href: "/product/lmp" },
-      { title: "MES", subTitle: "지능형 스마트팩토리 시스템", href: "/product/mes" },
     ],
   },
   {
