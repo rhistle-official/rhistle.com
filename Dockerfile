@@ -9,7 +9,7 @@ COPY package.json package-lock.json* ./
 
 RUN npm install --legacy-peer-deps
 
-COPY .env.development .env
+# COPY .env.development .env
 
 # 전체 소스 복사 및 빌드
 COPY . .
