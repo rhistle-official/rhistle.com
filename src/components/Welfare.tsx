@@ -40,32 +40,6 @@ const Welfare = () => {
           name: "교통비 지원",
           description: "대중교통 이용 시 교통비 지원",
           icon: "🚇"
-        },
-        {
-          name: "경조사 지원",
-          description: "결혼, 출산, 장례 등 경조사 지원",
-          icon: "🎁"
-        }
-      ]
-    },
-    {
-      title: "건강 관리",
-      color: "from-red-500 to-red-600",
-      items: [
-        {
-          name: "건강검진",
-          description: "연 1회 종합건강검진 지원",
-          icon: "🏥"
-        },
-        {
-          name: "단체보험",
-          description: "임직원 및 가족 대상 보험 지원",
-          icon: "🛡️"
-        },
-        {
-          name: "운동시설",
-          description: "사내 헬스장 및 운동시설 이용",
-          icon: "💪"
         }
       ]
     },
@@ -80,7 +54,7 @@ const Welfare = () => {
         },
         {
           name: "도서구입비",
-          description: "월 도서구입비 지원",
+          description: "필요 도서구입비 지원",
           icon: "📖"
         },
         {
@@ -94,16 +68,6 @@ const Welfare = () => {
       title: "여가 활동",
       color: "from-orange-500 to-orange-600",
       items: [
-        {
-          name: "동호회 활동",
-          description: "다양한 동호회 활동 지원",
-          icon: "🎯"
-        },
-        {
-          name: "팀워크 활동",
-          description: "정기적인 팀워크 및 회식 지원",
-          icon: "🎉"
-        },
         {
           name: "휴가 제도",
           description: "연차 및 반차 자유로운 사용",
@@ -127,7 +91,7 @@ const Welfare = () => {
         },
         {
           name: "퇴직연금",
-          description: "확정기여형 퇴직연금 제도",
+          description: "확정급여형 퇴직연금 제도",
           icon: "🏦"
         }
       ]
@@ -142,7 +106,8 @@ const Welfare = () => {
     { name: "자녀 학자금", icon: "🎓" },
     { name: "결혼 축하금", icon: "💒" },
     { name: "출산 축하금", icon: "👶" },
-    { name: "장기근속 포상", icon: "🏆" }
+    { name: "장기근속 포상", icon: "🏆" },
+    { name: "귀성비 지원", icon: "🚗" }
   ];
 
   const fadeInUp = {
