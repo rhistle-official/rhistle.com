@@ -28,7 +28,7 @@ const HomeItem3 = () => {
       title: "MEXI",
       description: "제조 실행 시스템",
       features: ["생산 계획", "공정 관리", "품질 검사"],
-      link: "/product/consulting",
+      link: "/product/mexi",
       color: "from-purple-500 to-pink-500"
     }
   ];

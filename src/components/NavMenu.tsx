@@ -19,7 +19,7 @@ const navMenus: NavMenu[] = [
     subMenu: [
       { title: "VEXU", subTitle: "설비/센서 연계 기술", href: "/product/vexu" },
       { title: "VACI", subTitle: "관제 Digital Twin 시스템", href: "/product/vaci" },
-      { title: "MEXI", subTitle: "스마트 팩토리 컨설팅", href: "/product/consulting" },
+      { title: "MEXI", subTitle: "스마트 팩토리 컨설팅", href: "/product/mexi" },
     ],
   },
   {

@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-const ConsultingContent = () => {
+const MexiContent = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -148,7 +148,7 @@ const ConsultingContent = () => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.5 }}
             >
-              스마트팩토리 컨설팅
+              MEXI
             </motion.h1>
             <motion.p 
               className="text-xl md:text-2xl lg:text-3xl text-gray-300"
@@ -186,7 +186,7 @@ const ConsultingContent = () => {
                 variants={fadeInUp}
               >
                 <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                  스마트팩토리 도입은 <span className="text-cyan-300">제조업의 경쟁력</span>을 높입니다
+                  MEXI 도입은 <span className="text-cyan-300">제조업의 경쟁력</span>을 높입니다
                 </h2>
                 <p className="text-xl text-cyan-100 max-w-4xl mx-auto">
                   다년간의 현장 경험과 첨단 기술 역량을 갖춘 스마트팩토리 전문 컨설턴트가<br/>
@@ -236,7 +236,7 @@ const ConsultingContent = () => {
                 variants={fadeInUp}
               >
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                  스마트팩토리 전환을 위한 <span className="text-emerald-200">컨설팅 서비스</span>
+                  MEXI 전환을 위한 <span className="text-emerald-200">컨설팅 서비스</span>
                 </h2>
                 <p className="text-xl text-emerald-100 max-w-3xl mx-auto">
                   체계적이고 전문적인 접근으로 성공적인 스마트팩토리 구축을 지원합니다
@@ -299,7 +299,7 @@ const ConsultingContent = () => {
                   핵심 기술 역량
                 </h2>
                 <p className="text-xl text-orange-100 max-w-3xl mx-auto">
-                  스마트팩토리 구축을 위한 최신 기술 스택
+                  MEXI 구축을 위한 최신 기술 스택
                 </p>
               </motion.div>
             </div>
@@ -347,7 +347,7 @@ const ConsultingContent = () => {
             transition={{ duration: 0.3 }}
           >
             <h3 className="text-3xl font-bold text-white mb-4">
-              스마트팩토리로의 전환을 시작하세요
+              MEXI의 전환을 시작하세요
             </h3>
             <p className="text-lg text-gray-300 mb-8">
               전문 컨설턴트와 함께 귀사의 제조 혁신을 이끌어보세요.<br/>
@@ -367,4 +367,4 @@ const ConsultingContent = () => {
   );
 };
 
-export default ConsultingContent;
+export default MexiContent;
