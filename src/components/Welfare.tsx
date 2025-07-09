@@ -32,14 +32,9 @@ const Welfare = () => {
       color: "from-green-500 to-green-600",
       items: [
         {
-          name: "점심식대 지원",
-          description: "매일 점심식대 1만원 지원",
-          icon: "🍱"
-        },
-        {
-          name: "교통비 지원",
-          description: "대중교통 이용 시 교통비 지원",
-          icon: "🚇"
+          name: "경조사 지원",
+          description: "결혼, 출산, 장례 등 경조사 지원",
+          icon: "🎁"
         }
       ]
     },
