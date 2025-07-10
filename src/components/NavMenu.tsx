@@ -49,7 +49,7 @@ const NavMenu = () => {
   const setHovered = useHoverStore((state) => state.setHovered);
 
   return (
-    <nav className="hidden sm:block" aria-label="메인 메뉴">
+    <nav className="hidden sm:flex items-center space-x-6 whitespace-nowrap" aria-label="메인 메뉴">
       <ul className="flex items-center justify-center font-bold lg:text-lg">
         {navMenus.map((item) => (
           <li

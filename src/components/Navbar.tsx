@@ -113,7 +113,7 @@ const NavBar = ({ bgColor }: { bgColor: string }) => {
           <div className="flex items-center gap-2">
             <button
               type="button"
-              className="flex cursor-pointer items-center py-4 lg:px-[2.5rem]"
+              className="flex cursor-pointer items-center py-4 lg:px-[2.5rem] whitespace-nowrap gap-1"
             >
               <div>문의하기</div>
               <ArrowUpRight />
@@ -130,7 +130,7 @@ const NavBar = ({ bgColor }: { bgColor: string }) => {
               <Dialog open={loginOpen} onOpenChange={setLoginOpen}>
                 <DialogTrigger asChild>
                   <button
-                    className="ml-2 rounded bg-[#78b237] px-4 py-2 text-sm font-semibold text-white hover:bg-[#78b237]/90"
+                    className="ml-2 rounded bg-[#78b237] px-4 py-2 text-sm font-semibold text-white hover:bg-[#78b237]/90 whitespace-nowrap leading-none"
                   >
                     로그인
                   </button>
