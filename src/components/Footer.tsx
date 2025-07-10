@@ -44,7 +44,7 @@ const Footer = () => {
               <li><Link href="/company/ceo" className="hover:text-white transition-colors">CEO</Link></li>
               <li><Link href="/company/history" className="hover:text-white transition-colors">연혁</Link></li>
               <li><Link href="/company/recruit" className="hover:text-white transition-colors">인재상</Link></li>
-              <li><Link href="/support/location" className="hover:text-white transition-colors">찾아오시는 길</Link></li>
+              <li><Link href="/company/map" className="hover:text-white transition-colors">찾아오시는 길</Link></li>
             </ul>
           </div>
 
