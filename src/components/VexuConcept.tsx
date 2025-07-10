@@ -34,7 +34,7 @@ const SolutionConcept = () => {
         <h2 className="mb-4 text-4xl font-bold text-gray-800 md:text-5xl">
           <span className="text-[#78b237]">Concept</span>
         </h2>
-        <h3 className="mb-8 text-2xl font-semibold text-gray-700 md:text-3xl">
+        <h3 className="mb-8 text-2xl font-semibold text-gray-100 md:text-3xl">
           VEXU "Manufacturing Message Bus Framework"
         </h3>
       </motion.div>
@@ -43,7 +43,7 @@ const SolutionConcept = () => {
         className="rounded-2xl bg-gradient-to-br from-[#78b237]/5 to-[#78b237]/10 p-8"
         variants={fadeInUp}
       >
-        <div className="space-y-6 text-lg leading-relaxed text-gray-700 md:text-xl">
+        <div className="space-y-6 text-lg leading-relaxed text-white md:text-xl">
           <p>
             VEXU는 Plant Floor에서 발생하는 모든 데이터들을 실시간으로 장비로부터 직접 수집하여 
             IT 시스템에 표준화된 방식으로 연계 시켜주는 Manufacturing Message Bus로, 
