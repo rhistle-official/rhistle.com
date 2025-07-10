@@ -2,6 +2,9 @@ export interface post {
     id: number;
     title: string;
     content: string;
+    press: string;
+    date: string;
+    link: string;
     image?: NoticeFile[];
     files?: NoticeFile[];
     createdAt: string;
