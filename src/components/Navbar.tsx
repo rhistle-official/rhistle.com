@@ -87,6 +87,11 @@ const NavBar = ({ bgColor }: { bgColor: string }) => {
     }
   };
 
+  // 엔터 키 감지
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") handleLogin(); // 엔터 누르면 로그인 실행
+  };
+
   const handleLogout = async () => {
     await fetch("/api/logout", { method: "POST" });
     // 로그아웃 후 세션 상태 다시 확인
@@ -137,6 +142,7 @@ const NavBar = ({ bgColor }: { bgColor: string }) => {
                     placeholder="아이디"
                     value={id}
                     onChange={e => setId(e.target.value)}
+                    onKeyDown={handleKeyDown} // 엔터 감지
                     className="w-full mb-2 px-3 py-2 border rounded"
                   />
                   <input
@@ -144,6 +150,7 @@ const NavBar = ({ bgColor }: { bgColor: string }) => {
                     placeholder="비밀번호"
                     value={pw}
                     onChange={e => setPw(e.target.value)}
+                    onKeyDown={handleKeyDown} // 엔터 감지
                     className="w-full mb-2 px-3 py-2 border rounded"
                   />
                   {loginError && <div className="text-red-500 text-sm mb-2">{loginError}</div>}
