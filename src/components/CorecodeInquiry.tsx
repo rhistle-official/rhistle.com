@@ -23,6 +23,10 @@ import {
 } from "./ui/select";
 import { Textarea } from "./ui/textarea";
 
+import { Editor } from "@toast-ui/react-editor";
+import "@toast-ui/editor/dist/toastui-editor.css";
+import { useRef } from "react";
+
 const FormSchema = z.object({
   name: z.string().trim().min(1, {
     message: "이 항목은 필수 입력 값입니다.",
@@ -32,17 +36,16 @@ const FormSchema = z.object({
     .trim()
     .min(1, { message: "이 항목은 필수 입력 값입니다." })
     .email({ message: "잘못된 이메일 주소입니다." }),
-  company: z.string(),
-  rank: z.string(),
-  industry: z.string(),
-  detail: z.string().trim().min(1, {
-    message: "이 항목은 필수 입력 값입니다.",
-  }),
+  company: z.string().optional(),
+  rank: z.string().optional(),
+  industry: z.string().optional(),
+  // detail은 editorRef에서 직접 검사하므로 제거
+  detail: z.string(),
   agreePrivacy: z.boolean().refine((val) => val === true, {
-    message: "이 항목은 필수 입력 값입니다.",
+    message: "이 항목은 필수 체크 입니다.",
   }),
   agreeOver14: z.boolean().refine((val) => val === true, {
-    message: "이 항목은 필수 입력 값입니다.",
+    message: "이 항목은 필수 체크 입니다.",
   }),
 });
 
@@ -63,6 +66,8 @@ const CorecodeInquiry = () => {
     },
   });
 
+ const editorRef = useRef<Editor>(null);
+
   useEffect(() => {
     form.setValue("agreePrivacy", agreeAll);
     form.setValue("agreeOver14", agreeAll);
@@ -70,6 +75,18 @@ const CorecodeInquiry = () => {
 
   const onSubmit = async (data: z.infer<typeof FormSchema>) => {
     console.log(JSON.stringify({ ...data }));
+
+    const message = editorRef.current?.getInstance().getMarkdown();
+    if (!message || message.trim() === "") {
+      alert("문의 내용을 입력해주세요.");
+      return;
+    }
+
+    const finalData = {
+      ...data,
+      detail: message, // detail 필드 추가
+    };
+
     try {
       const response = await fetch(
         "http://localhost:8080/api/corecode-inquiry",
@@ -95,7 +112,7 @@ const CorecodeInquiry = () => {
   };
 
   return (
-    <div className="space-y-8 px-14 py-8">
+    <div className="mx-auto max-w-3xl px-4 py-8">
       <div className="flex items-center justify-center">
         <div className="w-[11rem]">
           <Image
@@ -107,9 +124,9 @@ const CorecodeInquiry = () => {
           />
         </div>
       </div>
-      <div className="space-y-4">
-        <div className="text-2xl font-black">문의하기</div>
-        <div className="font-bold">
+      <div className="text-center space-y-2 mb-8">
+        <div className="text-2xl font-bold text-center">문의하기</div>
+        <div className="text-gray-600">
           궁금하신 내용을 남겨주시면, 담당자가 빠른 시간 안에 연락 드리겠습니다.
         </div>
       </div>
@@ -225,36 +242,19 @@ const CorecodeInquiry = () => {
                 <div className="text-[1rem] font-medium">
                   문의내용<span className="ml-1 text-red-500">*</span>
                 </div>
-                <FormControl>
-                  <Textarea {...field} />
-                </FormControl>
+                <Editor
+                  ref={editorRef}
+                  previewStyle="tab"
+                  height="300px"
+                  initialEditType="markdown"
+                  useCommandShortcut={true}
+                  style={{ width: "100%" }}
+                  className="max-w-full"
+                />
                 <FormMessage />
               </FormItem>
             )}
           />
-          {/* <FormField
-            control={form.control}
-            name="agreeAll"
-            render={({ field }) => (
-              <FormItem>
-                <div className="flex items-center gap-2">
-                  <FormControl>
-                    <Checkbox
-                      checked={field.value}
-                      onCheckedChange={field.onChange}
-                    />
-                  </FormControl>
-                  <div className="text-[1rem] font-medium">
-                    모두 동의 합니다.{" "}
-                    <span className="text-red-500">
-                      (체크박스를 선택하면, 다음 항목을 모두 읽고 동의한 것으로
-                      간주합니다.)
-                    </span>
-                  </div>
-                </div>
-              </FormItem>
-            )}
-          /> */}
           <div className="flex items-center gap-2">
             <Checkbox
               checked={agreeAll}
@@ -316,7 +316,7 @@ const CorecodeInquiry = () => {
           <div className="flex items-center justify-center">
             <button
               type="submit"
-              className="text-md mt-4 rounded-4xl bg-[#333333] px-16 py-3 text-white"
+              className="rounded-md bg-[#333333] px-8 py-3 text-white hover:bg-[#111] transition"
             >
               문의하기
             </button>
