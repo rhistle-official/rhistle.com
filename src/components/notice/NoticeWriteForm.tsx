@@ -46,11 +46,6 @@ const NoticeWriteForm = () => {
   });
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
-    setLoginError("");
-    if (adminId !== "namooinc" || adminPw !== "namooinc101!") {
-      setLoginError("관리자 인증 실패");
-      return;
-    }
     const content = editorRef.current?.getInstance().getHTML() || "";
     const finalData = {
       ...data,
