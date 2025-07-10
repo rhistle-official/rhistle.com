@@ -76,22 +76,6 @@ const NoticeWriteForm = () => {
         onSubmit={form.handleSubmit(onSubmit)}
         className="space-y-4 rounded-lg border p-10 shadow-md"
       >
-        <div className="flex gap-2 items-center">
-          <Input
-            placeholder="관리자 아이디"
-            value={adminId}
-            onChange={e => setAdminId(e.target.value)}
-            className="w-40"
-          />
-          <Input
-            placeholder="비밀번호"
-            type="password"
-            value={adminPw}
-            onChange={e => setAdminPw(e.target.value)}
-            className="w-40"
-          />
-          {loginError && <span className="text-red-500 text-sm">{loginError}</span>}
-        </div>
         <FormField
           control={form.control}
           name="title"

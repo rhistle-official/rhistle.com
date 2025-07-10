@@ -9,12 +9,12 @@ const NoticeWrite = () => {
       <div className="relative h-[10vh] overflow-hidden rounded-4xl md:h-[15vh] lg:h-[25vh]">
         <Image
           src="/image/com_1.png"
-          alt="글쓰기"
+          alt="공지사항 작성 문구 있는 사무실 배경 이미지"
           fill
           className="object-cover object-bottom brightness-75"
         />
         <div className="absolute inset-0 flex items-center justify-center text-center text-white">
-          <div className="text-2xl font-bold md:text-3xl lg:text-4xl">글쓰기</div>
+          <div className="text-2xl font-bold md:text-3xl lg:text-4xl">공지사항 작성</div>
         </div>
       </div>
       {/* 글쓰기 폼 */}
