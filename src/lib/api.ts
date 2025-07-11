@@ -3,7 +3,7 @@ import { post } from "@/lib/type";
 function getApiUrl(path: string) {
   if (typeof window === "undefined") {
     // 서버 환경: 절대경로 필요
-    const base = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+    const base = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:8080";
     return base + path;
   }
   // 클라이언트 환경: 상대경로
