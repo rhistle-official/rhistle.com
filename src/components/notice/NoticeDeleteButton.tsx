@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useRef } from "react";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -13,20 +14,20 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "@/i18n/navigation";
+import { deleteNotice } from "@/lib/api";
+import { id } from "zod/v4/locales";
 
 const NoticeDeleteButton = ({ post_id }: { post_id: number }) => {
   const router = useRouter();
+  const [adminId, setAdminId] = useState("");
+  const [adminPw, setAdminPw] = useState("");
 
   const deleteHandler = async () => {
     try {
-      const response = await fetch(`http://localhost:8080/notice/${post_id}`, {
-        method: "DELETE",
-      });
-
-      if (!response.ok) {
-        throw new Error("게시물이 삭제되지 않았습니다.");
-      }
-
+      const auth = 'Basic ' + btoa(`${adminId}:${adminPw}`);
+      const res = await deleteNotice(post_id, auth);
+      if (res.error) throw new Error(res.error);
+      alert("게시물이 삭제되었습니다.");
       router.push("/support/notice");
     } catch (error) {
       console.error("Error creating post:", error);

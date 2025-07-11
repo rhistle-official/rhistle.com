@@ -1,8 +1,10 @@
+// 'use client'; 
+
 import { dynamicFetchPost, fetchPosts } from '@/lib/api';
 import { notFound } from 'next/navigation';
 import NoticeDetail from '@/components/notice/NoticeDetail';
-import NoticeDeleteButton from '@/components/notice/NoticeDeleteButton';
 import Link from 'next/link';
+// import { useRouter } from "next/navigation";
 
 interface Props {
   params: Promise<{ id: string; locale: string }>;
@@ -26,14 +28,7 @@ export default async function NoticeDetailPage({ params }: Props) {
       <div className="mb-8">
         <div className="text-sm text-gray-400 font-semibold mb-2">공지사항</div>
         <div className="text-3xl font-bold mb-2">{detailPost.title}</div>
-        
-        <div className="flex items-center justify-between mb-6">
-          <div className="text-gray-500 text-base">
-            {detailPost.createdAt?.split('T')[0].replace(/-/g, '.')}
-          </div>
-          <NoticeDeleteButton post_id={detailPost.id} />
-        </div>
-
+        <div className="text-gray-500 text-base mb-6">{detailPost.createdAt?.split('T')[0].replace(/-/g, '.')}</div>
         <hr className="mb-8" />
         <div className="prose max-w-none min-h-[10rem]" dangerouslySetInnerHTML={{ __html: detailPost.content }} />
       </div>
