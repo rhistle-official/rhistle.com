@@ -17,21 +17,6 @@ const BusinessCarousel = () => {
   const { ref, inView } = useInView();
   const contents = [
     {
-      title: "차세대 통합 관리시스템 구축",
-      tags: ["#DT", "#Solution"],
-      color: "from-blue-500 to-cyan-500"
-    },
-    {
-      title: "스마트팩토리 MES 구축",
-      tags: ["#MES", "#Smart Factory"],
-      color: "from-emerald-500 to-teal-500"
-    },
-    {
-      title: "클라우드 기반 ERP 시스템 개발",
-      tags: ["#Cloud", "#ERP"],
-      color: "from-purple-500 to-pink-500"
-    },
-    {
       title: "AI 기반 품질 관리 시스템",
       tags: ["#AI", "#Quality"],
       color: "from-orange-500 to-red-500"

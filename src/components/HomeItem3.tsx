@@ -13,21 +13,21 @@ const HomeItem3 = () => {
     {
       title: "VEXU",
       description: "플랫폼 기반 통합생산관리 시스템",
-      features: ["실시간 모니터링", "데이터 분석", "자동화 관리"],
+      features: ["인터페이스 표준화", "실시간 모니터링", "최적의 통합연계"],
       link: "/product/vexu",
       color: "from-blue-500 to-cyan-500"
     },
     {
       title: "VACI",
       description: "생산 라인 최적화 솔루션",
-      features: ["라인 밸런싱", "효율성 분석", "품질 관리"],
+      features: ["스마트팩토리", "환경·설비 모니터링", "산업 표준 프로토콜 지원, 모든 설비와의 연동가능"],
       link: "/product/vaci",
       color: "from-emerald-500 to-teal-500"
     },
     {
       title: "MEXI",
       description: "제조 실행 시스템",
-      features: ["생산 계획", "공정 관리", "품질 검사"],
+      features: ["자동화 설계", "IoT 통합", "성과 측정"],
       link: "/product/mexi",
       color: "from-purple-500 to-pink-500"
     }
