@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "@/i18n/navigation";
@@ -36,6 +36,33 @@ const Media = ({ searchParams } : BoardProps) => {
   const [loading, setLoading] = useState(true);
 
   const { page = "1", searchTerm = "" } = searchParams || {};
+
+  const handleDelete = async (id: number) => {
+    if (!confirm("정말 삭제하시겠습니까?")) return;
+    
+    try {
+      const res = await fetch(`/api/media`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ id }),
+      });
+
+      if (res.ok) {
+        alert("삭제되었습니다.");
+        setPosts(prev => prev.filter(post => post.id !== id));
+        setTotalPosts(prev => prev - 1); // 총 개수도 감소
+
+        router.refresh(); // 리스트 새로고침
+      } else {
+        alert("삭제를 실패하였습니다");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("에러 발생");
+    }
+  };
 
 useEffect(() => {
   const loadPosts = async () => {
@@ -160,12 +187,13 @@ useEffect(() => {
                     <th className="py-4 px-6 font-semibold text-gray-800">언론사</th>
                     <th className="py-4 px-6 font-semibold text-gray-800">날짜</th>
                     <th className="py-4 px-6 font-semibold text-gray-800">바로가기</th>
+                    <th className="py-4 px-6 font-semibold text-gray-800"></th> 
                   </tr>
                 </thead>
                 <tbody>
                   {totalPosts === 0 ? (
                     <tr>
-                      <td colSpan={5} className="py-8 text-center text-lg font-semibold text-gray-500">
+                      <td colSpan={6} className="py-8 text-center text-lg font-semibold text-gray-500">
                         게시물이 없습니다.
                       </td>
                     </tr>
@@ -191,6 +219,14 @@ useEffect(() => {
                           >
                             기사보기
                           </a>
+                        </td>
+                        <td className="py-4 px-6 text-right">
+                          <button
+                            onClick={() => handleDelete(post.id)}
+                            className="bg-red-500 text-white px-3 py-1 rounded-full text-sm hover:bg-red-600"
+                          >
+                            삭제
+                          </button>
                         </td>
                       </tr>
                     ))

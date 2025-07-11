@@ -60,3 +60,10 @@ export async function POST(req: NextRequest) {
   const info = stmt.run(title, date, press, summary, link, thumbnail);
   return NextResponse.json({ id: info.lastInsertRowid });
 } 
+
+export async function DELETE(req: NextRequest) {
+  const { id } = await req.json();
+  if (!id) return NextResponse.json({ error: "ID_REQUIRED" }, { status: 400 });
+  db.prepare("DELETE FROM media WHERE id = ?").run(id);
+  return NextResponse.json({ ok: true });
+}
