@@ -9,7 +9,7 @@ import NoticePagination from "./notice/NoticePagination";
 import { post } from "@/lib/type";
 import Link from "next/link";
 
-interface BoardProps {
+interface MediaProps {
   searchParams: { [key: string]: string | undefined };
 }
 
@@ -24,7 +24,7 @@ type Article = {
   thumbnail?: string;
 };
 
-const Media = ({ searchParams } : BoardProps) => {
+const Media = ({ searchParams } : MediaProps) => {
   const router = useRouter();
   const [articles, setArticles] = useState<Article[]>([]);
   const [isVisible, setIsVisible] = useState(false);
@@ -35,7 +35,7 @@ const Media = ({ searchParams } : BoardProps) => {
   const [totalPosts, setTotalPosts] = useState(0);
   const [loading, setLoading] = useState(true);
 
-  const { page = "1", searchTerm = "" } = searchParams || {};
+  const { page = "1", searchTerm = "" } = searchParams;
 
   const handleDelete = async (id: number) => {
     if (!confirm("정말 삭제하시겠습니까?")) return;
