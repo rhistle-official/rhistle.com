@@ -11,19 +11,22 @@ const ServiceCard = () => {
       title: "제조 데이터 연계 및 통합 솔루션",
       desc: "다양한 설비 데이터 연계 및 통합으로 효율적인 공정 관리",
       img: "main_S1.png",
-      color: "from-blue-500 to-cyan-500"
+      color: "from-blue-500 to-cyan-500",
+      tags: ["최적의 통합연계", "인터페이스 표준화"]
     },
     {
       title: "통합 관제 솔루션",
       desc: "사용자 경험(UX) 극대화를 위한 통합 모니터링 플랫폼",
       img: "main_S2.png",
-      color: "from-emerald-500 to-teal-500"
+      color: "from-emerald-500 to-teal-500",
+      tags: ["스마트팩토리", "모니터링"]
     },
     {
       title: "스마트팩토리 플랫폼",
       desc: "AI 기반 지능형 제조 환경 구축 솔루션",
-      img: "main_S2.png",
-      color: "from-purple-500 to-pink-500"
+      img: "main_S3.png",
+      color: "from-purple-500 to-pink-500",
+      tags: ["자동화 설계", "IoT 통합"]
     },
   ];
   
@@ -65,15 +68,14 @@ const ServiceCard = () => {
               
               {/* 추가 기능 표시 */}
               <div className="mt-4 flex flex-wrap gap-2">
-                <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gray-700 text-gray-300">
-                  실시간 모니터링
-                </span>
-                <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gray-700 text-gray-300">
-                  데이터 분석
-                </span>
-                <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gray-700 text-gray-300">
-                  자동화
-                </span>
+                {data.tags.map((tag, index) => (
+                  <span
+                    key={index}
+                    className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gray-700 text-gray-300"
+                  >
+                    {tag}
+                  </span>
+                ))}
               </div>
             </div>
           </motion.div>
