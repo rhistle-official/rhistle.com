@@ -44,4 +44,4 @@ jobs:
           script: |
             echo ${{ secrets.GHCR_TOKEN }} | docker login ghcr.io -u rhistle-official --password-stdin
             docker pull ghcr.io/rhistle-official/homepage-namoo:latest
-            docker-compose -f /home/homepage/www.namooinc.com/docker-compose.yml up -d
+            docker-compose -f /home/homepage/www.namooinc.com/docker-compose.yml up -d --remove-orphans
