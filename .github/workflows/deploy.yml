@@ -3,7 +3,7 @@ name: Deploy homepage on tag push
 on:
   push:
     tags:
-      - 'v*'  # v로 시작하는 태그가 푸시될 때만 실행됨
+      - 'v*'  # v로 시작하는 태그가 푸시될 때 실행됨 (예: v1.0.0)
 
 jobs:
   deploy:
@@ -23,8 +23,13 @@ jobs:
       - name: Build Docker image
         run: docker build -t homepage-namoo:${{ steps.extract_tag.outputs.TAG }} .
 
-      - name: Push Docker image
-        run: docker push homepage-namoo:${{ steps.extract_tag.outputs.TAG }}
+      - name: Tag image as latest
+        run: docker tag homepage-namoo:${{ steps.extract_tag.outputs.TAG }} homepage-namoo:latest
+
+      - name: Push Docker images (version + latest)
+        run: |
+          docker push homepage-namoo:${{ steps.extract_tag.outputs.TAG }}
+          docker push homepage-namoo:latest
 
       - name: SSH & Deploy on Server
         uses: appleboy/ssh-action@v0.1.10
@@ -34,6 +39,5 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: 32111
           script: |
-            docker pull homepage-namoo:${{ steps.extract_tag.outputs.TAG }}
-            docker tag homepage-namoo:${{ steps.extract_tag.outputs.TAG }} homepage-namoo:latest
+            docker pull homepage-namoo:latest
             docker-compose -f /home/ubuntu/docker-compose.yml up -d
