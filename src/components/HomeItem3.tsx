@@ -18,10 +18,10 @@ const HomeItem3 = () => {
       color: "from-blue-500 to-cyan-500"
     },
     {
-      title: "VACI",
+      title: "VEXI",
       description: "생산 라인 최적화 솔루션",
       features: ["스마트팩토리", "환경·설비 모니터링", "산업 표준 프로토콜 지원, 모든 설비와의 연동가능"],
-      link: "/product/vaci",
+      link: "/product/vexi",
       color: "from-emerald-500 to-teal-500"
     },
     {

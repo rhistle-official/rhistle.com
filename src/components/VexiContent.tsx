@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-const VaciContent = () => {
+const VexiContent = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -113,7 +113,7 @@ const VaciContent = () => {
       >
         <Image
           src="/image/com_1.png"
-          alt="VACI - 관제 Digital Twin 시스템 구축"
+          alt="VEXI - 관제 Digital Twin 시스템 구축"
           fill
           className="object-cover object-center brightness-50"
         />
@@ -141,7 +141,7 @@ const VaciContent = () => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.5 }}
             >
-              VACI
+              VEXI
             </motion.h1>
             <motion.p 
               className="text-xl md:text-2xl lg:text-3xl text-gray-300"
@@ -179,7 +179,7 @@ const VaciContent = () => {
                 variants={fadeInUp}
               >
                 <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                  <span className="text-cyan-300">VACI</span>의 핵심 기능
+                  <span className="text-cyan-300">VEXI</span>의 핵심 기능
                 </h2>
                 <p className="text-xl text-cyan-100 max-w-4xl mx-auto">
                   다양한 설비 및 센서와의 통신을 위해 산업 표준 프로토콜을 지원하고,<br/>
@@ -324,7 +324,7 @@ const VaciContent = () => {
                   기술적 우위
                 </h2>
                 <p className="text-xl text-indigo-100 max-w-3xl mx-auto">
-                  VACI의 핵심 기술과 성능을 확인하세요
+                  VEXI의 핵심 기술과 성능을 확인하세요
                 </p>
               </motion.div>
             </div>
@@ -372,7 +372,7 @@ const VaciContent = () => {
             transition={{ duration: 0.3 }}
           >
             <h3 className="text-3xl font-bold text-white mb-4">
-              VACI로 디지털 혁신을 시작하세요
+              VEXI로 디지털 혁신을 시작하세요
             </h3>
             <p className="text-lg text-gray-300 mb-8">
               관제 Digital Twin 시스템으로 현장의 모든 데이터를 통합하고<br/>
@@ -392,4 +392,4 @@ const VaciContent = () => {
   );
 };
 
-export default VaciContent;
+export default VexiContent;
