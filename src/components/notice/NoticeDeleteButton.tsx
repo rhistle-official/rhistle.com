@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useEffect } from "react";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -16,12 +16,21 @@ import { Button } from "@/components/ui/button";
 import { useRouter } from "@/i18n/navigation";
 import { deleteNotice } from "@/lib/api";
 import { id } from "zod/v4/locales";
+import { useSessionStore } from "@/store/useSessionStore";
 
 const NoticeDeleteButton = ({ post_id }: { post_id: number }) => {
   const router = useRouter();
   const [adminId, setAdminId] = useState("");
   const [adminPw, setAdminPw] = useState("");
 
+  const { isLoggedIn, checkSession } = useSessionStore();
+
+  useEffect(() => {
+    checkSession();
+  }, [checkSession]);
+
+  if (!isLoggedIn) return null;
+  
   const deleteHandler = async () => {
     try {
       const auth = 'Basic ' + btoa(`${adminId}:${adminPw}`);
