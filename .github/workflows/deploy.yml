@@ -35,6 +35,7 @@ jobs:
         host: ${{ secrets.SERVER_HOST }}          # 서버 공인 IP
         username: ${{ secrets.SERVER_USER }}      # 서버 유저명 (ex. ubuntu)
         key: ${{ secrets.SERVER_SSH_KEY }}        # .pem 파일 내용 전체가 포함된 Secret
+        port: 32111
         script: |
           docker pull devjm95/homepage-namoo:latest  # 최신 이미지 pull
           docker-compose -f /home/ubuntu/docker-compose.yml up -d  # 컨테이너 재시작 (배포)

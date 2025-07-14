@@ -12,7 +12,7 @@ const nextConfig: NextConfig = {
       {
         // 브라우저 → /api/* 요청 시 컨테이너 내부 백엔드로 프록시
         source: "/api/:path*",
-        destination: "http://dev-backend:8080/api/:path*",
+        destination: "http://localhost:3000/api/:path*",
       },
     ];
   },
