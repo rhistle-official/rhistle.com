@@ -89,7 +89,7 @@ const CorecodeInquiry = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:8080/api/corecode-inquiry",
+        "http://localhost:3000/api/corecode-inquiry",
         {
           method: "POST",
           headers: {
