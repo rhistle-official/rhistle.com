@@ -11,10 +11,10 @@ const HomeItem3 = () => {
 
   const services = [
     {
-      title: "VEXU",
+      title: "CoreCode",
       description: "플랫폼 기반 통합생산관리 시스템",
       features: ["인터페이스 표준화", "실시간 모니터링", "최적의 통합연계"],
-      link: "/product/vexu",
+      link: "/product/corecode",
       color: "from-blue-500 to-cyan-500"
     },
     {

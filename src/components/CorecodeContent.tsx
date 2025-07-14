@@ -3,14 +3,14 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import VexuComposition from "./VexuComposition";
-import VexuConcept from "./VexuConcept";
-import VexuFeature from "./VexuFeature";
-import VexuOverview from "./VexuOverview";
-import VexuStack from "./VexuStack";
+import CorecodeComposition from "./CorecodeComposition";
+import CorecodeConcept from "./CorecodeConcept";
+import CorecodeFeature from "./CorecodeFeature";
+import CorecodeOverview from "./CorecodeOverview";
+import CorecodeStack from "./CorecodeStack";
 import { Button } from "./ui/button";
 
-const VexuContent = () => {
+const CorecodeContent = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -129,7 +129,7 @@ const VexuContent = () => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.5 }}
             >
-              VEXU
+              CoreCode
             </motion.h1>
             <motion.p 
               className="text-xl md:text-2xl lg:text-3xl text-gray-300"
@@ -167,7 +167,7 @@ const VexuContent = () => {
                 variants={fadeInUp}
               >
                 <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                  <span className="text-cyan-300">VEXU</span>의 핵심 특징
+                  <span className="text-cyan-300">CoreCode</span>의 핵심 특징
                 </h2>
                 <p className="text-xl text-cyan-100 max-w-4xl mx-auto">
                   설비와 센서를 효율적으로 연계하여 실시간 데이터 통합 시스템을 구축합니다
@@ -219,7 +219,7 @@ const VexuContent = () => {
                   기술 사양
                 </h2>
                 <p className="text-xl text-emerald-100 max-w-3xl mx-auto">
-                  VEXU의 핵심 기술과 아키텍처
+                  CoreCode의 핵심 기술과 아키텍처
                 </p>
               </motion.div>
             </div>
@@ -264,7 +264,7 @@ const VexuContent = () => {
                 variants={fadeInUp}
               >
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                  VEXU 상세 정보
+                  CoreCode 상세 정보
                 </h2>
                 <p className="text-xl text-orange-100 max-w-3xl mx-auto">
                   시스템 구성과 기능을 자세히 알아보세요
@@ -275,23 +275,23 @@ const VexuContent = () => {
             <div className="p-8 lg:p-12">
               <div className="mx-auto max-w-5xl space-y-20">
                 <motion.div variants={fadeInUp}>
-                  <VexuConcept />
+                  <CorecodeConcept />
                 </motion.div>
                 
                 <motion.div variants={fadeInUp}>
-                  <VexuOverview />
+                  <CorecodeOverview />
                 </motion.div>
                 
                 <motion.div variants={fadeInUp}>
-                  <VexuStack />
+                  <CorecodeStack />
                 </motion.div>
                 
                 <motion.div variants={fadeInUp}>
-                  <VexuComposition />
+                  <CorecodeComposition />
                 </motion.div>
                 
                 <motion.div variants={fadeInUp}>
-                  <VexuFeature />
+                  <CorecodeFeature />
                 </motion.div>
               </div>
             </div>
@@ -313,7 +313,7 @@ const VexuContent = () => {
             transition={{ duration: 0.3 }}
           >
             <h3 className="text-3xl font-bold text-white mb-4">
-              VEXU 문의 안내
+              CoreCode 문의 안내
             </h3>
             <p className="text-lg text-gray-300 mb-8">
               궁금하신 내용을 남겨주시면, 담당자가 빠른 시간 안에 연락드리겠습니다.<br/>
@@ -334,4 +334,4 @@ const VexuContent = () => {
   );
 };
 
-export default VexuContent;
+export default CorecodeContent;

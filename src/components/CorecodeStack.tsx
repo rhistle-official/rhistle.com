@@ -90,7 +90,7 @@ const SolutionStack = () => {
       >
         <div className="space-y-4 text-lg leading-relaxed text-blue-800">
           <p>
-            VEXU의 프레임워크는 Fan-in, Fan-out, Branching and merging 등의 유연성을 갖춘 Router를 통해
+            CoreCode의 프레임워크는 Fan-in, Fan-out, Branching and merging 등의 유연성을 갖춘 Router를 통해
             자유롭게 비즈니스 로직을 설계와 변경이 가능하여 재활용성과 생산성이 높은 개발 툴입니다.
           </p>
           <p>
