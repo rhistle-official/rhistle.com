@@ -4,7 +4,7 @@ on:
   push:
     tags:
       - 'v*'  # v로 시작하는 태그가 푸시될 때 실행됨 (예: v1.0.0)
-
+  workflow_dispatch:  # 👈 수동 실행 버튼 추가
 jobs:
   deploy:
     runs-on: ubuntu-latest
