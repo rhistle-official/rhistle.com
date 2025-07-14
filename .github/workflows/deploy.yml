@@ -22,11 +22,11 @@ jobs:
 
     # 3단계: 도커 이미지 빌드
     - name: Build Docker Image
-      run: docker build -t homepage-namoo:250714 .
+      run: docker build -t devjm95/homepage-namoo:250714 .
 
     # 4단계: 도커 이미지 푸시
     - name: Push Docker Image
-      run: docker push homepage-namoo:250714
+      run: docker push devjm95/homepage-namoo:latest
 
     # 5단계: SSH로 서버에 접속해서 배포 실행
     - name: SSH & Deploy on Server
@@ -35,7 +35,6 @@ jobs:
         host: ${{ secrets.SERVER_HOST }}          # 서버 공인 IP
         username: ${{ secrets.SERVER_USER }}      # 서버 유저명 (ex. ubuntu)
         key: ${{ secrets.SERVER_SSH_KEY }}        # .pem 파일 내용 전체가 포함된 Secret
-        port: 32111
         script: |
           docker pull devjm95/homepage-namoo:latest  # 최신 이미지 pull
           docker-compose -f /home/ubuntu/docker-compose.yml up -d  # 컨테이너 재시작 (배포)
