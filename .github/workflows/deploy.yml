@@ -4,7 +4,8 @@ on:
   push:
     tags:
       - 'v*'  # v로 시작하는 태그가 푸시될 때 실행됨 (예: v1.0.0)
-  workflow_dispatch:  # 👈 수동 실행 버튼 추가
+  workflow_dispatch:  # 수동 실행도 가능
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -17,19 +18,19 @@ jobs:
         id: extract_tag
         run: echo "TAG=${GITHUB_REF##*/}" >> $GITHUB_OUTPUT
 
-      - name: Docker Login
-        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+      - name: Login to GitHub Container Registry
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
       - name: Build Docker image
-        run: docker build -t homepage-namoo:${{ steps.extract_tag.outputs.TAG }} .
+        run: docker build -t ghcr.io/rhistle-official/homepage-namoo:${{ steps.extract_tag.outputs.TAG }} .
 
       - name: Tag image as latest
-        run: docker tag homepage-namoo:${{ steps.extract_tag.outputs.TAG }} homepage-namoo:latest
+        run: docker tag ghcr.io/rhistle-official/homepage-namoo:${{ steps.extract_tag.outputs.TAG }} ghcr.io/rhistle-official/homepage-namoo:latest
 
       - name: Push Docker images (version + latest)
         run: |
-          docker push homepage-namoo:${{ steps.extract_tag.outputs.TAG }}
-          docker push homepage-namoo:latest
+          docker push ghcr.io/rhistle-official/homepage-namoo:${{ steps.extract_tag.outputs.TAG }}
+          docker push ghcr.io/rhistle-official/homepage-namoo:latest
 
       - name: SSH & Deploy on Server
         uses: appleboy/ssh-action@v0.1.10
@@ -39,5 +40,6 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: 32111
           script: |
-            docker pull homepage-namoo:latest
+            echo ${{ secrets.GHCR_TOKEN }} | docker login ghcr.io -u rhistle-official --password-stdin
+            docker pull ghcr.io/rhistle-official/homepage-namoo:latest
             docker-compose -f /home/homepage/www.namooinc.com/docker-compose.yml up -d
