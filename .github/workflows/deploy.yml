@@ -25,6 +25,8 @@ jobs:
 
       - name: Create .env file for build
         run: echo "NEXT_PUBLIC_KAKAO_MAP_KEY=${{ secrets.KAKAO_MAP_KEY }}" > .env
+            echo "ADMIN_ID=${{ secrets.ADMIN_ID }}" > .env
+            echo "ADMIN_PW=${{ secrets.ADMIN_PW }}" > .env
 
       - name: Build Docker image
         run: docker build -t ghcr.io/rhistle-official/homepage-namoo:${{ steps.extract_tag.outputs.TAG }} .
@@ -46,5 +48,4 @@ jobs:
           port: 32111
           script: |
             echo ${{ secrets.GHCR_TOKEN }} | docker login ghcr.io -u rhistle-official --password-stdin
-            echo "NEXT_PUBLIC_KAKAO_MAP_KEY=${{ secrets.KAKAO_MAP_KEY }}" > /home/homepage/www.namooinc.com/.env
             docker-compose -f /home/homepage/www.namooinc.com/docker-compose.yml up -d --remove-orphans
