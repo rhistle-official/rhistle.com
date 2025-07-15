@@ -24,9 +24,13 @@ jobs:
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
       - name: Create .env file for build
-        run: echo "NEXT_PUBLIC_KAKAO_MAP_KEY=${{ secrets.KAKAO_MAP_KEY }}" >> .env
-            echo "ADMIN_ID=${{ secrets.ADMIN_ID }}" >> .env
-            echo "ADMIN_PW=${{ secrets.ADMIN_PW }}" >> .env
+        run: |
+          echo "NEXT_PUBLIC_KAKAO_MAP_KEY=${{ secrets.KAKAO_MAP_KEY }}" > .env
+          echo "ADMIN_ID=${{ secrets.ADMIN_ID }}" >> .env
+          echo "ADMIN_PW=${{ secrets.ADMIN_PW }}" >> .env
+
+      - name: Ensure .env is part of Docker context
+        run: ls -al .env  # 디버깅용 (선택)
 
       - name: Build Docker image
         run: docker build -t ghcr.io/rhistle-official/homepage-namoo:${{ steps.extract_tag.outputs.TAG }} .
