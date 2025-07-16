@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-const CompanyCeo = () => {
+const CompanyCeoMessage = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -283,4 +283,4 @@ const CompanyCeo = () => {
   );
 };
 
-export default CompanyCeo;
+export default CompanyCeoMessage;

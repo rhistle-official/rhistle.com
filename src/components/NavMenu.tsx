@@ -33,7 +33,7 @@ const navMenus: NavMenu[] = [
   {
     title: "company",
     subMenu: [
-      { title: "CEO", href: "/company/ceo" },
+      { title: "CEO 메시지", href: "/company/ceomessage" },
       { title: "연혁", href: "/company/history" },
       { title: "윤리경영", href: "/company/ethics" },
       { title: "채용", href: "/company/recruit" },
