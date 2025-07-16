@@ -3,15 +3,16 @@ name: Deploy homepage on tag push
 on:
   push:
     tags:
-      - 'v*'  # v로 시작하는 태그가 푸시될 때 실행됨 (예: v1.0.0)
-  workflow_dispatch:  # 수동 실행도 가능
+      - 'v*'
+  workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     permissions:
-      contents: read 
-      packages: write 
+      contents: read
+      packages: write
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -20,21 +21,23 @@ jobs:
         id: extract_tag
         run: echo "TAG=${GITHUB_REF##*/}" >> $GITHUB_OUTPUT
 
+      - name: Create .env file for Docker build
+        run: |
+          echo "NEXT_PUBLIC_KAKAO_MAP_KEY=${{ secrets.KAKAO_MAP_KEY }}" >> .env
+          echo "ADMIN_ID=${{ secrets.ADMIN_ID }}" >> .env
+          echo "ADMIN_PW=${{ secrets.ADMIN_PW }}" >> .env
+
       - name: Login to GitHub Container Registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
-      - name: Build Docker image
+      - name: Build Docker image (with .env)
         run: |
-          docker build \
-          --build-arg NEXT_PUBLIC_KAKAO_MAP_KEY=${{ secrets.KAKAO_MAP_KEY }} \
-          --build-arg ADMIN_ID=${{ secrets.ADMIN_ID }} \
-          --build-arg ADMIN_PW=${{ secrets.ADMIN_PW }} \
-          -t ghcr.io/rhistle-official/homepage-namoo:${{ steps.extract_tag.outputs.TAG }} .
+          docker build -t ghcr.io/rhistle-official/homepage-namoo:${{ steps.extract_tag.outputs.TAG }} .
 
       - name: Tag image as latest
         run: docker tag ghcr.io/rhistle-official/homepage-namoo:${{ steps.extract_tag.outputs.TAG }} ghcr.io/rhistle-official/homepage-namoo:latest
 
-      - name: Push Docker images (version + latest)
+      - name: Push Docker images
         run: |
           docker push ghcr.io/rhistle-official/homepage-namoo:${{ steps.extract_tag.outputs.TAG }}
           docker push ghcr.io/rhistle-official/homepage-namoo:latest
