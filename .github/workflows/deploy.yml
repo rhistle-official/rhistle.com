@@ -51,4 +51,5 @@ jobs:
           port: 32111
           script: |
             echo ${{ secrets.GHCR_TOKEN }} | docker login ghcr.io -u rhistle-official --password-stdin
+            docker-compose -f /home/***/www.***.com/docker-compose.yml pull
             docker-compose -f /home/homepage/www.namooinc.com/docker-compose.yml up -d --remove-orphans
