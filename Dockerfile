@@ -8,6 +8,8 @@ WORKDIR /app
 COPY package.json package-lock.json* ./
 
 RUN npm install --legacy-peer-deps
+
+COPY .env .env
 # 전체 소스 복사 및 빌드
 COPY . .
 RUN npm run build
