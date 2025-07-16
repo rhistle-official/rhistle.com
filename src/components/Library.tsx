@@ -6,25 +6,18 @@ import { motion } from "framer-motion";
 
 const pdfFiles = [
   {
-    title: "CoreCode Brochure (국문)",
-    description: "코어코드 브로셔 (국문)",
-    file: "corecode_kr.pdf",
+    title: "Company Introduction (국문)",
+    description: "나무아이앤씨 회사 소개 (국문)",
+    file: "NamooINC Company Introduction_2025 v_1.1.pdf",
     icon: "📄",
     color: "from-blue-50 to-blue-100 border-blue-400"
   },
   {
-    title: "CoreCode Suite",
-    description: "코어코드 제품소개서",
-    file: "corecode_suite.pdf",
+    title: "CoreCode Solution Introduction (국문)",
+    description: "코어코드 솔루션 소개",
+    file: "CoreCode Solution Introduction_2024 v_1.5.pdf",
     icon: "📋",
     color: "from-green-50 to-green-100 border-green-400"
-  },
-  {
-    title: "Reference",
-    description: "고객사 Reference",
-    file: "Reference.pdf",
-    icon: "📊",
-    color: "from-purple-50 to-purple-100 border-purple-400"
   },
 ];
 
@@ -133,7 +126,7 @@ const Library = () => {
 
           {/* PDF 카드들 */}
           <motion.div 
-            className="grid gap-8 md:grid-cols-1 lg:grid-cols-3 mb-16"
+            className="grid gap-4 md:grid-cols-1 lg:grid-cols-2 mb-16"
             variants={staggerContainer}
           >
             {pdfFiles.map((pdf, index) => (
