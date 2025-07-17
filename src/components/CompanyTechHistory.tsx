@@ -90,8 +90,8 @@ const CompanyHistory = () => {
                   </svg>
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-white">History</h2>
-                  <p className="text-emerald-100">지속 가능한 성장을 향한 나무아이앤씨의 발걸음</p>
+                  <h2 className="text-2xl font-bold text-white">기술 혁신의 역사</h2>
+                  <p className="text-emerald-100">지속적인 발전과 혁신의 여정</p>
                 </div>
               </motion.div>
             </div>
