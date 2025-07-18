@@ -90,6 +90,7 @@ const historyData = [
       {
         date: "2020년",
         items: [
+          "SK 하이닉스 CoreCode Suite 공급",
           "셀트리온 CoreCode Suite 공급",
           "삼성전자 미국 오스틴 GCS EES 2차 연계 및 PM WEB MANAGER 구축",
           "SK 하이닉스 이천 환경안전 IRIS 조기대응 통합 시스템 1차 구축",
@@ -107,7 +108,7 @@ const historyData = [
           "삼성전자 반도체 중국 서안 환경안전 IDPS 2차 구축",
           "삼성전자 반도체 기흥/화성 환경안전 IDPS 기능 개선 구축",
           "현대차 울산51 지능형공장관리시스템 IoT플랫폼 구축",
-          "현현대기아차 남양연구소 환경인증시험관리 IoT플랫폼 구축",
+          "현대기아차 남양연구소 환경인증시험관리 IoT플랫폼 구축",
           "기아차 소하2 지능형공장관리시스템 IoT플랫폼 구축",
           "기아차 인도 GMES Infra Implementation 제조 IoT플랫폼 구축",
           "코닝정밀소재 ICS 개조 추가",
@@ -176,7 +177,6 @@ const historyData = [
         date: "2015",
         items: [
           "SK AX 협력업체 선정",
-          "SK 하이닉스 CoreCode Suite 공급",
           "SK하이닉스 중국 우시 환경안전 CMS 통합 모니터링 1차 구축",
           "삼성디스플레이 환경안전 G-IDPS EES 연계",
           "삼성디스플레이 아산2 A3 GDS 가스 모니터링 1차 구축",
@@ -259,13 +259,15 @@ const historyData = [
         date: "2007",
         items: [
           "통합 인터페이스 장치 특허 출원",
-          "CoreCode Suite (인터페이스 미들웨어 )' 출시"
+          "CoreCode Suite V4(인터페이스 미들웨어) 출시"
         ]
       },
       {
         date: "2006",
         items: [
           "CoreCode XSTORE (XML 문서관리 소프트웨어)' 출시",
+          "'SK 하이닉스 중국 우시 CoreCode Suite 공급",
+          "CoreCode Suite (인터페이스 미들웨어) 출시" ,
           "기업부설연구소 설립",
           "우량기술기업 선정"
         ]
