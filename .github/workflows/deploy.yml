@@ -50,6 +50,26 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: 32111
           script: |
+            CONTAINER_NAME=www-namoo
+            BACKUP_IMAGE=${CONTAINER_NAME}:backup
+
             echo ${{ secrets.GHCR_TOKEN }} | docker login ghcr.io -u rhistle-official --password-stdin
+
+            if docker ps -a --format '{{.Names}}' | grep -q "^$CONTAINER_NAME$"; then
+              docker commit $CONTAINER_NAME $BACKUP_IMAGE
+            fi
+
+            docker rm -f $CONTAINER_NAME || true
+
             docker-compose -f /home/***/www.***.com/docker-compose.yml pull
             docker-compose -f /home/homepage/www.namooinc.com/docker-compose.yml up -d --remove-orphans
+
+            sleep 7
+
+            if curl -fs http://localhost:3000/ko; then
+              docker image rm $BACKUP_IMAGE || true
+            else
+              docker rm -f $CONTAINER_NAME || true
+              docker run -d --name $CONTAINER_NAME -p 3000:3000 $BACKUP_IMAGE
+              exit 1
+            fi
