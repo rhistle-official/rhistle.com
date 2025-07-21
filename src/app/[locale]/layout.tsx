@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
-
+import ClerkWrapper from '@/components/ClerkWrapper'
 import Footer from "@/components/Footer";
 import SessionProvider from "@/components/SessionProvider";
 import { routing } from "@/i18n/routing";
@@ -40,12 +40,14 @@ export default async function RootLayout({
   return (
     <html lang={locale}>
       <body className={pretendard.className}>
-        <NextIntlClientProvider>
-          <SessionProvider>
-            {children}
-            <Footer />
-          </SessionProvider>
-        </NextIntlClientProvider>
+        <ClerkWrapper>
+          <NextIntlClientProvider>
+            <SessionProvider>
+              {children}
+              <Footer />
+            </SessionProvider>
+          </NextIntlClientProvider>
+        </ClerkWrapper>
       </body>
     </html>
   );
