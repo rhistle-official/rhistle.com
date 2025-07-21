@@ -2,18 +2,145 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { useState, useEffect} from "react";
-import {
-  RocketIcon,
-  CogIcon,
-  LayersIcon,
-  Building2Icon
-} from "lucide-react";
+import { useState } from "react";
+import {  RocketIcon  } from "lucide-react";
 
 const historyData = [
   {
-    product: "2021 - Present",
+    product: "2005 - Present",
     icon: <RocketIcon className="w-6 h-6 text-emerald-600" />,
+    highlights: [
+      {
+        date: "2025년",
+        items: [
+          "Vexi (관제 DT 솔루션) 출시 예정",
+          "Nexum (제조 IT Framework) 출시",
+          "셀트리온 제약 CoreCode Suite 공급"
+        ],
+      },
+      {
+        date: "2024년",
+        items: [
+          "CoreCode Suite V5 출시",
+          "스마트팩토리 사업 확대 (컨설팅, 시스템 구축)"
+        ],
+      },
+      {
+        date: "2023년",
+        items: [
+          "LG전자 CoreCode Suite 공급",
+          "LS티라유텍 전략적 제휴 체결",
+        ],
+      },
+      {
+        date: "2022년",
+        items: [
+          "LGCNS 협력업체 선정"
+        ],
+      },
+      {
+        date: "2020년",
+        items: [
+          "SK 하이닉스 CoreCode Suite 공급",
+          "셀트리온 CoreCode Suite 공급"
+        ],
+      },
+      {
+        date: "2018년",
+        items: [
+          "기아자동차 CoreCode Suite 공급",
+          "현대제철 CoreCode Suite 공급"
+        ],
+      },
+      {
+        date: "2017년",
+        items: [
+          "현대자동차 CoreCode Suite 공급"
+        ],
+      },
+      {
+        date: "2016년",
+        items: [
+          "현대오토에버 협력업체 선정",
+          "한화오션 CoreCode 공급"
+        ],
+      },
+      {
+        date: "2015년",
+        items: [
+          "SK AX 협력업체 선정"
+        ],
+      },
+      {
+        date: "2014년",
+        items: [
+          "CoreCode Suite GS 인증"
+        ],
+      },
+      {
+        date: "2013년",
+        items: [
+          "CoreCode XSTORE GS 인증"
+        ],
+      },
+      {
+        date: "2012년",
+        items: [
+          "포스코, 포스하이메탈 CoreCode Suite 공급",
+          "대법원 CoreCode XSTORE 공급"
+        ],
+      },
+      {
+        date: "2011년",
+        items: [
+          "포스크DX 협력업체 선정",
+          "삼성전자 CoreCode 공급"
+        ],
+      },
+      {
+        date: "2010년",
+        items: [
+          "삼성SDI CoreCode Suite 공급",
+          "코닝정밀소재 CoreCode Suite 공급",
+          "삼성디스플레이 CoreCode Suite 공급"
+        ],
+      },
+      {
+        date: "2009년",
+        items: [
+          "삼성 SDS 협력업체 선정"
+        ],
+      },
+      {
+        date: "2008년",
+        items: [
+          "기술혁신형 중소기업(INNO-BIZ) 인증 (중소벤처기업부)"
+        ],
+      },
+      {
+        date: "2007년",
+        items: [
+          "통합 인터페이스 장치 특허 출원",
+          "CoreCode Suite V4 (인터페이스 미들웨어) 출시",
+        ],
+      },
+      {
+        date: "2006년",
+        items: [
+          "CoreCode XSTORE (XML 문서관리 소프트웨어)' 출시",
+          "SK 하이닉스 중국 우시 CoreCode Suite 공급",
+          "CoreCode Suite (인터페이스 미들웨어 )' 출시",
+          "기업부설연구소 설립",
+          "우량기술기업 선정",
+        ],
+      },
+      {
+        date: "2005년",
+        items: [
+          "나무아이앤씨(주) 설립"
+        ],
+      },
+   ],
     histories: [
       {
         date: "2025년",
@@ -81,12 +208,6 @@ const historyData = [
           "원익 IPS 설비 연계",
         ],
       },
-    ],
-  },
-  {
-    product: "2017 - 2020",
-    icon: <CogIcon className="w-6 h-6 text-yellow-500" />,
-    histories: [
       {
         date: "2020년",
         items: [
@@ -147,12 +268,6 @@ const historyData = [
           "코닝정밀소재 ICS 개조 추가"
         ]
       },
-    ],
-  },
-  {
-    product: "2012 - 2016",
-    icon: <LayersIcon className="w-6 h-6 text-blue-500" />,
-    histories: [
       {
         date: "2016",
         items: [
@@ -218,12 +333,6 @@ const historyData = [
           "대법원 전자소송 전산화 도입 구축"
         ]
       },
-    ],
-  },
-  {
-    product: "2005 - 2011",
-    icon: <Building2Icon className="w-6 h-6 text-gray-500" />,
-    histories: [
       {
         date: "2011",
         items: [
@@ -282,10 +391,14 @@ const historyData = [
 
 const History = () => {
   const [expandedProduct, setExpandedProduct] = useState<string[]>([]);
-  
-  useEffect(() => {
-    setExpandedProduct(historyData.map(p => p.product));
-  }, []);
+
+  const handleToggle = (productName: string) => {
+    setExpandedProduct(prev =>
+      prev.includes(productName)
+        ? prev.filter(p => p !== productName) // 접기
+        : [...prev, productName]             // 펼치기
+    );
+  };
 
   const fadeInUp = {
     initial: { opacity: 0, y: 30 },
@@ -311,14 +424,6 @@ const History = () => {
     }
   };
 
-  const handleToggle = (productName: string) => {
-    setExpandedProduct(prev =>
-      prev.includes(productName)
-        ? prev.filter(p => p !== productName)
-        : [...prev, productName]
-    );
-  };
-
   return (
     <motion.div 
       className="space-y-12"
@@ -326,7 +431,7 @@ const History = () => {
       initial="initial"
       animate="animate"
     >
-      {historyData.map((product, productIndex) => (
+      {historyData.map((product) => (
         <motion.div 
           key={product.product}
           className="bg-gradient-to-br from-white to-gray-50 rounded-3xl p-8 shadow-lg border border-gray-100 overflow-hidden"
@@ -356,6 +461,8 @@ const History = () => {
                 <h3 className="text-2xl font-bold text-gray-800">{product.product}</h3>
               </div>
             </div>
+           
+
             <motion.div
               animate={{ rotate: expandedProduct.includes(product.product) ? 180 : 0 }}
               transition={{ duration: 0.3 }}
@@ -366,6 +473,49 @@ const History = () => {
               </svg>
             </motion.div>
           </motion.div>
+
+          {/* 대표 연혁은 접혀있을 때만 보여줌 */}
+          {!expandedProduct.includes(product.product) && product.highlights && (
+            <div className="space-y-6">
+              {product.highlights.map((highlight, index) => (
+                <motion.div 
+                  key={index}
+                  className="flex ml-12 bg-white rounded-2xl p-6 shadow-md border border-gray-100"
+                  whileHover={{ 
+                    scale: 1.02, 
+                    boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
+                    transition: { duration: 0.3 }
+                  }}
+                >
+                  <div className="mb-3">
+                    <span className="text-xl font-bold text-gray-900 mb-4 block">
+                      {highlight.date}
+                    </span>
+                    <motion.ul 
+                      className="space-y-2"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.2 }}
+                    >
+                      {highlight.items.map((item, itemIndex) => (
+                        <motion.li 
+                          key={itemIndex}
+                          className="flex items-start space-x-3 text-gray-700"
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: itemIndex * 0.05 }}
+                        >
+                          <div className="w-2 h-2 bg-emerald-400 rounded-full mt-2 flex-shrink-0" />
+                          <span className="text-sm leading-relaxed">{item}</span>
+                        </motion.li>
+                      ))}
+                    </motion.ul>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          )}
+
 
           {/* Timeline */}
           <motion.div 
@@ -434,7 +584,6 @@ const History = () => {
             ))}
           </motion.div>
 
-          {/* Expand/Collapse Indicator */}
           {!expandedProduct.includes(product.product) && (
             <motion.div 
               className="text-center py-4"
