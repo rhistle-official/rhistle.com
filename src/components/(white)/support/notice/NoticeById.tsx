@@ -1,4 +1,4 @@
-import { dynamicFetchPost } from "../../lib/api";
+import { dynamicFetchPost } from "../../../../lib/api";
 import NoticeDetail from "./NoticeDetail";
 
 const NoticeById = async ({ params }: { params: Promise<{ id: number }> }) => {

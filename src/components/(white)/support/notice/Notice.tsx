@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import NoticeBoard from "./notice/NoticeBoard";
+import NoticeBoard from "../notice/NoticeBoard";
 
 interface NoticeProps {
   searchParams: { [key: string]: string | undefined };

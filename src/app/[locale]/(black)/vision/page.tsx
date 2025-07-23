@@ -1,4 +1,4 @@
-import VisionContent from "@/components/VisionContent";
+import VisionContent from "@/components/(black)/vision/VisionContent";
 
 const page = () => {
   return <VisionContent />;

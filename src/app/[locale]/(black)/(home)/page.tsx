@@ -1,4 +1,4 @@
-import HomeContent from "@/components/HomeContent";
+import HomeContent from "@/components/(black)/(home)/HomeContent";
 
 const page = () => {
   return <HomeContent />;

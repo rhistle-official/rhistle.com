@@ -1,6 +1,6 @@
-import Header from "@/components/Header";
-import InquiryButton from "@/components/InquiryButton";
-import ScrollToTopButton from "@/components/ScrollToTopButton";
+import Header from "@/components/layout/Header";
+import InquiryButton from "@/components/ui/InquiryButton";
+import ScrollToTopButton from "@/components/ui/ScrollToTopButton";
 
 export default async function WhiteLayout({
   children,

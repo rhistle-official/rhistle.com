@@ -1,4 +1,4 @@
-import Library from "@/components/Library";
+import Library from "@/components/(white)/support/library/Library";
 
 const page = () => {
   return <Library />;

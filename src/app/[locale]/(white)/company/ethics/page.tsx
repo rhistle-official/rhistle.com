@@ -1,4 +1,4 @@
-import CompanyEthics from "@/components/CompanyEthics";
+import CompanyEthics from "@/components/(white)/company/ethics/CompanyEthics";
 
 const page = () => {
   return <CompanyEthics />;

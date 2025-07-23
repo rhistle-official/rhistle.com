@@ -1,4 +1,4 @@
-import Welfare from "@/components/Welfare";
+import Welfare from "@/components/(white)/company/welfare/Welfare";
 
 const page = () => {
   return <Welfare />;

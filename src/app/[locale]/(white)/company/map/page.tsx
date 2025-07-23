@@ -1,4 +1,4 @@
-import RouteGuide from "@/components/RouteGuide";
+import RouteGuide from "@/components/(white)/company/map/RouteGuide";
 
 const page = () => {
   return <RouteGuide />;

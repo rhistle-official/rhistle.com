@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
-import ClerkWrapper from '@/components/ClerkWrapper'
-import Footer from "@/components/Footer";
-import SessionProvider from "@/components/SessionProvider";
+import ClerkWrapper from '@/components/auth/ClerkWrapper'
+import Footer from "@/components/layout/Footer";
+import SessionProvider from "@/components/auth/SessionProvider";
 import HideFooterOnAuthPages from "@/components/layout/HideFooterOnAuthPages";
 import { routing } from "@/i18n/routing";
 import { NextIntlClientProvider, hasLocale } from "next-intl";

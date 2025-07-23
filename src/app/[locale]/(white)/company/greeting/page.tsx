@@ -1,4 +1,4 @@
-import CompanyGreeting from "@/components/CompanyGreeting";
+import CompanyGreeting from "@/components/(white)/company/greeting/CompanyGreeting";
 
 const page = () => {
   return <CompanyGreeting />;

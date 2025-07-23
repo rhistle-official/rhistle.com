@@ -1,4 +1,4 @@
-import CompanyHistory from "@/components/CompanyHistory";
+import CompanyHistory from "@/components/(white)/company/history/CompanyHistory";
 
 const page = () => {
   return <CompanyHistory />;

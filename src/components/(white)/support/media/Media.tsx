@@ -5,9 +5,8 @@ import { useEffect, useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "@/i18n/navigation";
-import NoticePagination from "./notice/NoticePagination";
+import NoticePagination from "../notice/NoticePagination";
 import { post } from "@/lib/type";
-import Link from "next/link";
 
 interface MediaProps {
   searchParams: { [key: string]: string | undefined };

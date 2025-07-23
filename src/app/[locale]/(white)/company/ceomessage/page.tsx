@@ -1,4 +1,4 @@
-import CompanyCeoMessage from "@/components/CompanyCeoMessage";
+import CompanyCeoMessage from "@/components/(white)/company/ceomessage/CompanyCeoMessage";
 
 const page = () => {
   return <CompanyCeoMessage />;

@@ -1,7 +1,6 @@
 import { dynamicFetchPost, fetchPosts } from '@/lib/api';
 import { notFound } from 'next/navigation';
-import NoticeDetail from '@/components/notice/NoticeDetail';
-import NoticeDeleteButton from '@/components/notice/NoticeDeleteButton';
+import NoticeDeleteButton from '@/components/(white)/support/notice/NoticeDeleteButton';
 import Link from 'next/link';
 
 interface Props {

@@ -1,5 +1,6 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import {
   Form,
   FormControl,
@@ -21,11 +22,15 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
-import { Textarea } from "./ui/textarea";
 
-import { Editor } from "@toast-ui/react-editor";
+import type { Editor as EditorType } from "@toast-ui/react-editor";
 import "@toast-ui/editor/dist/toastui-editor.css";
 import { useRef } from "react";
+
+const ToastEditor = dynamic(
+  () => import("@toast-ui/react-editor").then(mod => mod.Editor),
+  { ssr: false }
+);
 
 const FormSchema = z.object({
   name: z.string().trim().min(1, {
@@ -51,6 +56,7 @@ const FormSchema = z.object({
 
 const CorecodeInquiry = () => {
   const [agreeAll, setAgreeAll] = useState(false);
+  const editorRef = useRef<EditorType>(null);
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -65,8 +71,6 @@ const CorecodeInquiry = () => {
       agreeOver14: false,
     },
   });
-
- const editorRef = useRef<Editor>(null);
 
   useEffect(() => {
     form.setValue("agreePrivacy", agreeAll);
@@ -242,7 +246,7 @@ const CorecodeInquiry = () => {
                 <div className="text-[1rem] font-medium">
                   문의내용<span className="ml-1 text-red-500">*</span>
                 </div>
-                <Editor
+                <ToastEditor
                   ref={editorRef}
                   previewStyle="tab"
                   height="300px"

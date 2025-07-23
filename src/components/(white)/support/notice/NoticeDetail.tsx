@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { post } from "@/lib/type";
-import FileCarousel from "../FileCarousel";
+import FileCarousel from "./FileCarousel";
 import NoticeEditButton from "./NoticeEditButton";
 import { useRouter } from "@/i18n/navigation";
 import SessionCheck from "./SessionCheck";

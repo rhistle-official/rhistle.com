@@ -8,7 +8,6 @@ import CorecodeConcept from "./CorecodeConcept";
 import CorecodeFeature from "./CorecodeFeature";
 import CorecodeOverview from "./CorecodeOverview";
 import CorecodeStack from "./CorecodeStack";
-import { Button } from "./ui/button";
 
 const CorecodeContent = () => {
   const [isVisible, setIsVisible] = useState(false);

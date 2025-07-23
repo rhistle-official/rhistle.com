@@ -1,4 +1,4 @@
-import Media from "@/components/Media";
+import Media from "@/components/(white)/support/media/Media";
 
 interface PageProps {
   searchParams: Promise<{ [key: string]: string | undefined }>;

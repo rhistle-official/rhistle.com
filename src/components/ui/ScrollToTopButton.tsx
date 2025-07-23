@@ -1,6 +1,6 @@
 "use client";
 
-import ArrowUp from "../../public/svg/ArrowUp";
+import ArrowUp from "../../../public/svg/ArrowUp";
 
 const ScrollToTopButton = ({
   bgColor,

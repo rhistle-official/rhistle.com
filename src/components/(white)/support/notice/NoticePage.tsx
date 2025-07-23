@@ -2,7 +2,6 @@
 
 import { dynamicFetchPost, fetchPosts } from '@/lib/api';
 import { notFound } from 'next/navigation';
-import NoticeDetail from '@/components/notice/NoticeDetail';
 import Link from 'next/link';
 // import { useRouter } from "next/navigation";
 

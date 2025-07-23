@@ -1,4 +1,4 @@
-import NoticeWrite from "@/components/notice/NoticeWrite";
+import NoticeWrite from "@/components/(white)/support/notice/NoticeWrite";
 
 const page = () => {
   return <NoticeWrite />;

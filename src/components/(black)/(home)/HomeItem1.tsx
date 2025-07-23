@@ -8,7 +8,7 @@ import "swiper/css/autoplay";
 import "swiper/css/effect-fade";
 
 import Image from "next/image";
-import SwiperNavButton from "./SwiperNavButton";
+import SwiperNavButton from "../../ui/SwiperNavButton";
 import { Button } from "@/components/ui/button";
 
 const HomeItem1 = () => {

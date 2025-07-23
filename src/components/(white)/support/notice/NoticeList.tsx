@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { fetchPosts } from "@/lib/api";
 import { post } from "@/lib/type";
 import NoticePagination from "./NoticePagination";
-import EditAuthButton from "@/components/EditAuthButton";
+import EditAuthButton from "@/components/ui/EditAuthButton";
 import Link from "next/link";
 
 interface NoticeBoardProps {

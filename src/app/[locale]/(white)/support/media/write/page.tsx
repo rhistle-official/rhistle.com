@@ -1,4 +1,4 @@
-import MediaWrite from "@/components/media/MediaWrite";
+import MediaWrite from "@/components/(white)/support/media/MediaWrite";
 
 const page = () => {
   return <MediaWrite />;

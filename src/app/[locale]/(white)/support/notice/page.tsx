@@ -1,4 +1,4 @@
-import Notice from "@/components/Notice";
+import Notice from "@/components/(white)/support/notice/Notice";
 
 interface PageProps {
   searchParams: Promise<{ [key: string]: string | undefined }>;

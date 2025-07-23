@@ -8,7 +8,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import PasskeyForm from "@/components/PasskeyForm";
+import PasskeyForm from "@/components/auth/PasskeyForm";
 
 const EditAuthButton = () => {
   return (

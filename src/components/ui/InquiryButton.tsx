@@ -1,4 +1,4 @@
-import QeustionMart from "../../public/svg/QeustionMart";
+import QeustionMart from "../../../public/svg/QeustionMart";
 
 const InquiryButton = ({
   bgColor,

@@ -1,4 +1,4 @@
-import MexiContent from "@/components/MexiContent";
+import MexiContent from "@/components/(black)/product/mexi/MexiContent";
 
 const page = () => {
   return <MexiContent />;

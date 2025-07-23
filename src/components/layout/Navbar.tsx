@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import ArrowUpRight from "../../public/svg/ArrowUpRight";
-import LocaleSwicher from "./LocaleSwicher";
-import Logo from "./Logo";
-import MobileMenu from "./MobileMenu";
+import ArrowUpRight from "../../../public/svg/ArrowUpRight";
+import LocaleSwicher from "../LocaleSwicher";
+import Logo from "../ui/Logo";
+import MobileMenu from "../MobileMenu";
 import NavMenu from "./NavMenu";
 import { useSessionStore } from "@/store/useSessionStore";
 import { SignedIn, SignedOut, SignOutButton } from "@clerk/clerk-react"

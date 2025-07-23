@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import History from "./History";
+import History from "./history/History";
 
 const CompanyHistory = () => {
   const fadeInUp = {

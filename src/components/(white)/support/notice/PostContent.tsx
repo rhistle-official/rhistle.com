@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { post } from "@/lib/type";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import NoticeDetail from "./notice/NoticeDetail";
+import NoticeDetail from "./NoticeDetail";
 
 interface ContentProps {
   post: post;
