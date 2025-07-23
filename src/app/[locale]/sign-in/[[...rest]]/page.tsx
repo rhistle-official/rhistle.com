@@ -1,16 +1,23 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
-import { useSignIn } from "@clerk/clerk-react"
+import { useUser, useSignIn } from "@clerk/clerk-react"
 
 export default function SignInPage() {
   const { isLoaded, signIn, setActive } = useSignIn()
+  const { isSignedIn } = useUser();
   const router = useRouter()
 
   const [id, setId] = useState("")
   const [pw, setPw] = useState("")
   const [error, setError] = useState("")
+
+  useEffect(() => {
+    if (isSignedIn) {
+      router.push("/");
+    }
+  }, [isSignedIn]);
 
   // 이메일 유효성 검사
   const isValidEmail = (email: string) =>
@@ -39,6 +46,7 @@ export default function SignInPage() {
       const msg = err?.errors?.[0]?.message || "로그인에 실패했습니다."
       if (msg.includes("account")) setError("존재하지 않는 계정입니다.")
       else if (msg.includes("Password")) setError("비밀번호가 올바르지 않습니다.")
+      else if (msg.includes("Enter")) setError("비밀번호를 입력해주세요.")
       else setError(msg)
     }
   }
