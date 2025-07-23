@@ -1,17 +1,20 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { useRouter } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 import { useUser, useSignIn } from "@clerk/clerk-react"
 
 export default function SignInPage() {
   const { isLoaded, signIn, setActive } = useSignIn()
   const { isSignedIn } = useUser();
-  const router = useRouter()
+  const router = useRouter();
 
-  const [id, setId] = useState("")
-  const [pw, setPw] = useState("")
-  const [error, setError] = useState("")
+  const [id, setId] = useState("");
+  const [pw, setPw] = useState("");
+  const [error, setError] = useState("");
+
+  const searchParams = useSearchParams();
+  const redirect = searchParams.get("redirect") ?? "/" ;
 
   useEffect(() => {
     if (isSignedIn) {
@@ -38,7 +41,7 @@ export default function SignInPage() {
 
       if (result.status === "complete") {
         await setActive({ session: result.createdSessionId })
-        router.push("/")
+        router.push(redirect === "developer" ? "https://developer.namooinc.com" : "/")
       } else {
         setError("추가 인증이 필요합니다.")
       }
