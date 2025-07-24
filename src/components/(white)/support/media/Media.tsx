@@ -3,10 +3,11 @@
 import Image from "next/image";
 import { useEffect, useState, useCallback } from "react";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
 import { useRouter } from "@/i18n/navigation";
 import NoticePagination from "../notice/NoticePagination";
 import { post } from "@/lib/type";
+import MediaWriteButton from "./MediaWriteButton";
+import { useAuth } from "@clerk/clerk-react"; 
 
 interface MediaProps {
   searchParams: { [key: string]: string | undefined };
@@ -33,6 +34,7 @@ const Media = ({ searchParams } : MediaProps) => {
   const [postPerPage, setPostPerPage] = useState(10);
   const [totalPosts, setTotalPosts] = useState(0);
   const [loading, setLoading] = useState(true);
+  const { isSignedIn, isLoaded } = useAuth();
 
   const { page = "1", searchTerm = "" } = searchParams;
 
@@ -283,12 +285,7 @@ useEffect(() => {
                 />
               </div>
               <div className="flex justify-end mb-4">
-                <Button
-                  className="cursor-pointer bg-[#78b237] hover:bg-[#78b237]/90 text-white font-semibold px-6 py-2 rounded-lg"
-                  onClick={() => router.push("/support/media/write")}
-                >
-                  글쓰기
-                </Button>
+                <MediaWriteButton />
               </div>
             </div>
              

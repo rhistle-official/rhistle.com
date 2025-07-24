@@ -15,22 +15,16 @@ import {
 import { Button } from "@/components/ui/button";
 import { useRouter } from "@/i18n/navigation";
 import { deleteNotice } from "@/lib/api";
-import { id } from "zod/v4/locales";
-import { useSessionStore } from "@/store/useSessionStore";
+import { useAuth } from "@clerk/clerk-react";
 
 const NoticeDeleteButton = ({ post_id }: { post_id: number }) => {
   const router = useRouter();
   const [adminId, setAdminId] = useState("");
   const [adminPw, setAdminPw] = useState("");
+  const { isSignedIn, isLoaded } = useAuth();
 
-  const { isLoggedIn, checkSession } = useSessionStore();
+  if (!isLoaded || !isSignedIn) return null;
 
-  useEffect(() => {
-    checkSession();
-  }, [checkSession]);
-
-  if (!isLoggedIn) return null;
-  
   const deleteHandler = async () => {
     try {
       const auth = 'Basic ' + btoa(`${adminId}:${adminPw}`);

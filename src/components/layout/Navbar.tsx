@@ -6,7 +6,6 @@ import LocaleSwicher from "../LocaleSwicher";
 import Logo from "../ui/Logo";
 import MobileMenu from "../MobileMenu";
 import NavMenu from "./NavMenu";
-import { useSessionStore } from "@/store/useSessionStore";
 import { SignedIn, SignedOut, SignOutButton } from "@clerk/clerk-react"
 import Link from 'next/link';
 
@@ -14,13 +13,7 @@ const NavBar = ({ bgColor }: { bgColor: string }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [image, setImage] = useState("");
-  const [loginOpen, setLoginOpen] = useState(false);
-  const [id, setId] = useState("");
-  const [pw, setPw] = useState("");
-  const [loginError, setLoginError] = useState("");
   
-  const { isLoggedIn, checkSession, setLoggedIn } = useSessionStore();
-
   useEffect(() => {
     const scrollHandler = () => {
       const scrollY = window.scrollY || document.documentElement.scrollTop;
@@ -39,20 +32,12 @@ const NavBar = ({ bgColor }: { bgColor: string }) => {
 
   useEffect(() => {
     const resizeHandler = () => {
-      if (window.innerWidth < 768) {
-        setIsMobileMenuOpen(true);
-      } else {
-        setIsMobileMenuOpen(false);
-      }
+      setIsMobileMenuOpen(window.innerWidth < 768);
     };
 
     resizeHandler();
-
     window.addEventListener("resize", resizeHandler);
-
-    return () => {
-      window.removeEventListener("resize", resizeHandler);
-    };
+    return () => window.removeEventListener("resize", resizeHandler);
   }, []);
 
   useEffect(() => {
@@ -60,17 +45,6 @@ const NavBar = ({ bgColor }: { bgColor: string }) => {
       ? setImage("ci_white.png")
       : setImage("ci_green.png");
   });
-
-  useEffect(() => {
-    // 세션 상태 확인
-    checkSession();
-  }, [checkSession]);
-
-  const handleLogout = async () => {
-    await fetch("/api/logout", { method: "POST" });
-    // 로그아웃 후 세션 상태 다시 확인
-    await checkSession();
-  };
 
   return (
     <header className="fixed z-20 w-full">
@@ -95,7 +69,7 @@ const NavBar = ({ bgColor }: { bgColor: string }) => {
             <LocaleSwicher />
             <SignedOut>
               <Link href="/sign-in">
-                <button className="ml-2 rounded bg-[#78b237] px-4 py-2 text-sm font-semibold text-white hover:bg-[#78b237]/90 whitespace-nowrap leading-none">
+                <button className="ml-2 bg-[#78b237] text-white px-4 py-2 text-sm font-semibold rounded hover:bg-[#78b237]/90 w-auto max-w-[150px] whitespace-nowrap">
                   로그인
                 </button>
               </Link>
@@ -104,7 +78,7 @@ const NavBar = ({ bgColor }: { bgColor: string }) => {
             {/* 로그인 된 경우 → 로그아웃 버튼 */}
             <SignedIn>
               <SignOutButton>
-                <button className="ml-2 rounded bg-gray-200 px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-300">
+                <button className="ml-2 rounded bg-gray-200 px-4 py-2 text-sm font-semibold text-gray-700 rounded hover:bg-gray-300 w-auto max-w-[150px] whitespace-nowrap">
                   로그아웃
                 </button>
               </SignOutButton>
