@@ -41,7 +41,9 @@ export default function SignInPage() {
 
       if (result.status === "complete") {
         await setActive({ session: result.createdSessionId })
-        router.push(redirect === "developer" ? "https://developer.namooinc.com" : "/")
+        // 정확하게 리디렉션 처리
+        const cleanRedirect = redirect?.trim();
+        window.location.href = cleanRedirect === "developer" ? "https://developer.namooinc.com" : "/";
       } else {
         setError("추가 인증이 필요합니다.")
       }
