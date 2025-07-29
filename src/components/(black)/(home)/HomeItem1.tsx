@@ -66,6 +66,7 @@ const HomeItem1 = () => {
               muted
               loop
               playsInline
+              onCanPlayThrough={(e) => e.currentTarget.style.opacity = '1'}
               className="h-full w-full object-cover brightness-50"
             />
           ) : (

@@ -6,21 +6,17 @@ import { useUser, useSignIn } from "@clerk/clerk-react"
 
 export default function SignInPage() {
   const { isLoaded, signIn, setActive } = useSignIn()
-  const { isSignedIn } = useUser();
-  const router = useRouter();
-
+  
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
   const [error, setError] = useState("");
-
-  const searchParams = useSearchParams();
-  const redirect = searchParams.get("redirect") ?? "/" ;
+  
+  const [redirect, setRedirect] = useState("/");
 
   useEffect(() => {
-    if (isSignedIn) {
-      router.push("/");
-    }
-  }, [isSignedIn]);
+    const param = new URLSearchParams(window.location.search).get("redirect");
+    if (param) setRedirect(param);
+  }, []);
 
   // 이메일 유효성 검사
   const isValidEmail = (email: string) =>
@@ -28,6 +24,8 @@ export default function SignInPage() {
 
   // 로그인 처리
   const handleLogin = async () => {
+    const redirect = new URLSearchParams(window.location.search).get("redirect");
+    
     setError("")
     if (!isLoaded || !signIn) return
 
@@ -39,13 +37,21 @@ export default function SignInPage() {
     try {
       const result = await signIn.create({ identifier: id, password: pw })
 
+      const cleanRedirect = redirect?.trim();
+
+      // developer 서브도메인 요청이면 → 경로까지 붙여서 이동
       if (result.status === "complete") {
-        await setActive({ session: result.createdSessionId })
-        // 정확하게 리디렉션 처리
-        const cleanRedirect = redirect?.trim();
-        window.location.href = cleanRedirect === "developer" ? "https://developer.namooinc.com" : "/";
+        await setActive({ session: result.createdSessionId });
+
+        let redirectTo = "/";
+        if (typeof window !== "undefined") {
+          const redirectParam = new URLSearchParams(window.location.search).get("redirect");
+          if (redirectParam) redirectTo = redirectParam;
+        }
+
+        window.location.href = redirectTo;
       } else {
-        setError("추가 인증이 필요합니다.")
+        setError("추가 인증이 필요합니다.");
       }
     } catch (err: any) {
       const msg = err?.errors?.[0]?.message || "로그인에 실패했습니다."

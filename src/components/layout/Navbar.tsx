@@ -7,7 +7,7 @@ import Logo from "../ui/Logo";
 import MobileMenu from "../MobileMenu";
 import NavMenu from "./NavMenu";
 import { SignedIn, SignedOut, SignOutButton } from "@clerk/clerk-react"
-import Link from 'next/link';
+import LoginButton from "@/components/auth/LoginButton";
 
 const NavBar = ({ bgColor }: { bgColor: string }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -68,11 +68,7 @@ const NavBar = ({ bgColor }: { bgColor: string }) => {
             </button>
             <LocaleSwicher />
             <SignedOut>
-              <Link href="/sign-in">
-                <button className="ml-2 bg-[#78b237] text-white px-4 py-2 text-sm font-semibold rounded hover:bg-[#78b237]/90 w-auto max-w-[150px] whitespace-nowrap">
-                  로그인
-                </button>
-              </Link>
+             <LoginButton />
             </SignedOut>
 
             {/* 로그인 된 경우 → 로그아웃 버튼 */}
