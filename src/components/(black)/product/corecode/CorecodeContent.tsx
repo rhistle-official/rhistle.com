@@ -8,6 +8,7 @@ import CorecodeConcept from "./CorecodeConcept";
 import CorecodeFeature from "./CorecodeFeature";
 import CorecodeOverview from "./CorecodeOverview";
 import CorecodeStack from "./CorecodeStack";
+import Link from "next/link";
 
 const CorecodeContent = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -15,14 +16,6 @@ const CorecodeContent = () => {
   useEffect(() => {
     setIsVisible(true);
   }, []);
-
-  const openInquiryPopup = () => {
-    window.open(
-      "/corecode-inquiry",
-      "inquiryPopup",
-      "width=800,height=700,scrollbars=yes",
-    );
-  };
 
   const fadeInUp = {
     hidden: { opacity: 0, y: 60 },
@@ -318,14 +311,12 @@ const CorecodeContent = () => {
               궁금하신 내용을 남겨주시면, 담당자가 빠른 시간 안에 연락드리겠습니다.<br/>
               전문가와 상담하여 최적의 솔루션을 찾아보세요.
             </p>
-            <motion.button
-              onClick={openInquiryPopup}
+            <Link 
+              href="/inquiry/corecode-inquiry"
               className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-8 py-4 rounded-2xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
             >
               문의하기
-            </motion.button>
+            </Link>
           </motion.div>
         </div>
       </motion.div>

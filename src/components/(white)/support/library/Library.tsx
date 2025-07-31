@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
@@ -177,12 +178,12 @@ const Library = () => {
                 추가적인 제품 정보나 기술 자료가 필요하시면 언제든지 문의해 주세요. 
                 전문 상담사가 도움을 드리겠습니다.
               </p>
-              <a
+              <Link 
                 href="/inquiry/corecode-inquiry"
                 className="inline-block px-8 py-4 rounded-full bg-[#78b237] text-white font-semibold hover:bg-[#5a8a2a] transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
               >
                 문의하기
-              </a>
+              </Link>
             </div>
           </motion.div>
         </motion.div>

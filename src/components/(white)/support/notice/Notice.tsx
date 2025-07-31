@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import NoticeBoard from "../notice/NoticeBoard";
 
 interface NoticeProps {
@@ -93,12 +94,12 @@ const Notice = ({ searchParams }: NoticeProps) => {
                 공지사항 관련 문의사항이 있으시면 언제든지 연락해 주세요. 
                 빠른 시일 내에 답변 드리겠습니다.
               </p>
-              <a
+              <Link 
                 href="/inquiry/corecode-inquiry"
                 className="inline-block px-8 py-4 rounded-full bg-[#78b237] text-white font-semibold hover:bg-[#5a8a2a] transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
-              >
+                  >
                 문의하기
-              </a>
+              </Link>
             </div>
           </motion.div>
         </motion.div>

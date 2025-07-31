@@ -116,8 +116,8 @@ const CorecodeInquiry = () => {
   };
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-8">
-      <div className="flex items-center justify-center">
+    <div className="mx-auto max-w-3xl px-4">
+      <div className="flex items-center justify-center mb-6">
         <div className="w-[11rem]">
           <Image
             src="/image/ci.png"
@@ -317,7 +317,7 @@ const CorecodeInquiry = () => {
               </FormItem>
             )}
           />
-          <div className="flex items-center justify-center">
+          <div className="flex items-center justify-center m-12">
             <button
               type="submit"
               className="rounded-md bg-[#333333] px-8 py-3 text-white hover:bg-[#111] transition"

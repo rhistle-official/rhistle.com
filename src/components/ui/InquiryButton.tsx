@@ -1,4 +1,4 @@
-import QeustionMart from "../../../public/svg/QeustionMart";
+import QeustionMark from "../../../public/svg/QeustionMark";
 
 const InquiryButton = ({
   bgColor,
@@ -15,7 +15,7 @@ const InquiryButton = ({
       <div
         className={`flex h-[3rem] w-[3rem] items-center justify-center rounded-full ${bgColor} ${textColor}`}
       >
-        <QeustionMart />
+        <QeustionMark />
       </div>
     </button>
   );

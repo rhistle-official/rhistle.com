@@ -8,6 +8,8 @@ import MobileMenu from "../MobileMenu";
 import NavMenu from "./NavMenu";
 import { SignedIn, SignedOut, SignOutButton } from "@clerk/clerk-react"
 import LoginButton from "@/components/auth/LoginButton";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const NavBar = ({ bgColor }: { bgColor: string }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -46,6 +48,9 @@ const NavBar = ({ bgColor }: { bgColor: string }) => {
       : setImage("ci_green.png");
   });
 
+  const pathname = usePathname();
+  const isOnInquiryPage = pathname.includes("inquiry");
+
   return (
     <header className="fixed z-20 w-full">
       <div
@@ -59,13 +64,17 @@ const NavBar = ({ bgColor }: { bgColor: string }) => {
           <MobileMenu />
         ) : (
           <div className="flex items-center gap-2">
-            <button
-              type="button"
-              className="flex cursor-pointer items-center py-4 lg:px-[2.5rem] whitespace-nowrap gap-1"
-            >
-              <div>문의하기</div>
-              <ArrowUpRight />
-            </button>
+            {
+              !isOnInquiryPage && (
+                <Link
+                  href="/inquiry/corecode-inquiry"
+                  className="flex cursor-pointer items-center py-4 lg:px-[2.5rem] whitespace-nowrap gap-1"
+                >
+                  <span>문의하기</span>
+                  <ArrowUpRight />
+                </Link>
+              )
+            }
             <LocaleSwicher />
             <SignedOut>
              <LoginButton />

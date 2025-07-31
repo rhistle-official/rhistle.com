@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const VexiContent = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -378,13 +379,12 @@ const VexiContent = () => {
               관제 Digital Twin 시스템으로 현장의 모든 데이터를 통합하고<br/>
               실시간 모니터링과 예측 분석을 통해 운영 효율성을 극대화하세요.
             </p>
-            <motion.button
+            <Link 
+              href="/inquiry/corecode-inquiry"
               className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-8 py-4 rounded-2xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
             >
               문의하기
-            </motion.button>
+            </Link>
           </motion.div>
         </div>
       </motion.div>

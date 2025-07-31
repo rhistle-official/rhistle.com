@@ -7,6 +7,7 @@ import { useRouter } from "@/i18n/navigation";
 import NoticePagination from "../notice/NoticePagination";
 import { post } from "@/lib/type";
 import MediaWriteButton from "./MediaWriteButton";
+import Link from "next/link";
 import { useAuth } from "@clerk/clerk-react"; 
 
 interface MediaProps {
@@ -34,7 +35,6 @@ const Media = ({ searchParams } : MediaProps) => {
   const [postPerPage, setPostPerPage] = useState(10);
   const [totalPosts, setTotalPosts] = useState(0);
   const [loading, setLoading] = useState(true);
-  const { isSignedIn, isLoaded } = useAuth();
 
   const { page = "1", searchTerm = "" } = searchParams;
 
@@ -306,12 +306,12 @@ useEffect(() => {
                 언론 보도 관련 문의사항이나 인터뷰 요청이 있으시면 언제든지 연락해 주세요. 
                 빠른 시일 내에 답변 드리겠습니다.
               </p>
-              <a
+              <Link 
                 href="/inquiry/corecode-inquiry"
                 className="inline-block px-8 py-4 rounded-full bg-[#78b237] text-white font-semibold hover:bg-[#5a8a2a] transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
               >
                 문의하기
-              </a>
+              </Link>
             </div>
           </motion.div>
         </motion.div>
