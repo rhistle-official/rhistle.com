@@ -11,7 +11,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Checkbox } from "./ui/checkbox";
@@ -25,7 +25,14 @@ import {
 
 import type { Editor as EditorType } from "@toast-ui/react-editor";
 import "@toast-ui/editor/dist/toastui-editor.css";
-import { useRef } from "react";
+import {
+  AlertDialog,
+  AlertDialogContent,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogFooter,
+  AlertDialogAction
+} from "@/components/ui/alert-dialog"
 
 const ToastEditor = dynamic(
   () => import("@toast-ui/react-editor").then(mod => mod.Editor),
@@ -55,8 +62,15 @@ const FormSchema = z.object({
 });
 
 const CorecodeInquiry = () => {
-  const [agreeAll, setAgreeAll] = useState(false);
   const editorRef = useRef<EditorType>(null);
+  const [agreeAll, setAgreeAll] = useState(false);
+  const [alertOpen, setAlertOpen] = useState(false)
+  const [alertMessage, setAlertMessage] = useState("")
+
+  const openAlert = (message: string) => {
+    setAlertMessage(message)
+    setAlertOpen(true)
+  }
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -78,11 +92,9 @@ const CorecodeInquiry = () => {
   }, [agreeAll]);
 
   const onSubmit = async (data: z.infer<typeof FormSchema>) => {
-    console.log(JSON.stringify({ ...data }));
-
     const message = editorRef.current?.getInstance().getMarkdown();
-    if (!message || message.trim() === "") {
-      alert("문의 내용을 입력해주세요.");
+    if (!message || message.trim() === "" || message.trim() === " ") {
+      openAlert("문의 내용을 입력해주세요.")
       return;
     }
 
@@ -93,13 +105,13 @@ const CorecodeInquiry = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:3000/api/corecode-inquiry",
+        "http://localhost:3000/api/inquiry",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(data),
+          body: JSON.stringify(finalData),
         },
       );
 
@@ -107,10 +119,13 @@ const CorecodeInquiry = () => {
         const errorData = await response.json();
         throw new Error(errorData.message || "이메일 전송에 실패했습니다.");
       }
-      alert("이메일 전송 성공");
+      
+      setAlertMessage("이메일 전송에 성공했습니다.");
+      setAlertOpen(true);
     } catch (error) {
       console.error("Error creating post:", error);
-      alert("이메일 전송 실패");
+      setAlertMessage("이메일 전송에 실패했습니다.");
+      setAlertOpen(true);
     }
     console.log(JSON.stringify({ ...data }));
   };
@@ -251,6 +266,7 @@ const CorecodeInquiry = () => {
                   previewStyle="tab"
                   height="300px"
                   initialEditType="markdown"
+                  initialValue=" "
                   useCommandShortcut={true}
                   style={{ width: "100%" }}
                   className="max-w-full"
@@ -324,6 +340,16 @@ const CorecodeInquiry = () => {
             >
               문의하기
             </button>
+            <AlertDialog open={alertOpen} onOpenChange={setAlertOpen}>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle>{alertMessage}</AlertDialogTitle>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogAction onClick={() => setAlertOpen(false)}>확인</AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
           </div>
         </form>
       </Form>
