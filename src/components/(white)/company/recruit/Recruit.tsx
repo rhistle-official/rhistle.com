@@ -2,10 +2,12 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation"
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
 const Recruit = () => {
+  const router = useRouter()
   const positions = [
     {
       title: "프론트엔드 개발자",
@@ -344,12 +346,13 @@ const Recruit = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Link
-                  href="/inquiry/corecode-inquiry"
-                  className="inline-block bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white px-8 py-4 rounded-2xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+                <Button
+                  onClick={() => router.push("/inquiry/corecode-inquiry")}
+                  size="lg"
+                  className="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white px-8 py-4 rounded-2xl font-semibold shadow-lg"
                 >
                   채용 문의
-                </Link>
+                </Button>
               </motion.div>
               <motion.div
                 whileHover={{ scale: 1.05 }}
