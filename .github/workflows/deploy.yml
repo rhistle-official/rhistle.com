@@ -34,6 +34,7 @@ jobs:
           echo "EMAIL_USER=leehopl2@gmail.com" >> .env
           echo "EMAIL_PASS=${{ secrets.EMAIL_PASS }}" >> .env
           echo "EMAIL_USER=developer@namooinc.com" >> .env
+          echo "SLACK_WEBHOOK_URL=${{ secrets.SLACK_WEBHOOK_URL }}" >> .env
 
       - name: Login to GitHub Container Registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
