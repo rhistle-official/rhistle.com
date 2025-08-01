@@ -39,6 +39,9 @@ const ToastEditor = dynamic(
   { ssr: false }
 );
 
+console.log("EMAIL_PASS:", JSON.stringify(process.env.EMAIL_PASS));
+console.log("EMAIL_PASS length:", process.env.EMAIL_PASS?.length);
+
 const FormSchema = z.object({
   name: z.string().trim().min(1, {
     message: "이 항목은 필수 입력 값입니다.",
