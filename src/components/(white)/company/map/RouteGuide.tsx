@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import KakaoMap from "./KakaoMap";
+import Link from "next/link";
 
 const RouteGuide = () => {
   const contactInfo = [
@@ -312,13 +313,17 @@ const RouteGuide = () => {
             <p className="text-lg text-gray-600 mb-8">
               방문 시간이나 추가 안내가 필요하시면 언제든 연락주세요
             </p>
-            <motion.button 
-              className="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white px-8 py-4 rounded-2xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+            <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              방문 문의하기
-            </motion.button>
+              <Link
+                href="/inquiry/corecode-inquiry"
+                className="inline-block bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white px-8 py-4 rounded-2xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+              >
+                방문 문의하기
+              </Link>
+            </motion.div>
           </motion.div>
         </div>
       </motion.div>
