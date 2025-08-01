@@ -32,7 +32,7 @@ jobs:
           echo "NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=https://developer.namooinc.com" >> .env
           echo "NEXT_PUBLIC_CLERK_DOMAIN=super-crawdad-33.clerk.accounts.dev" >> .env
           echo "EMAIL_USER=leehopl2@gmail.com" >> .env
-          echo "EMAIL_PASS=${{ secrets.EMAIL_PASS }}" >> .env
+          echo "EMAIL_PASS=\"${{ secrets.EMAIL_PASS }}\"" >> .env 
           echo "EMAIL_TO=developer@namooinc.com" >> .env
           echo "SLACK_WEBHOOK_URL=${{ secrets.SLACK_WEBHOOK_URL }}" >> .env
 
