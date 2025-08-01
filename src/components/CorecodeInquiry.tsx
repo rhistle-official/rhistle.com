@@ -105,7 +105,7 @@ const CorecodeInquiry = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:3000/api/inquiry",
+        "/api/inquiry",
         {
           method: "POST",
           headers: {
