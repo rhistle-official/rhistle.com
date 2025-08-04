@@ -12,11 +12,11 @@ export default function SignUpPage() {
   const [pw, setPw] = useState("");
   const [code, setCode] = useState("");
   const [error, setError] = useState("");
-  const [emailError, setEmailError] = useState("");
   const [needsVerification, setNeedsVerification] = useState(false);
   const [loading, setLoading] = useState(false);
 
-
+  const [resendStatus, setResendStatus] = useState<"success" | "error" | null>(null);
+  
   // 이메일 형식
   const isValidEmail = (email: string) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -55,6 +55,8 @@ export default function SignUpPage() {
       return;
     }
 
+    setLoading(true);
+
     try {
       const result = await signUp.create({
         emailAddress: email,
@@ -78,6 +80,7 @@ export default function SignUpPage() {
     }
   };
 
+  // 이메일 코드 인증
   const handleVerify = async () => {
     if (!isLoaded || !signUp || !setActive) return;
     if (!code) {
@@ -111,53 +114,47 @@ export default function SignUpPage() {
     if (!isLoaded || !signUp) return;
     try {
       await signUp.prepareEmailAddressVerification();
+      setResendStatus("success"); 
     } catch {
+      setResendStatus("error");   
       setError("인증 메일 재전송 실패");
     }
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-white to-[#f4f7ec]">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-white to-[#eaf6db] border border-green-100 shadow-2xl">
       <div className="mb-4">
         <img src="/image/ci_green.png" alt="로고" className="h-16 mx-auto" />
       </div>
 
-      <h1 className="text-2xl font-bold text-gray-800 mb-2">
-        {needsVerification ? "이메일 인증" : "회원가입"}
+      <h1 className="text-lg text-gray-500 mb-4">
+        🌱회원가입
       </h1>
 
       <div className="w-full max-w-sm p-8 bg-white rounded-xl shadow-2xl border border-gray-100">
-        {!needsVerification ? (
+        <input
+          type="email"
+          value={email}
+          onChange={handleChange}
+          onKeyDown={handleKeyDown}
+          placeholder="이메일"
+          readOnly={needsVerification}
+          className="w-full mb-2 px-4 py-2 border rounded bg-gray-50"
+        />
+        <input
+          type="password"
+          value={pw}
+          onChange={(e) => setPw(e.target.value)}
+          onKeyDown={handleKeyDown}
+          placeholder="비밀번호"
+          readOnly={needsVerification}
+          className="w-full mb-2 px-4 py-2 border rounded bg-gray-50"
+        />
+        {/* 인증단계일 때 인증코드 입력란 노출 */}
+        {needsVerification && (
           <>
-            <input
-              type="email"
-              value={email}
-              onChange={handleChange}
-              onKeyDown={handleKeyDown}
-              placeholder="이메일"
-              className="w-full mb-2 px-4 py-2 border rounded bg-gray-50"
-            />
-            <input
-              type="password"
-              value={pw}
-              onChange={(e) => setPw(e.target.value)}
-              onKeyDown={handleKeyDown}
-              placeholder="비밀번호"
-              className="w-full mb-4 px-4 py-2 border rounded bg-gray-50"
-            />
-            {error && <div className="text-red-500 text-sm mb-2">{error}</div>}
-            <button
-              onClick={handleSignUp}
-              disabled={loading}
-              className="w-full bg-[#78b237] hover:bg-[#78b237]/90 text-white py-2 rounded disabled:opacity-50"
-            >
-              회원가입
-            </button>
-          </>
-        ) : (
-          <>
-            <p className="text-sm text-gray-500 mb-3">
-              이메일로 전송된 6자리 인증 코드를 입력해주세요.
+            <p className="text-sm text-gray-500 mb-1">
+              이메일로 전송된 인증 코드를 입력해주세요.
             </p>
             <input
               value={code}
@@ -165,24 +162,34 @@ export default function SignUpPage() {
               onKeyDown={handleKeyDown}
               placeholder="인증 코드"
               inputMode="numeric"
-              maxLength={6}              
-              className="w-full mb-4 px-4 py-2 border rounded bg-gray-50"
+              maxLength={6}
+              className="w-full mb-2 px-4 py-2 border rounded bg-gray-50"
             />
-            {error && <div className="text-red-500 text-sm mb-3">{error}</div>}
-            <button
-              onClick={handleVerify}
-              className='w-full bg-[#78b237] hover:bg-[#78b237]/90 text-white py-2 rounded ${loading ? "opacity-50" : "hover:bg-[#78b237]/90"}'
-            >
-              {loading ? "확인 중..." : "인증하고 가입 완료"}
-            </button>
+            {resendStatus === "success" && (
+              <div className="text-sm text-green-600 border border-green-200 rounded px-3 py-2 bg-green-50 mb-2">
+                인증 메일이 재전송되었습니다.
+              </div>
+            )}
+            {resendStatus === "error" && (
+              <div className="text-sm text-red-600 border border-red-200 rounded px-3 py-2 bg-red-50 mb-2">
+                인증 메일 재전송에 실패했습니다.
+              </div>
+            )}
             <button
               onClick={handleResendCode}
-              className="mt-2 text-xs text-gray-500 hover:underline"
+                className="mt-1 mb-2 text-xs text-gray-500 hover:underline active:scale-95 transition-transform duration-100"
             >
-              인증 메일을 다시 보내기
+              인증 메일 다시 보내기
             </button>
           </>
         )}
+        {error && <div className="text-red-500 text-sm mb-2">{error}</div>}
+        <button
+          onClick={needsVerification ? handleVerify : handleSignUp}
+          className="w-full bg-[#78b237] hover:bg-[#78b237]/90 text-white py-2 rounded disabled:opacity-50"
+        >
+          {needsVerification ? "회원가입" : "이메일 인증"}
+        </button>
 
         <div className="mt-4 text-sm text-gray-500 flex justify-center items-center gap-2">
           <span className="mr-4">이미 계정이 있으신가요?</span>
