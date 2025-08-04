@@ -56,6 +56,7 @@ const InquirySchema = z.object({
 
 // 🔧 POST 요청 처리
 export async function POST(req: Request) {
+  console.log("EMAIL_USER:", JSON.stringify(process.env.EMAIL_USER));
   console.log("EMAIL_PASS:", JSON.stringify(process.env.EMAIL_PASS));
   console.log("EMAIL_PASS length:", process.env.EMAIL_PASS?.length);
 
