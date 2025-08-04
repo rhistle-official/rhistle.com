@@ -33,6 +33,8 @@ import {
   AlertDialogFooter,
   AlertDialogAction
 } from "@/components/ui/alert-dialog"
+import PrivacyDialog from "@/components/inquiry/PrivacyDialog"
+import AgeDialog from "@/components/inquiry/AgeDialog"
 
 const ToastEditor = dynamic(
   () => import("@toast-ui/react-editor").then(mod => mod.Editor),
@@ -67,6 +69,35 @@ const CorecodeInquiry = () => {
   const [alertOpen, setAlertOpen] = useState(false)
   const [alertMessage, setAlertMessage] = useState("")
 
+  const [openPrivacy, setOpenPrivacy] = useState(false)
+  const [openAge, setOpenAge] = useState(false)
+  
+  // 최초 한번만 띄우는 flag
+  const [hasSeenDialog, setHasSeenDialog] = useState(false)
+
+  const [fromAllAgree, setFromAllAgree] = useState(false)
+  const [hasSeenPrivacyDialog, setHasSeenPrivacyDialog] = useState(false)
+  const [hasSeenAgeDialog, setHasSeenAgeDialog] = useState(false)
+
+  // 모두 동의 시
+  const handleAgreeAll = (checked: boolean) => {
+    setAgreeAll(checked)
+    form.setValue("agreePrivacy", checked)
+    form.setValue("agreeOver14", checked)
+
+    if (!checked) return;
+
+    setFromAllAgree(true);
+
+    if (!hasSeenPrivacyDialog) {
+      setHasSeenPrivacyDialog(true);
+      setOpenPrivacy(true);
+    } else if (!hasSeenAgeDialog) {
+      setHasSeenAgeDialog(true);
+      setOpenAge(true);
+    }
+  }
+
   const openAlert = (message: string) => {
     setAlertMessage(message)
     setAlertOpen(true)
@@ -87,9 +118,12 @@ const CorecodeInquiry = () => {
   });
 
   useEffect(() => {
-    form.setValue("agreePrivacy", agreeAll);
-    form.setValue("agreeOver14", agreeAll);
-  }, [agreeAll]);
+    const privacy = form.watch("agreePrivacy")
+    const age = form.watch("agreeOver14")
+
+    const allAgreed = privacy && age
+    setAgreeAll(allAgreed)
+  }, [form.watch("agreePrivacy"), form.watch("agreeOver14")])
 
   const onSubmit = async (data: z.infer<typeof FormSchema>) => {
     const message = editorRef.current?.getInstance().getMarkdown();
@@ -277,20 +311,40 @@ const CorecodeInquiry = () => {
           />
           <div className="flex items-center gap-2">
             <Checkbox
+              id="agree-all"
               checked={agreeAll}
-              onCheckedChange={() => {
-                setAgreeAll((prev) => !prev);
-              }}
+              onCheckedChange={(checked) => handleAgreeAll(checked as boolean)}
             />
-            <div className="text-[1rem] font-medium">
+            <label
+              htmlFor="agree-all"
+              className="text-[1rem] font-medium cursor-pointer select-none"
+            >
               모두 동의 합니다.{" "}
               <span className="text-red-500">
-                (체크박스를 선택하면, 다음 항목을 모두 읽고 동의한 것으로
-                간주합니다.)
+                (체크박스를 선택하면, 다음 항목을 모두 읽고 동의한 것으로 간주합니다.)
               </span>
-            </div>
+            </label>
           </div>
+          <PrivacyDialog
+            open={openPrivacy}
+            onClose={() => {
+              setOpenPrivacy(false)
 
+              if (fromAllAgree && !hasSeenAgeDialog) {
+                setHasSeenAgeDialog(true);
+                setTimeout(() => {
+                  setOpenAge(true);
+                  setFromAllAgree(false); // 마지막 단계에서 초기화
+                }, 100);
+              } else {
+                setFromAllAgree(false); // 단독 다이얼로그 종료 시 초기화
+              }
+            }}
+          />
+          <AgeDialog
+            open={openAge}
+            onClose={() => setOpenAge(false)}
+          />
           <FormField
             control={form.control}
             name="agreePrivacy"
@@ -299,14 +353,25 @@ const CorecodeInquiry = () => {
                 <div className="flex items-center gap-2">
                   <FormControl>
                     <Checkbox
+                      id="agree-privacy"
                       checked={field.value}
-                      onCheckedChange={field.onChange}
+                      onCheckedChange={(checked) => {
+                        field.onChange(checked)
+
+                        if (checked === true && !hasSeenPrivacyDialog) {
+                          setHasSeenPrivacyDialog(true)
+                          setOpenPrivacy(true)
+                        }
+                      }}
                     />
                   </FormControl>
-                  <div className="text-[1rem] font-medium">
+                  <label
+                    htmlFor="agree-privacy"
+                    className="text-[1rem] font-medium cursor-pointer select-none"
+                  >
                     개인정보 수집 및 이용에 동의합니다.
                     <span className="ml-1 text-red-500">*</span>
-                  </div>
+                  </label>
                 </div>
                 {!agreeAll && <FormMessage />}
               </FormItem>
@@ -320,14 +385,25 @@ const CorecodeInquiry = () => {
                 <div className="flex items-center gap-2">
                   <FormControl>
                     <Checkbox
+                      id="agree-over-14"
                       checked={field.value}
-                      onCheckedChange={field.onChange}
+                      onCheckedChange={(checked) => {
+                        field.onChange(checked)
+
+                        if (checked === true && !hasSeenAgeDialog) {
+                          setHasSeenAgeDialog(true)
+                          setOpenAge(true)
+                        }
+                      }}
                     />
                   </FormControl>
-                  <div className="text-[1rem] font-medium">
+                  <label
+                    htmlFor="agree-over-14"
+                    className="text-[1rem] font-medium cursor-pointer select-none"
+                  >
                     만 14세 이상임을 확인하고 동의합니다.
                     <span className="ml-1 text-red-500">*</span>
-                  </div>
+                  </label>
                 </div>
                 {!agreeAll && <FormMessage />}
               </FormItem>
@@ -336,7 +412,7 @@ const CorecodeInquiry = () => {
           <div className="flex items-center justify-center m-12">
             <button
               type="submit"
-              className="rounded-md bg-[#333333] px-8 py-3 text-white hover:bg-[#111] transition"
+              className="rounded-md bg-[#333333] px-8 py-3 text-white hover:bg-[#111] transition cursor-pointer active:scale-95"
             >
               문의하기
             </button>
