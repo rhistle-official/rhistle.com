@@ -1,6 +1,7 @@
 "use client";
 
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide} from "swiper/react";
+import type { Swiper as SwiperType } from 'swiper'; 
 import { Navigation, Autoplay, EffectFade } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -10,6 +11,7 @@ import "swiper/css/effect-fade";
 import Image from "next/image";
 import SwiperNavButton from "../../ui/SwiperNavButton";
 import { Button } from "@/components/ui/button";
+import { useEffect, useRef } from "react";
 
 const HomeItem1 = () => {
   const slides = [
@@ -45,8 +47,41 @@ const HomeItem1 = () => {
     },
   ];
 
+  const swiperRef = useRef<SwiperType | null>(null);
+  
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const video = entry.target as HTMLVideoElement;
+
+          if (entry.isIntersecting) {
+            // 화면에 등장한 video → 재생
+            video.currentTime = 0;
+            video.play().catch(() => {});
+          } else {
+            // 보이지 않게 된 video → 정지
+            video.pause();
+            video.currentTime = 0;
+          }
+        });
+      },
+      {
+        threshold: 0.9, // 90% 이상 보여야 실행
+      }
+    );
+
+    const videos = document.querySelectorAll("video");
+    videos.forEach((v) => observer.observe(v));
+
+    return () => {
+      videos.forEach((v) => observer.unobserve(v));
+    };
+  }, []);
+
   return (
     <Swiper
+      onSwiper={(swiper) => (swiperRef.current = swiper)}
       effect="fade"
       autoplay={{
         delay: 4000,
