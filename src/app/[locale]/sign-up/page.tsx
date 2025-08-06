@@ -1,6 +1,6 @@
 'use client';
 
-import { useSignUp } from "@clerk/nextjs";
+import { useSignUp} from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -13,20 +13,37 @@ export default function SignUpPage() {
   const [code, setCode] = useState("");
   const [error, setError] = useState("");
   const [needsVerification, setNeedsVerification] = useState(false);
+  const [name, setName] = useState("");
+  const [department, setDepartment] = useState("");
+  const [field, setField] = useState("");
+  const [bio, setBio] = useState("");
   const [loading, setLoading] = useState(false);
 
   const [resendStatus, setResendStatus] = useState<"success" | "error" | null>(null);
   
+  const deptOptions = [
+    { value: "개발팀", label: "개발팀" },
+    { value: "경영관리팀", label: "경영관리팀" },
+    { value: "임원", label: "임원" }
+  ];
+
+  const devFieldOptions = [
+    { value: "프론트엔드", label: "프론트엔드" },
+    { value: "백엔드", label: "백엔드" },
+    { value: "AI", label: "AI" },
+    { value: "PM", label: "PM" }
+  ];
+
   // 이메일 형식
   const isValidEmail = (email: string) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   };
 
-  // 엔터 키 처리
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
   };
-
+  
+  // 엔터 키 처리
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       needsVerification ? handleVerify() : handleSignUp();
@@ -45,27 +62,35 @@ export default function SignUpPage() {
 
     if (!pw.trim()) {
       setError("비밀번호를 입력해주세요.");
-      setLoading(false);
       return;
     }
 
     if (pw.length < 8) {
       setError("비밀번호는 최소 8자 이상이어야 합니다.");
-      setLoading(false);
+      return;
+    }
+
+    if (!name.trim()) {
+      setError("성함 입력해주세요.");
       return;
     }
 
     setLoading(true);
 
     try {
+      // 1. 계정 생성, 여기엔 clerk 필수값만 저장 가능
       const result = await signUp.create({
         emailAddress: email,
         password: pw,
+        unsafeMetadata:{
+          name: name,
+          dept: department,
+          field: field,
+          bio: bio,
+        }
       });
 
-      if (result.status === "complete") {
-        // 이메일 인증 없이 가능한 경우
-      } else if (result.status === "missing_requirements") {
+      if (result.status === "missing_requirements") {
         await signUp.prepareEmailAddressVerification();
         setNeedsVerification(true);
       }
@@ -91,11 +116,23 @@ export default function SignUpPage() {
     setLoading(true);
     setError("");
 
-    try {
+    try {  
       const result = await signUp.attemptEmailAddressVerification({ code });
-
+      
       if (result.status === "complete") {
         await setActive({ session: result.createdSessionId });
+        // await fetch("/api/update-user", {
+        //   method: "POST",
+        //   headers: { "Content-Type": "application/json" },
+        //   body: JSON.stringify({
+        //     publicMetadata: {
+        //       name: name,
+        //       dept: department, 
+        //       field: field,
+        //       bio: bio,
+        //     },
+        //   }),
+        // });
         router.push("/");
       }
     } catch (err: any) {
@@ -122,34 +159,91 @@ export default function SignUpPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-white to-[#eaf6db] border border-green-100 shadow-2xl">
-      <div className="mb-4">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-white to-[#eaf6db] px-4 py-8">
+      <div className="mb-6">
         <img src="/image/ci_green.png" alt="로고" className="h-16 mx-auto" />
       </div>
 
-      <h1 className="text-lg text-gray-500 mb-4">
+      <h1 className="text-xl text-gray-600 mb-6 font-semibold">
         🌱회원가입
       </h1>
 
-      <div className="w-full max-w-sm p-8 bg-white rounded-xl shadow-2xl border border-gray-100">
-        <input
-          type="email"
-          value={email}
-          onChange={handleChange}
-          onKeyDown={handleKeyDown}
-          placeholder="이메일"
-          readOnly={needsVerification}
-          className="w-full mb-2 px-4 py-2 border rounded bg-gray-50"
-        />
-        <input
-          type="password"
-          value={pw}
-          onChange={(e) => setPw(e.target.value)}
-          onKeyDown={handleKeyDown}
-          placeholder="비밀번호"
-          readOnly={needsVerification}
-          className="w-full mb-2 px-4 py-2 border rounded bg-gray-50"
-        />
+      <div className="w-full max-w-sm bg-white rounded-2xl p-6 space-y-5">
+        <div className="overflow-hidden rounded-xl border border-gray-300">
+          <input
+            type="email"
+            value={email}
+            onChange={handleChange}
+            onKeyDown={handleKeyDown}
+            placeholder="이메일"
+            readOnly={needsVerification}
+            className="w-full px-5 py-3 bg-gray-50 text-sm border-b border-gray-200 focus:outline-none"
+          />
+          <input
+            type="password"
+            value={pw}
+            onChange={(e) => setPw(e.target.value)}
+            onKeyDown={handleKeyDown}
+            placeholder="비밀번호"
+            readOnly={needsVerification}
+            className="w-full px-5 py-3 bg-gray-50 text-sm focus:outline-none"
+          />
+        </div>
+
+        <div className="overflow-hidden rounded-md border border-gray-300">
+          <input
+              placeholder="성함"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="w-full px-5 py-3 bg-gray-50 text-sm border-b border-gray-200 focus:outline-none"
+          />
+          <div className="flex divide-x divide-gray-200">
+            <select
+              name="department"
+              value={department}
+              onChange={(e) => {
+                setDepartment(e.target.value);
+                setField("");
+              }}
+              className="w-1/2 px-5 py-3 bg-gray-50 text-sm text-gray-500 focus:outline-none appearance-none"
+              disabled={needsVerification}
+            >
+              <option value="">부서를 선택하세요</option>
+              {deptOptions.map((dept) => (
+                <option key={dept.value} value={dept.value}>
+                  {dept.label}
+                </option>
+              ))}
+            </select>
+
+            <select
+              name="field"
+              value={field}
+              onChange={(e) => setField(e.target.value)}
+              className={`w-1/2 px-5 py-3 bg-gray-50 text-sm text-gray-500 focus:outline-none appearance-none ${department !== "개발팀" ? "text-center" : ""}`}
+              disabled={needsVerification}
+            >
+              <option value="">
+                {department === "개발팀" ? "분야를 선택하세요" : "-"}
+              </option>
+              {department === "개발팀" &&
+                devFieldOptions.map((f) => (
+                  <option key={f.value} value={f.value}>
+                    {f.label}
+                  </option>
+                ))}
+            </select>
+          </div>
+        </div>
+
+        <div className="space-y-3">
+          <textarea
+            placeholder="소개글"
+            value={bio}
+            onChange={(e) => setBio(e.target.value)}
+            className="w-full mb-2 px-4 py-2 border rounded bg-gray-50"
+          />
+        </div>
         {/* 인증단계일 때 인증코드 입력란 노출 */}
         {needsVerification && (
           <>
@@ -183,10 +277,10 @@ export default function SignUpPage() {
             </button>
           </>
         )}
-        {error && <div className="text-red-500 text-sm mb-2">{error}</div>}
+        {error && <div className="text-red-500 text-sm">{error}</div>}
         <button
           onClick={needsVerification ? handleVerify : handleSignUp}
-          className="w-full bg-[#78b237] hover:bg-[#78b237]/90 text-white py-2 rounded disabled:opacity-50"
+          className="w-full bg-[#78b237] hover:bg-[#78b237]/90 text-white py-2 rounded active:scale-95 transition-transform duration-100"
         >
           {needsVerification ? "회원가입" : "이메일 인증"}
         </button>
