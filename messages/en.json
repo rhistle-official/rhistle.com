@@ -4,27 +4,73 @@
   },
   "NavBar": {
     "vision": {
-      "title": "Vision"
+      "title": "Vision",
+      "subMenu": {
+        "vision": {
+          "title": "비전 소개"
+        }
+      }
     },
     "solution": {
-      "title": "Service & Solution"
+      "title": "Service & Solution",
+      "subMenu": {
+        "corecode": {
+          "title": "CoreCode",
+          "subTitle": "Facility/Sensor Connectivity Technology"
+        },
+        "vexi": {
+          "title": "VEXI",
+          "subTitle": "Control Digital Twin System"
+        },
+        "mexi": {
+          "title": "MEXI",
+          "subTitle": "Smart Factory Consulting"
+        }
+      }
     },
     "support": {
       "title": "Supports",
-      "items": {
-        "dataRoom": "Data Room",
-        "directions": "Directions",
-        "noticeBoard": "Notice Board"
+      "subMenu": {
+        "library": { "title": "Library" },
+        "media": { "title": "Media" },
+        "notice": { "title": "Notice" }
       }
     },
     "company": {
       "title": "About Us",
-      "items": {
-        "name": "NaMooINC",
-        "greetings": "Greetings",
-        "vision": "Vision",
-        "history": "History"
+      "subMenu": {
+        "ceomessage": { "title": "CEO Message" },
+        "history": { "title": "History" },
+        "ethics": { "title": "Ethics Management" },
+        "recruit": { "title": "Recruit" },
+        "welfare": { "title": "Welfare" },
+        "map": { "title": "Map" }
       }
+    }
+  },
+
+
+  "Footer": {
+    "slogan": "The best expert partner prioritizing customer value",
+    "address": {
+      "line1": "108-7, Yangjae-dong, Seocho-gu, Seoul",
+      "line2": "2F, Hyunsan Building"
+    },
+    "business": {
+      "title": "Business",
+      "items": ["CoreCode", "VEXI", "MEXI"]
+    },
+    "company": {
+      "title": "About Us",
+      "items": ["CEO Message", "History", "Talent", "Location"]
+    },
+    "contact": {
+      "title": "Contact",
+      "ceo": "CEO: Kyung-Sik Kim",
+      "bizNumber": "Business Number: 211-87-61350",
+      "tel": "Tel: 02-3018-5114",
+      "fax": "Fax: 02-3018-3026",
+      "inquiry": "Contact Us"
     }
   }
 }

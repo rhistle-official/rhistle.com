@@ -4,41 +4,41 @@ import { useTranslations } from "next-intl";
 
 interface NavMenu {
   title: string;
-  subMenu: { title: string; subTitle?: string; href: string }[];
+  subMenu: { key: string; href: string }[];
 }
 
 const navMenus: NavMenu[] = [
   {
     title: "vision",
     subMenu: [
-      { title: "Vision", href: "/vision" },
+      { key: "vision", href: "/vision" },
     ],
   },
   {
     title: "solution",
     subMenu: [
-      { title: "CoreCode", subTitle: "설비/센서 연계 기술", href: "/product/corecode" },
-      { title: "VEXI", subTitle: "관제 Digital Twin 시스템", href: "/product/vexi" },
-      { title: "MEXI", subTitle: "스마트 팩토리 컨설팅", href: "/product/mexi" },
+      { key: "corecode", href: "/product/corecode" },
+      { key: "vexi", href: "/product/vexi" },
+      { key: "mexi", href: "/product/mexi" },
     ],
   },
   {
     title: "support",
     subMenu: [
-      { title: "라이브러리", href: "/support/library" },
-      { title: "언론보도", href: "/support/media" },
-      { title: "공지사항", href: "/support/notice" },
+      { key: "library", href: "/support/library" },
+      { key: "media", href: "/support/media" },
+      { key: "notice", href: "/support/notice" },
     ],
   },
   {
     title: "company",
     subMenu: [
-      { title: "CEO 메시지", href: "/company/ceomessage" },
-      { title: "연혁", href: "/company/history" },
-      { title: "윤리경영", href: "/company/ethics" },
-      { title: "채용", href: "/company/recruit" },
-      { title: "복리후생", href: "/company/welfare" },
-      { title: "찾아오시는 길", href: "/company/map" },
+      { key: "ceomessage", href: "/company/ceomessage" },
+      { key: "history", href: "/company/history" },
+      { key: "ethics", href: "/company/ethics" },
+      { key: "recruit", href: "/company/recruit" },
+      { key: "welfare", href: "/company/welfare" },
+      { key: "map", href: "/company/map" },
     ],
   },
 ];
@@ -59,26 +59,33 @@ const NavMenu = () => {
             onMouseLeave={() => setHovered(false)}
           >
             <button type="button" className="px-[1rem] py-4 lg:px-[2.5rem]">
+              {/* 메뉴 */}
               {t(`${item.title}.title`)}
             </button>
             {hovered && (
               <ul className="absolute z-20 mx-[1rem] w-full lg:mx-[2.5rem]">
-                {item.subMenu.map((subItem) => (
-                  <li key={subItem.title} className="hover:text-[#96cb4f] py-2">
-                    <Link
-                      href={`${subItem.href}`}
-                      className="text-base font-semibold "
-                    >
-                      {subItem.title}
-                      <br />
-                      {subItem.subTitle && (
-                        <span className="text-sm text-gray-500">
-                          {subItem.subTitle}
-                        </span>
-                      )}
-                    </Link>
-                  </li>
-                ))}
+                {item.subMenu.map((sub) => {
+                  const subKey = `${item.title}.subMenu.${sub.key}`;
+                  const hasSubTitle = t.has(`${subKey}.subTitle`);
+
+                  return (
+                    <li key={sub.key} className="hover:text-[#96cb4f] py-2">
+                      <Link
+                        href={sub.href}
+                        className="text-base font-semibold"
+                      >
+                        {/* 서브 메뉴 제목 */}
+                        {t(`${subKey}.title`)}
+                        {/* 서브 메뉴 부제목 (존재할 경우만 출력) */}
+                        {hasSubTitle && (
+                          <span className="block text-sm font-normal text-gray-500">
+                            {t(`${subKey}.subTitle`)}
+                          </span>
+                        )}
+                      </Link>
+                    </li>
+                  );
+                })}
               </ul>
             )}
           </li>
