@@ -12,17 +12,31 @@ import Image from "next/image";
 import SwiperNavButton from "../../ui/SwiperNavButton";
 import { Button } from "@/components/ui/button";
 import { useEffect, useRef } from "react";
+import { useTranslations } from "next-intl"; 
+
+type Slide = {
+  image: string;
+  width: number;
+  height: number;
+  title: string;
+  subtitle: string;
+  description: string;
+  ctaText: string;
+  ctaLink: string;
+};
 
 const HomeItem1 = () => {
-  const slides = [
+  const t = useTranslations("HomeItem1");
+
+  const slides: Slide[] = [
     {
       image: "/image/main.mp4",
       width: 1472,
       height: 832,
       title: "Innovate",
       subtitle: "for Tomorrow",
-      description: "고객의 가치를 최우선으로 실현하는 최고의 전문 파트너",
-      ctaText: "솔루션 보기",
+      description: "slide1.description",
+      ctaText: "slide1.ctaText",
       ctaLink: "/product/corecode"
     },
     {
@@ -31,8 +45,8 @@ const HomeItem1 = () => {
       height: 832,
       title: "Smart",
       subtitle: "Factory",
-      description: "AI 기반 스마트팩토리로 생산성 혁신을 이끌어갑니다",
-      ctaText: "자세히 보기",
+      description: "slide2.description",
+      ctaText: "slide2.ctaText",
       ctaLink: "/product/corecode"
     },
     {
@@ -41,8 +55,8 @@ const HomeItem1 = () => {
       height: 832,
       title: "Global",
       subtitle: "Partnership",
-      description: "전 세계 고객과 함께 성장하는 글로벌 파트너십",
-      ctaText: "문의하기",
+      description: "slide3.description",
+      ctaText: "slide3.ctaText",
       ctaLink: "/inquiry/corecode-inquiry"
     },
   ];
@@ -123,7 +137,7 @@ const HomeItem1 = () => {
               </p>
             </div>
             <p className="text-md font-bold sm:text-xl md:text-2xl text-white/90 max-w-2xl">
-              {slide.description}
+              {t(slide.description)}
             </p>
             <div className="pt-4">
               <Button 
@@ -132,7 +146,7 @@ const HomeItem1 = () => {
                 asChild
               >
                 <a href={slide.ctaLink}>
-                  {slide.ctaText}
+                  {t(slide.ctaText)}
                 </a>
               </Button>
             </div>

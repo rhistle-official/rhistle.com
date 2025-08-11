@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 interface SimpleServiceCardProps {
   title: string;
@@ -14,6 +15,7 @@ interface SimpleServiceCardProps {
 
 const SimpleServiceCard = ({ title, description, features, link, color = "from-blue-500 to-cyan-500" }: SimpleServiceCardProps) => {
   const { ref, inView } = useInView();
+  const t = useTranslations("SimpleServiceCard");
 
   return (
     <motion.div
@@ -40,7 +42,7 @@ const SimpleServiceCard = ({ title, description, features, link, color = "from-b
             </div>
             
             <div className="space-y-2">
-              <h4 className="text-sm font-semibold text-gray-200">주요 기능</h4>
+              <h4 className="text-sm font-semibold text-gray-200">{t("main")}</h4>
               <ul className="space-y-1">
                 {features.map((feature, index) => (
                   <motion.li 
@@ -59,7 +61,7 @@ const SimpleServiceCard = ({ title, description, features, link, color = "from-b
             
             <div className="pt-2">
               <span className={`text-sm font-medium bg-gradient-to-r ${color} bg-clip-text text-transparent group-hover:underline`}>
-                자세히 보기 →
+                {t("detail")} →
               </span>
             </div>
           </div>

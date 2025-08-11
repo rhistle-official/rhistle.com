@@ -1,5 +1,7 @@
 "use client";
 
+import { useTranslations } from "next-intl";
+
 export default function LoginButton({ className }: { className?: string }) {
   const handleLoginRedirect = () => {
     const currentURL = window.location.href;
@@ -7,8 +9,9 @@ export default function LoginButton({ className }: { className?: string }) {
 
     const loginURL = `${signInBase}?redirect=${encodeURIComponent(currentURL)}`;
     window.location.href = loginURL;
-    
   };
+  
+  const t = useTranslations("NavBar"); 
 
   return (
     <button 
@@ -30,7 +33,7 @@ export default function LoginButton({ className }: { className?: string }) {
         "duration-200"
       ].join(" ")}
     >
-      로그인
+      {t("loginButton.login")}
     </button>
   );
 }

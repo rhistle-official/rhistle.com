@@ -3,30 +3,33 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useInView } from "react-intersection-observer";
+import { useTranslations } from "next-intl";
 
 const ServiceCard = () => {
   const { ref, inView } = useInView();
+  const t = useTranslations("ServiceCard");
+
   const images = [
     {
-      title: "제조 데이터 연계 및 통합 솔루션",
-      desc: "다양한 설비 데이터 연계 및 통합으로 효율적인 공정 관리",
+      title: t("cards.0.title"),
+      desc: t("cards.0.desc"),
       img: "main_S1.png",
       color: "from-blue-500 to-cyan-500",
-      tags: ["최적의 통합연계", "인터페이스 표준화"]
+      tags: t.raw("cards.0.tags") as string[],
     },
     {
-      title: "통합 관제 솔루션",
-      desc: "사용자 경험(UX) 극대화를 위한 통합 모니터링 플랫폼",
+      title: t("cards.1.title"),
+      desc: t("cards.1.desc"),
       img: "main_S2.png",
       color: "from-emerald-500 to-teal-500",
-      tags: ["스마트팩토리", "모니터링"]
+      tags: t.raw("cards.1.tags") as string[],
     },
     {
-      title: "스마트팩토리 플랫폼",
-      desc: "AI 기반 지능형 제조 환경 구축 솔루션",
+      title: t("cards.2.title"),
+      desc: t("cards.2.desc"),
       img: "main_S3.png",
       color: "from-purple-500 to-pink-500",
-      tags: ["자동화 설계", "IoT 통합"]
+      tags: t.raw("cards.2.tags") as string[],
     },
   ];
   

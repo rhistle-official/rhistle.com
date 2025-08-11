@@ -108,10 +108,10 @@ const Footer = () => {
             </p>
             <div className="flex space-x-6 text-sm text-gray-400">
               <Link href="/" className="hover:text-white transition-colors">
-                개인정보처리방침
+                {t("privacy")}
               </Link>
               <Link href="/" className="hover:text-white transition-colors">
-                이용약관
+                {t("terms")}
               </Link>
             </div>
           </div>

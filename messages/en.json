@@ -46,6 +46,16 @@
         "welfare": { "title": "Welfare" },
         "map": { "title": "Map" }
       }
+    },
+
+    "contact": {
+      "contact": "Contact Us"
+    },
+    "loginButton": {
+      "login": "Login"
+    },
+    "logoutButton": {
+      "logout": "Logout"
     }
   },
 
@@ -71,6 +81,121 @@
       "tel": "Tel: 02-3018-5114",
       "fax": "Fax: 02-3018-3026",
       "inquiry": "Contact Us"
+    },
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  },
+
+
+  "HomeItem1": {
+    "slide1": {
+      "description": "Your dedicated partner that prioritizes customer value above all",
+      "ctaText": "View Solutions"
+    },
+    "slide2": {
+      "description": "AI-powered smart factories driving productivity innovation",
+      "ctaText": "Learn More"
+    },
+    "slide3": {
+      "description": "Growing together with customers worldwide",
+      "ctaText": "Contact Us"
     }
+  },
+  "HomeItem2": {
+    "headline": {
+      "line1": "Centered on customer value,",
+      "line2": "Namoo I&C shaping a sustainable future"
+    },
+    "paragraphs": [
+      "Namoo I&C connects customer value to create even greater value,\nas a specialist in smart factory solutions.",
+      "We standardize increasingly complex and diverse data,\ndeveloping innovative solutions for a smarter and more convenient world.",
+      "As a leading smart factory company with proprietary patented solutions,\nwe drive manufacturing innovation and support our customers’ business growth."
+    ],
+    "capabilityTitle": "Core Capabilities",
+    "capabilities": [
+      "20 years of industry expertise",
+      "IoT, AI, and Big Data technologies",
+      "Proprietary patented solutions",
+      "Global partnerships"
+    ],
+    "buttons": {
+      "about": "About Company",
+      "solution": "View Solutions"
+    },
+    "circles": {
+      "left": "Customer",
+      "right": "Value"
+    }
+  },
+  "HomeItem3": {
+    "headline": "Discover the success stories of companies with Namoo I&C",
+    "description": "We have achieved successful digital transformations with clients across various industries, maximizing business value through tailored solutions.",
+    "moreButton": "View More Cases >",
+    "solutionsTitle": "Main Solutions",
+    "solutionsDescription": "We provide optimized solutions tailored to customer needs",
+    "services": {
+      "corecode": {
+        "title": "CoreCode",
+        "description": "Platform-based integrated production management system",
+        "features": ["Standardized interfaces", "Real-time monitoring", "Optimal integrated connectivity"]
+      },
+      "vexi": {
+        "title": "VEXI",
+        "description": "Production line optimization solution",
+        "features": ["Smart Factory", "Environmental and equipment monitoring", "Supports industry-standard protocols, compatible with all equipment"]
+      },
+      "mexi": {
+        "title": "MEXI",
+        "description": "Manufacturing Execution System",
+        "features": ["Automated design", "IoT integration", "Performance measurement"]
+      }
+    }
+  },
+  "HomeItem4": {
+    "label": "SERVICE",
+    "headline": ["Industrial Data Integration & Connectivity", "Digital Transformation for Factory Automation"],
+    "description": [
+      "Namoo I&C connects data across factory automation systems,",
+      "providing a platform for unified management to build a more efficient and smarter manufacturing environment."
+    ]
+  },
+  "BusinessCarousel": {
+    "items": {
+      "aiQuality": {
+        "title": "AI-based Quality Management System",
+        "tags": ["#AI", "#Quality"]
+      },
+      "iotMonitoring": {
+        "title": "IoT-based Real-time Monitoring",
+        "tags": ["#IoT", "#Monitoring"]
+      }
+    }
+  },
+  "ServiceCard": {
+    "cards": [
+      {
+        "title": "Manufacturing Data Integration Solution",
+        "desc": "Efficient process management through integration of various equipment data",
+        "tags": ["Optimal Integration", "Interface Standardization"]
+      },
+      {
+        "title": "Integrated Control Solution",
+        "desc": "Integrated monitoring platform to maximize user experience (UX)",
+        "tags": ["Smart Factory", "Monitoring"]
+      },
+      {
+        "title": "Smart Factory Platform",
+        "desc": "AI-based intelligent manufacturing environment solution",
+        "tags": ["Automated Design", "IoT Integration"]
+      }
+    ]
+  },
+  "SimpleServiceCard": {
+    "main": "Main Features",
+    "detail": "View Details"
+  },
+  "Partners": {
+    "title": "Global Partnership",
+    "description": "We develop innovative solutions with leading companies worldwide"
   }
 }
