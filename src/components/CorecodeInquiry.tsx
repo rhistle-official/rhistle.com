@@ -11,7 +11,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useMemo } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Checkbox } from "./ui/checkbox";
@@ -35,35 +35,15 @@ import {
 } from "@/components/ui/alert-dialog"
 import PrivacyDialog from "@/components/inquiry/PrivacyDialog"
 import AgeDialog from "@/components/inquiry/AgeDialog"
+import { useTranslations } from "next-intl";
 
 const ToastEditor = dynamic(
   () => import("@toast-ui/react-editor").then(mod => mod.Editor),
   { ssr: false }
 );
 
-const FormSchema = z.object({
-  name: z.string().trim().min(1, {
-    message: "이 항목은 필수 입력 값입니다.",
-  }),
-  email: z
-    .string()
-    .trim()
-    .min(1, { message: "이 항목은 필수 입력 값입니다." })
-    .email({ message: "잘못된 이메일 주소입니다." }),
-  company: z.string().optional(),
-  rank: z.string().optional(),
-  industry: z.string().optional(),
-  // detail은 editorRef에서 직접 검사하므로 제거
-  detail: z.string(),
-  agreePrivacy: z.boolean().refine((val) => val === true, {
-    message: "이 항목은 필수 체크 입니다.",
-  }),
-  agreeOver14: z.boolean().refine((val) => val === true, {
-    message: "이 항목은 필수 체크 입니다.",
-  }),
-});
-
 const CorecodeInquiry = () => {
+  const t = useTranslations("inquiry");
   const editorRef = useRef<EditorType>(null);
   const [agreeAll, setAgreeAll] = useState(false);
   const [alertOpen, setAlertOpen] = useState(false)
@@ -72,12 +52,22 @@ const CorecodeInquiry = () => {
   const [openPrivacy, setOpenPrivacy] = useState(false)
   const [openAge, setOpenAge] = useState(false)
   
-  // 최초 한번만 띄우는 flag
-  const [hasSeenDialog, setHasSeenDialog] = useState(false)
-
   const [fromAllAgree, setFromAllAgree] = useState(false)
   const [hasSeenPrivacyDialog, setHasSeenPrivacyDialog] = useState(false)
   const [hasSeenAgeDialog, setHasSeenAgeDialog] = useState(false)
+
+  const FormSchema = useMemo(() => z.object({
+    name: z.string().trim().min(1, { message: t("errors.required") }),
+    email: z.string().trim()
+      .min(1, { message: t("errors.required") })
+      .email({ message: t("errors.invalidEmail") }),
+    company: z.string().optional(),
+    rank: z.string().optional(),
+    industry: z.string().optional(),
+    detail: z.string(),
+    agreePrivacy: z.boolean().refine(v => v === true, { message: t("errors.mustCheck") }),
+    agreeOver14: z.boolean().refine(v => v === true, { message: t("errors.mustCheck") }),
+  }), [t]);
 
   // 모두 동의 시
   const handleAgreeAll = (checked: boolean) => {
@@ -128,7 +118,7 @@ const CorecodeInquiry = () => {
   const onSubmit = async (data: z.infer<typeof FormSchema>) => {
     const message = editorRef.current?.getInstance().getMarkdown();
     if (!message || message.trim() === "" || message.trim() === " ") {
-      openAlert("문의 내용을 입력해주세요.")
+      openAlert(t("errors.needDetail"))
       return;
     }
 
@@ -151,14 +141,14 @@ const CorecodeInquiry = () => {
 
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.message || "이메일 전송에 실패했습니다.");
+        throw new Error(errorData.message || t("alerts.sendFail"));
       }
       
-      setAlertMessage("이메일 전송에 성공했습니다.");
+      setAlertMessage(t("alerts.sendSuccess"));
       setAlertOpen(true);
     } catch (error) {
       console.error("Error creating post:", error);
-      setAlertMessage("이메일 전송에 실패했습니다.");
+      setAlertMessage(t("alerts.sendFail"));
       setAlertOpen(true);
     }
     console.log(JSON.stringify({ ...data }));
@@ -178,9 +168,9 @@ const CorecodeInquiry = () => {
         </div>
       </div>
       <div className="text-center space-y-2 mb-8">
-        <div className="text-2xl font-bold text-center">문의하기</div>
+        <div className="text-2xl font-bold text-center">{t("title")}</div>
         <div className="text-gray-600">
-          궁금하신 내용을 남겨주시면, 담당자가 빠른 시간 안에 연락 드리겠습니다.
+          {t("subtitle")}
         </div>
       </div>
       <Form {...form}>
@@ -191,7 +181,7 @@ const CorecodeInquiry = () => {
             render={({ field }) => (
               <FormItem>
                 <div className="text-[1rem] font-medium">
-                  이름<span className="ml-1 text-red-500">*</span>
+                  {t("fields.name")}<span className="ml-1 text-red-500">*</span>
                 </div>
                 <FormControl>
                   <Input {...field} />
@@ -206,7 +196,7 @@ const CorecodeInquiry = () => {
             render={({ field }) => (
               <FormItem>
                 <div className="text-[1rem] font-medium">
-                  이메일<span className="ml-1 text-red-500">*</span>
+                  {t("fields.email")}<span className="ml-1 text-red-500">*</span>
                 </div>
                 <FormControl>
                   <Input {...field} />
@@ -220,7 +210,7 @@ const CorecodeInquiry = () => {
             name="company"
             render={({ field }) => (
               <FormItem>
-                <div className="text-[1rem] font-medium">회사(소속)</div>
+                <div className="text-[1rem] font-medium">{t("fields.company")}</div>
                 <FormControl>
                   <Input {...field} />
                 </FormControl>
@@ -233,7 +223,7 @@ const CorecodeInquiry = () => {
             name="rank"
             render={({ field }) => (
               <FormItem>
-                <div className="text-[1rem] font-medium">직급</div>
+                <div className="text-[1rem] font-medium">{t("fields.rank")}</div>
                 <Select
                   onValueChange={field.onChange}
                   defaultValue={field.value}
@@ -244,11 +234,11 @@ const CorecodeInquiry = () => {
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value="경영진">경영진</SelectItem>
-                    <SelectItem value="관리자">관리자</SelectItem>
-                    <SelectItem value="실무자">실무자</SelectItem>
-                    <SelectItem value="학생">학생</SelectItem>
-                    <SelectItem value="기타">기타</SelectItem>
+                    <SelectItem value="경영진">{t("options.rank.executive")}</SelectItem>
+                    <SelectItem value="관리자">{t("options.rank.manager")}</SelectItem>
+                    <SelectItem value="실무자">{t("options.rank.staff")}</SelectItem>
+                    <SelectItem value="학생">{t("options.rank.student")}</SelectItem>
+                    <SelectItem value="기타">{t("options.common.etc")}</SelectItem>
                   </SelectContent>
                 </Select>
                 <FormMessage />
@@ -260,7 +250,7 @@ const CorecodeInquiry = () => {
             name="industry"
             render={({ field }) => (
               <FormItem>
-                <div className="text-[1rem] font-medium">업종</div>
+                <div className="text-[1rem] font-medium">{t("fields.industry")}</div>
                 <Select
                   onValueChange={field.onChange}
                   defaultValue={field.value}
@@ -271,16 +261,16 @@ const CorecodeInquiry = () => {
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value="IT/통신">IT/통신</SelectItem>
-                    <SelectItem value="공공">공공</SelectItem>
-                    <SelectItem value="교육">교육</SelectItem>
-                    <SelectItem value="금융">금융</SelectItem>
-                    <SelectItem value="서비스업">서비스업</SelectItem>
-                    <SelectItem value="유통/리테일">유통/리테일</SelectItem>
-                    <SelectItem value="제조">제조</SelectItem>
-                    <SelectItem value="의료/제약">의료/제약</SelectItem>
-                    <SelectItem value="에너지">에너지</SelectItem>
-                    <SelectItem value="기타">기타</SelectItem>
+                    <SelectItem value="IT/통신">{t("options.industry.it")}</SelectItem>
+                    <SelectItem value="공공">{t("options.industry.public")}</SelectItem>
+                    <SelectItem value="교육">{t("options.industry.education")}</SelectItem>
+                    <SelectItem value="금융">{t("options.industry.finance")}</SelectItem>
+                    <SelectItem value="서비스업">{t("options.industry.service")}</SelectItem>
+                    <SelectItem value="유통/리테일">{t("options.industry.retail")}</SelectItem>
+                    <SelectItem value="제조">{t("options.industry.manufacturing")}</SelectItem>
+                    <SelectItem value="의료/제약">{t("options.industry.medical")}</SelectItem>
+                    <SelectItem value="에너지">{t("options.industry.energy")}</SelectItem>
+                    <SelectItem value="기타">{t("options.common.etc")}</SelectItem>
                   </SelectContent>
                 </Select>
                 <FormMessage />
@@ -293,7 +283,7 @@ const CorecodeInquiry = () => {
             render={({ field }) => (
               <FormItem>
                 <div className="text-[1rem] font-medium">
-                  문의내용<span className="ml-1 text-red-500">*</span>
+                  {t("fields.detail")}<span className="ml-1 text-red-500">*</span>
                 </div>
                 <ToastEditor
                   ref={editorRef}
@@ -319,9 +309,9 @@ const CorecodeInquiry = () => {
               htmlFor="agree-all"
               className="text-[1rem] font-medium cursor-pointer select-none"
             >
-              모두 동의 합니다.{" "}
+              {t("agreements.all")}
               <span className="text-red-500">
-                (체크박스를 선택하면, 다음 항목을 모두 읽고 동의한 것으로 간주합니다.)
+                {t("agreements.allNotice")}
               </span>
             </label>
           </div>
@@ -369,8 +359,7 @@ const CorecodeInquiry = () => {
                     htmlFor="agree-privacy"
                     className="text-[1rem] font-medium cursor-pointer select-none"
                   >
-                    개인정보 수집 및 이용에 동의합니다.
-                    <span className="ml-1 text-red-500">*</span>
+                    {t("agreements.privacy")}<span className="ml-1 text-red-500">*</span>
                   </label>
                 </div>
                 {!agreeAll && <FormMessage />}
@@ -401,8 +390,7 @@ const CorecodeInquiry = () => {
                     htmlFor="agree-over-14"
                     className="text-[1rem] font-medium cursor-pointer select-none"
                   >
-                    만 14세 이상임을 확인하고 동의합니다.
-                    <span className="ml-1 text-red-500">*</span>
+                    {t("agreements.over14")}<span className="ml-1 text-red-500">*</span>
                   </label>
                 </div>
                 {!agreeAll && <FormMessage />}
@@ -414,7 +402,7 @@ const CorecodeInquiry = () => {
               type="submit"
               className="rounded-md bg-[#333333] px-8 py-3 text-white hover:bg-[#111] transition cursor-pointer active:scale-95"
             >
-              문의하기
+              {t("submit")}
             </button>
             <AlertDialog open={alertOpen} onOpenChange={setAlertOpen}>
               <AlertDialogContent>

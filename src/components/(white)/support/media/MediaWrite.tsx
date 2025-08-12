@@ -1,8 +1,11 @@
 import React from "react";
 import Image from "next/image";
 import MediaWriteForm from "./MediaWriteForm";
+import { useTranslations } from "next-intl";
 
 const NoticeWrite = () => {
+  const t = useTranslations("media");
+
   return (
     <div className="space-y-10 lg:px-[5rem] lg:pb-[6.25rem]">
       {/* 상단 배너 */}
@@ -14,7 +17,7 @@ const NoticeWrite = () => {
           className="object-cover object-middle brightness-75"
         />
         <div className="absolute inset-0 flex items-center justify-center text-center text-white">
-          <div className="text-2xl font-bold md:text-3xl lg:text-4xl">언론보도</div>
+          <div className="text-2xl font-bold md:text-3xl lg:text-4xl">{t("banner.title")}</div>
         </div>
       </div>
       {/* 글쓰기 폼 */}

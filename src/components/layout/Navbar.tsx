@@ -10,6 +10,7 @@ import { SignedIn, SignedOut, SignOutButton } from "@clerk/clerk-react"
 import LoginButton from "@/components/auth/LoginButton";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 const NavBar = ({ bgColor }: { bgColor: string }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -50,6 +51,7 @@ const NavBar = ({ bgColor }: { bgColor: string }) => {
 
   const pathname = usePathname();
   const isOnInquiryPage = pathname.includes("inquiry");
+  const t = useTranslations("NavBar"); 
 
   return (
     <header className="fixed z-20 w-full">
@@ -70,7 +72,7 @@ const NavBar = ({ bgColor }: { bgColor: string }) => {
                   href="/inquiry/corecode-inquiry"
                   className="flex cursor-pointer items-center py-4 lg:px-[2.5rem] whitespace-nowrap gap-1"
                 >
-                  <span>문의하기</span>
+                  <span>{t("contact.contact")}</span>
                   <ArrowUpRight />
                 </Link>
               )
@@ -84,7 +86,7 @@ const NavBar = ({ bgColor }: { bgColor: string }) => {
             <SignedIn>
               <SignOutButton>
                 <button className="ml-2 rounded bg-gray-200 px-4 py-2 text-sm font-semibold text-gray-700 rounded hover:bg-gray-300 w-auto max-w-[150px] whitespace-nowrap">
-                  로그아웃
+                  {t("logoutButton.logout")}
                 </button>
               </SignOutButton>
             </SignedIn>

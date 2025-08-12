@@ -4,8 +4,16 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 const VexiContent = () => {
+  const t = useTranslations("Vexi");
+  
+  const features = t.raw("features.items");
+  const protocols = t.raw("protocols.items");
+  const applications = t.raw("applications.items");
+  const techFeatures = t.raw("tech.items");
+
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -26,82 +34,6 @@ const VexiContent = () => {
       }
     }
   };
-
-  const features = [
-    {
-      icon: "🔗",
-      title: "설비, 센서, IoT 디바이스 연동",
-      description: "제조, 환경, 물류 등 다양한 현장에 설치된 설비와 센서, 각종 IoT 디바이스로부터 데이터를 실시간으로 수집합니다.",
-      color: "from-blue-500 to-cyan-500",
-      bgColor: "from-blue-900/50 to-cyan-900/50"
-    },
-    {
-      icon: "📊",
-      title: "데이터 취합 및 정제",
-      description: "수집된 원천 데이터를 표준화, 정제, 가공하여 데이터 품질을 높이고, 활용 가능한 형태로 변환합니다.",
-      color: "from-emerald-500 to-teal-500",
-      bgColor: "from-emerald-900/50 to-teal-900/50"
-    },
-    {
-      icon: "⚙️",
-      title: "대상 시스템 연동",
-      description: "정제된 데이터를 ERP, MES, 관제 시스템, 빅데이터 플랫폼 등 고객의 다양한 IT 시스템과 유연하게 연동하여 데이터 기반의 업무 혁신과 자동화를 지원합니다.",
-      color: "from-purple-500 to-pink-500",
-      bgColor: "from-purple-900/50 to-pink-900/50"
-    }
-  ];
-
-  const protocols = [
-    { name: "Modbus", icon: "🔌", color: "from-blue-500 to-cyan-500" },
-    { name: "MQTT", icon: "📡", color: "from-emerald-500 to-teal-500" },
-    { name: "OPC-UA", icon: "🌐", color: "from-purple-500 to-pink-500" },
-    { name: "시리얼 통신", icon: "📟", color: "from-orange-500 to-red-500" },
-    { name: "HTTP/REST API", icon: "🔗", color: "from-indigo-500 to-blue-500" }
-  ];
-
-  const applications = [
-    {
-      icon: "🏭",
-      title: "스마트팩토리",
-      description: "제조 현장의 디지털화",
-      color: "from-blue-500 to-cyan-500"
-    },
-    {
-      icon: "🌍",
-      title: "환경·설비 모니터링",
-      description: "실시간 상태 감시",
-      color: "from-emerald-500 to-teal-500"
-    },
-    {
-      icon: "🤖",
-      title: "AI 기반 디지털 트윈",
-      description: "가상 모델링 및 시뮬레이션",
-      color: "from-purple-500 to-pink-500"
-    }
-  ];
-
-  const techFeatures = [
-    {
-      icon: "⚡",
-      title: "실시간 처리",
-      description: "밀리초 단위의 빠른 데이터 처리"
-    },
-    {
-      icon: "🔒",
-      title: "보안 강화",
-      description: "엔터프라이즈급 보안 시스템"
-    },
-    {
-      icon: "📈",
-      title: "확장성",
-      description: "수천 개의 디바이스 동시 연결 지원"
-    },
-    {
-      icon: "🔄",
-      title: "고가용성",
-      description: "99.9% 이상의 시스템 가동률"
-    }
-  ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-gray-900 to-black text-white">
@@ -142,7 +74,7 @@ const VexiContent = () => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.5 }}
             >
-              VEXI
+              {t("hero.title")}
             </motion.h1>
             <motion.p 
               className="text-xl md:text-2xl lg:text-3xl text-gray-300"
@@ -150,7 +82,7 @@ const VexiContent = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.7 }}
             >
-              관제 Digital Twin 시스템 구축
+              {t("hero.subtitle")}
             </motion.p>
           </motion.div>
         </div>
@@ -180,12 +112,10 @@ const VexiContent = () => {
                 variants={fadeInUp}
               >
                 <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                  <span className="text-cyan-300">VEXI</span>의 핵심 기능
+                  <span className="text-cyan-300">{t("features.title")}</span>
                 </h2>
                 <p className="text-xl text-cyan-100 max-w-4xl mx-auto">
-                  다양한 설비 및 센서와의 통신을 위해 산업 표준 프로토콜을 지원하고,<br/>
-                  데이터 정제, 통합관리, 보안강화를 통해 이기종 설비/센서와의 유연한 연동과<br/>
-                  대용량 데이터의 실시간 통합·활용이 가능합니다.
+                  {t("features.desc")}
                 </p>
               </motion.div>
             </div>
@@ -195,7 +125,7 @@ const VexiContent = () => {
                 className="grid gap-8 md:grid-cols-1 lg:grid-cols-3"
                 variants={staggerContainer}
               >
-                {features.map((feature, index) => (
+                {features.map((feature: any, index: number) => (
                   <motion.div
                     key={index}
                     className={`group relative overflow-hidden rounded-2xl bg-gradient-to-br ${feature.bgColor} p-8 shadow-lg border border-gray-700 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2`}
@@ -231,10 +161,10 @@ const VexiContent = () => {
                 variants={fadeInUp}
               >
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                  지원 프로토콜
+                  {t("protocols.title")}
                 </h2>
-                <p className="text-xl text-emerald-100 max-w-3xl mx-auto">
-                  다양한 산업 표준 프로토콜을 지원하여 모든 설비와의 연동이 가능합니다
+                <p className="text-xl text-emerald-100 max-w-4xl mx-auto">
+                  {t("protocols.desc")}
                 </p>
               </motion.div>
             </div>
@@ -244,7 +174,7 @@ const VexiContent = () => {
                 className="flex flex-wrap justify-center gap-4"
                 variants={staggerContainer}
               >
-                {protocols.map((protocol, index) => (
+                {protocols.map((protocol: any, index: number) => (
                   <motion.div
                     key={index}
                     className={`flex items-center space-x-3 rounded-full bg-gradient-to-r ${protocol.color} px-6 py-3 shadow-lg border border-gray-700`}
@@ -253,7 +183,7 @@ const VexiContent = () => {
                     transition={{ duration: 0.2 }}
                   >
                     <span className="text-2xl">{protocol.icon}</span>
-                    <span className="font-semibold text-white">{protocol.name}</span>
+                    <span className="font-semibold text-white"> {protocol.name}</span>
                   </motion.div>
                 ))}
               </motion.div>
@@ -273,11 +203,10 @@ const VexiContent = () => {
                 variants={fadeInUp}
               >
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                  디지털 혁신의 기반 구축
+                  {t("applications.title")}
                 </h2>
                 <p className="text-xl text-orange-100 max-w-3xl mx-auto">
-                  스마트팩토리, 환경·설비 모니터링, AI 기반 디지털 트윈 등<br/>
-                  다양한 데이터 통합 서비스를 위한 디지털 혁신의 기반을 구축합니다.
+                  {t("applications.desc")}
                 </p>
               </motion.div>
             </div>
@@ -287,7 +216,7 @@ const VexiContent = () => {
                 className="grid gap-8 md:grid-cols-3"
                 variants={staggerContainer}
               >
-                {applications.map((app, index) => (
+                {applications.map((app: any, index: number) => (
                   <motion.div
                     key={index}
                     className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-6 shadow-lg border border-gray-700 text-center"
@@ -322,10 +251,10 @@ const VexiContent = () => {
                 variants={fadeInUp}
               >
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                  기술적 우위
+                  {t("tech.title")}
                 </h2>
                 <p className="text-xl text-indigo-100 max-w-3xl mx-auto">
-                  VEXI의 핵심 기술과 성능을 확인하세요
+                  {t("tech.desc")}
                 </p>
               </motion.div>
             </div>
@@ -335,7 +264,7 @@ const VexiContent = () => {
                 className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
                 variants={staggerContainer}
               >
-                {techFeatures.map((feature, index) => (
+                {techFeatures.map((feature: any, index: number) => (
                   <motion.div
                     key={index}
                     className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-6 shadow-lg border border-gray-700 text-center"
@@ -373,17 +302,16 @@ const VexiContent = () => {
             transition={{ duration: 0.3 }}
           >
             <h3 className="text-3xl font-bold text-white mb-4">
-              VEXI로 디지털 혁신을 시작하세요
+              {t("cta.title")}
             </h3>
             <p className="text-lg text-gray-300 mb-8">
-              관제 Digital Twin 시스템으로 현장의 모든 데이터를 통합하고<br/>
-              실시간 모니터링과 예측 분석을 통해 운영 효율성을 극대화하세요.
+              {t("cta.desc")}
             </p>
             <Link 
               href="/inquiry/corecode-inquiry"
               className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-8 py-4 rounded-2xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
             >
-              문의하기
+              {t("cta.button")}
             </Link>
           </motion.div>
         </div>

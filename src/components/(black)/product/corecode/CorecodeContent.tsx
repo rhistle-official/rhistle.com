@@ -9,6 +9,7 @@ import CorecodeFeature from "./CorecodeFeature";
 import CorecodeOverview from "./CorecodeOverview";
 import CorecodeStack from "./CorecodeStack";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 const CorecodeContent = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -31,56 +32,13 @@ const CorecodeContent = () => {
       }
     }
   };
+  
+  type Feature = { icon: string; title: string; desc: string; color?: string };
 
-  const features = [
-    {
-      icon: "🔗",
-      title: "설비/센서 연계",
-      description: "다양한 설비와 센서를 효율적으로 연계하여 실시간 데이터 수집",
-      color: "from-blue-500 to-cyan-500"
-    },
-    {
-      icon: "📊",
-      title: "Data Integration",
-      description: "통합된 데이터 플랫폼으로 일관성 있는 정보 관리",
-      color: "from-purple-500 to-pink-500"
-    },
-    {
-      icon: "⚡",
-      title: "실시간 처리",
-      description: "빠른 응답 속도로 즉시적인 의사결정 지원",
-      color: "from-emerald-500 to-teal-500"
-    },
-    {
-      icon: "🛡️",
-      title: "안정성",
-      description: "높은 신뢰성과 안정성을 보장하는 시스템",
-      color: "from-orange-500 to-red-500"
-    }
-  ];
-
-  const techSpecs = [
-    {
-      icon: "⚙️",
-      title: "모듈화 아키텍처",
-      description: "확장 가능한 모듈 기반 설계"
-    },
-    {
-      icon: "🔧",
-      title: "API 기반 통합",
-      description: "표준 API를 통한 쉬운 연동"
-    },
-    {
-      icon: "📱",
-      title: "반응형 UI",
-      description: "모든 디바이스에서 최적화된 인터페이스"
-    },
-    {
-      icon: "🔐",
-      title: "보안 강화",
-      description: "엔터프라이즈급 보안 시스템"
-    }
-  ];
+  const t = useTranslations("Corecode");
+  
+  const features = t.raw("featuresList") as Feature[];
+  const techSpecs = t.raw("techSpecs");
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-gray-900 to-black text-white">
@@ -121,7 +79,7 @@ const CorecodeContent = () => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.5 }}
             >
-              CoreCode
+              {t("heroTitle")}
             </motion.h1>
             <motion.p 
               className="text-xl md:text-2xl lg:text-3xl text-gray-300"
@@ -129,7 +87,7 @@ const CorecodeContent = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.7 }}
             >
-              설비/센서 연계 기술 기반의 Data Integration 시스템
+              {t("heroDesc")}
             </motion.p>
           </motion.div>
         </div>
@@ -159,10 +117,10 @@ const CorecodeContent = () => {
                 variants={fadeInUp}
               >
                 <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                  <span className="text-cyan-300">CoreCode</span>의 핵심 특징
+                  <span className="text-cyan-300">{t("heroTitle")}</span> {t("featuresTitle")}
                 </h2>
                 <p className="text-xl text-cyan-100 max-w-4xl mx-auto">
-                  설비와 센서를 효율적으로 연계하여 실시간 데이터 통합 시스템을 구축합니다
+                  {t("featuresSubtitle")}
                 </p>
               </motion.div>
             </div>
@@ -179,14 +137,16 @@ const CorecodeContent = () => {
                     variants={fadeInUp}
                     whileHover={{ scale: 1.05 }}
                   >
-                    <div className={`w-16 h-16 bg-gradient-to-r ${feature.color} rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg`}>
+                    {/* color가 없을 때 기본 그라데이션 적용 */}
+                    <div className={`w-16 h-16 bg-gradient-to-r ${feature.color ?? "from-cyan-500 to-blue-500"} rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg`}>
                       <span className="text-2xl">{feature.icon}</span>
                     </div>
                     <h3 className="mb-4 text-center text-xl font-bold text-white">
                       {feature.title}
                     </h3>
+                    {/* ✅ desc 사용 */}
                     <p className="text-center text-sm text-gray-300 leading-relaxed">
-                      {feature.description}
+                      {feature.desc}
                     </p>
                     <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                   </motion.div>
@@ -208,10 +168,10 @@ const CorecodeContent = () => {
                 variants={fadeInUp}
               >
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                  기술 사양
+                  {t("techTitle")}
                 </h2>
                 <p className="text-xl text-emerald-100 max-w-3xl mx-auto">
-                  CoreCode의 핵심 기술과 아키텍처
+                  {t("techSubtitle")}
                 </p>
               </motion.div>
             </div>
@@ -221,7 +181,7 @@ const CorecodeContent = () => {
                 className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
                 variants={staggerContainer}
               >
-                {techSpecs.map((spec, index) => (
+                {techSpecs.map((spec: any, index: number) => (
                   <motion.div
                     key={index}
                     className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-6 shadow-lg border border-gray-700 text-center"
@@ -256,10 +216,10 @@ const CorecodeContent = () => {
                 variants={fadeInUp}
               >
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                  CoreCode 상세 정보
+                  {t("detailTitle")}
                 </h2>
                 <p className="text-xl text-orange-100 max-w-3xl mx-auto">
-                  시스템 구성과 기능을 자세히 알아보세요
+                  {t("detailSubtitle")}
                 </p>
               </motion.div>
             </div>
@@ -305,17 +265,16 @@ const CorecodeContent = () => {
             transition={{ duration: 0.3 }}
           >
             <h3 className="text-3xl font-bold text-white mb-4">
-              CoreCode 문의 안내
+              {t("ctaTitle")}
             </h3>
             <p className="text-lg text-gray-300 mb-8">
-              궁금하신 내용을 남겨주시면, 담당자가 빠른 시간 안에 연락드리겠습니다.<br/>
-              전문가와 상담하여 최적의 솔루션을 찾아보세요.
+              {t("ctaSubtitle")}
             </p>
             <Link 
               href="/inquiry/corecode-inquiry"
               className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-8 py-4 rounded-2xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
             >
-              문의하기
+              {t("ctaButton")}
             </Link>
           </motion.div>
         </div>

@@ -4,14 +4,15 @@ import { useEffect, useState } from "react";
 import { fetchPosts } from "@/lib/api";
 import { post } from "@/lib/type";
 import NoticePagination from "./NoticePagination";
-import EditAuthButton from "@/components/ui/EditAuthButton";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 interface NoticeBoardProps {
   searchParams: { [key: string]: string | undefined };
 }
 
 const NoticeList = ({ searchParams }: NoticeBoardProps) => {
+  const t = useTranslations("notice");
   const [posts, setPosts] = useState<post[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [postPerPage, setPostPerPage] = useState(10);
@@ -53,7 +54,7 @@ const NoticeList = ({ searchParams }: NoticeBoardProps) => {
   if (loading) {
     return (
       <div className="flex justify-center items-center py-8">
-        <div className="text-lg text-gray-600">로딩 중...</div>
+        <div className="text-lg text-gray-600">{t("list.loading")}</div>
       </div>
     );
   }
@@ -62,26 +63,23 @@ const NoticeList = ({ searchParams }: NoticeBoardProps) => {
     <div>
       <div className="mb-4 flex items-center justify-between">
         <div className="text-sm md:text-base lg:text-lg">
-          총&nbsp;
-          <span className="font-semibold text-blue-500">{totalPosts}</span>
-          건이 검색되었습니다.
+          {t("list.total", { count: totalPosts })}
         </div>
-        <EditAuthButton />
       </div>
 
       <table className="w-full text-left border-t">
         <thead>
           <tr className="border-b">
             <th className="py-3 px-2">No</th>
-            <th className="py-3 px-2">제목</th>
-            <th className="py-3 px-2 w-48 text-white">작성일</th>
+            <th className="py-3 px-2">{t("list.table.title")}</th>
+            <th className="py-3 px-2 w-48">{t("list.table.date")}</th>
           </tr>
         </thead>
         <tbody>
           {totalPosts === 0 ? (
             <tr>
               <td colSpan={3} className="py-8 text-center text-lg font-semibold text-gray-500">
-                게시물이 없습니다.
+                {t("list.empty")}
               </td>
             </tr>
           ) : (

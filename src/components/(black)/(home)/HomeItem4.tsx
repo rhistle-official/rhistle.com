@@ -3,9 +3,14 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import ServiceCard from "./ServiceCard";
+import { useTranslations } from "next-intl";
 
 const HomeItem4 = () => {
   const { ref, inView } = useInView();
+  const t = useTranslations("HomeItem4");
+
+  const headline = t.raw("headline") as string[];      // 헤드라인
+  const description = t.raw("description") as string[]; // 본문
 
   return (
     <div ref={ref} className="mx-auto max-w-[110rem]">
@@ -30,8 +35,9 @@ const HomeItem4 = () => {
             animate={inView && { opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <div>산업용 데이터 연계 및 통합</div>
-            <div>공장 자동화 디지털 전환</div>
+            {headline.map((line, i) => (
+              <div key={i}>{line}</div> 
+            ))}
           </motion.div>
           <motion.div 
             className="md:text-lg text-gray-300"
@@ -39,13 +45,9 @@ const HomeItem4 = () => {
             animate={inView && { opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <div>
-              나무아이앤씨는 공장 자동화 시스템 전반의 데이터를 연계하고
-            </div>
-            <div>
-              통합 관리할 수 있는 플랫폼을 제공하여, 보다 효율적이고 스마트한
-              제조 환경을 구축합니다.
-            </div>
+            {description.map((line, i) => (
+              <div key={i}>{line}</div> 
+            ))}
           </motion.div>
         </motion.div>
         <motion.div

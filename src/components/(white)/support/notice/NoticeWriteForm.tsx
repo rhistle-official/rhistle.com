@@ -17,6 +17,7 @@ import { useRouter } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { createNotice } from "@/lib/api";
 import dynamic from "next/dynamic";
+import { useTranslations } from "next-intl";
 
 const ToastEditor = dynamic(
   () => import("@toast-ui/react-editor").then(mod => mod.Editor),
@@ -24,18 +25,19 @@ const ToastEditor = dynamic(
 );
 import "@toast-ui/editor/dist/toastui-editor.css";
 
-const formSchema = z.object({
-  title: z.string().min(1, "제목을 입력해주세요."),
-  content: z.string().min(1, "내용을 입력해주세요."),
-});
-
 const NoticeWriteForm = () => {
+  const t = useTranslations("notice");
+
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [adminId, setAdminId] = useState("");
   const [adminPw, setAdminPw] = useState("");
-  const [loginError, setLoginError] = useState("");
   const editorRef = useRef<any>(null);
+
+  const formSchema = z.object({
+    title: z.string().min(1, t("form.title.required")),
+    content: z.string().min(1, t("form.content.required")),
+  });
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -56,10 +58,10 @@ const NoticeWriteForm = () => {
       const auth = "Basic " + btoa(`${adminId}:${adminPw}`);
       const res = await createNotice(finalData, auth);
       if (res.error) throw new Error(res.error);
-      alert("게시물이 등록되었습니다.");
+      alert(t("form.alerts.success"));
       router.push("/support/notice");
     } catch (error) {
-      alert("게시물 등록이 실패했습니다.");
+      alert(t("form.alerts.error"));
     } finally {
       setIsSubmitting(false);
     }
@@ -76,10 +78,10 @@ const NoticeWriteForm = () => {
           name="title"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="font-medium">제목</FormLabel>
+              <FormLabel className="font-medium">{t("form.title.label")}</FormLabel>
               <FormControl>
                 <Input
-                  placeholder="제목을 입력하세요."
+                  placeholder={t("form.title.placeholder")}
                   {...field}
                   className="focus:border-[#78b237]"
                 />
@@ -93,12 +95,12 @@ const NoticeWriteForm = () => {
           name="content"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="font-medium">내용</FormLabel>
+              <FormLabel className="font-medium">{t("form.content.label")}</FormLabel>
               <FormControl>
                 <div className="border rounded-md">
                   <ToastEditor
                     ref={editorRef}
-                    initialValue=""
+                    initialValue=" "
                     previewStyle="vertical"
                     height="300px"
                     initialEditType="wysiwyg"
@@ -122,14 +124,14 @@ const NoticeWriteForm = () => {
             onClick={() => router.back()}
             className="border-[#78b237] text-[#78b237] hover:bg-[#78b237]/10"
           >
-            취소
+            {t("form.buttons.cancel")}
           </Button>
           <Button
             type="submit"
             className="ml-2 bg-[#78b237] hover:bg-[#78b237]/90"
             disabled={isSubmitting}
           >
-            {isSubmitting ? "등록 중..." : "등록"}
+            {isSubmitting ? t("form.buttons.submitting") : t("form.buttons.submit")}
           </Button>
         </div>
       </form>

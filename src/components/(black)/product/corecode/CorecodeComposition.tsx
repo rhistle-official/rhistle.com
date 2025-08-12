@@ -2,8 +2,12 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 const SolutionComposition = () => {
+  const t = useTranslations("SolutionComposition");
+  const features = t.raw("features") as { icon: string; title: string; description: string }[];
+
   const fadeInUp = {
     hidden: { opacity: 0, y: 60 },
     visible: { opacity: 1, y: 0 }
@@ -18,24 +22,6 @@ const SolutionComposition = () => {
       }
     }
   };
-
-  const features = [
-    {
-      icon: "🔧",
-      title: "Modeling 기반 Tool",
-      description: "장비 및 시스템 연계 시, 손쉽게 인터페이스를 개발할 수 있도록 Modeling 기반의 다양한 Tool과 각종 산업용 Built-In Adapter를 제공합니다"
-    },
-    {
-      icon: "⚙️",
-      title: "Adapter SDK",
-      description: "Framework 기반의 Adapter SDK를 제공함으로써 개발자가 빠르고 손쉽게 장비 연계 인터페이스를 개발할 수 있도록 지원합니다"
-    },
-    {
-      icon: "🛠️",
-      title: "통합 개발 환경",
-      description: "Modeling, 시험, 디버깅, 배포 등에 이르는 전체 개발 과정을 단일화된 환경에서 진행할 수 있도록 통합 개발 환경을 제공하여 개발 편의성을 제공합니다"
-    }
-  ];
 
   return (
     <motion.div 

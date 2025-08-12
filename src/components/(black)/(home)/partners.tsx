@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 const Partners = () => {
   const partners = [
@@ -115,15 +116,17 @@ const Partners = () => {
       image: "/image/partner/ceilltrion-pharm.png",
     },
   ];
-  
+
+  const t = useTranslations("Partners");
+
   return (
     <div className="bg-gradient-to-r from-gray-900 to-black py-16">
       <div className="mb-8 text-center">
         <h2 className="text-2xl font-bold md:text-3xl lg:text-4xl text-white mb-4">
-          글로벌 파트너십
+          {t("title")}
         </h2>
         <p className="text-gray-300 md:text-lg max-w-2xl mx-auto">
-          전 세계 유수 기업들과 함께 혁신적인 솔루션을 개발하고 있습니다
+          {t("description")}
         </p>
       </div>
       

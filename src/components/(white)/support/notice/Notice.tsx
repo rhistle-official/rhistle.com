@@ -4,12 +4,15 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import NoticeBoard from "../notice/NoticeBoard";
+import { useTranslations } from "next-intl";
 
 interface NoticeProps {
   searchParams: { [key: string]: string | undefined };
 }
 
 const Notice = ({ searchParams }: NoticeProps) => {
+  const t = useTranslations("notice");
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
       {/* 상단 배너 */}
@@ -21,7 +24,7 @@ const Notice = ({ searchParams }: NoticeProps) => {
       >
         <Image
           src="/image/com_1.png"
-          alt="공지사항"
+          alt={t("banner.title")}
           fill
           className="object-cover object-center"
         />
@@ -34,10 +37,10 @@ const Notice = ({ searchParams }: NoticeProps) => {
             transition={{ duration: 0.8, delay: 0.3 }}
           >
             <h1 className="mb-4 text-4xl font-bold md:text-5xl lg:text-6xl">
-              공지사항
+              {t("banner.title")}
             </h1>
             <p className="text-lg md:text-xl lg:text-2xl text-gray-200">
-              Notice & News
+              {t("banner.subtitle")}
             </p>
           </motion.div>
         </div>
@@ -59,10 +62,11 @@ const Notice = ({ searchParams }: NoticeProps) => {
             variants={{ hidden: { opacity: 0, y: 60 }, visible: { opacity: 1, y: 0 } }}
           >
             <h2 className="mb-6 text-3xl font-bold text-gray-800 md:text-4xl">
-              <span className="text-[#78b237]">공지</span> 사항
+              <span className="text-[#78b237]">{t("section.titleHighlight")}</span>
+              {t("section.titleSuffix")}
             </h2>
             <p className="text-lg text-gray-600 md:text-xl">
-              나무아이앤씨의 최신 소식과 공지사항을 확인하세요.
+              {t("section.desc")}
             </p>
           </motion.div>
 
@@ -72,7 +76,7 @@ const Notice = ({ searchParams }: NoticeProps) => {
             variants={{ hidden: { opacity: 0, y: 60 }, visible: { opacity: 1, y: 0 } }}
           >
             <div className="bg-gradient-to-r from-[#78b237] to-[#5a8a2a] p-6">
-              <h3 className="text-xl font-bold text-white">📢 공지사항 목록</h3>
+              <h3 className="text-xl font-bold text-white">📢 {t("board.heading")}</h3>
             </div>
             <div className="py-10 px-2 md:px-8">
               <NoticeBoard searchParams={searchParams} />
@@ -88,17 +92,16 @@ const Notice = ({ searchParams }: NoticeProps) => {
             <div className="text-center">
               <div className="mb-6 text-6xl">📬</div>
               <h3 className="mb-6 text-2xl font-bold text-gray-800 md:text-3xl">
-                공지사항 문의
+                {t("cta.title")}
               </h3>
               <p className="text-lg text-gray-700 leading-relaxed max-w-4xl mx-auto mb-8">
-                공지사항 관련 문의사항이 있으시면 언제든지 연락해 주세요. 
-                빠른 시일 내에 답변 드리겠습니다.
+                {t("cta.desc")}
               </p>
               <Link 
                 href="/inquiry/corecode-inquiry"
                 className="inline-block px-8 py-4 rounded-full bg-[#78b237] text-white font-semibold hover:bg-[#5a8a2a] transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
                   >
-                문의하기
+                {t("cta.button")}
               </Link>
             </div>
           </motion.div>

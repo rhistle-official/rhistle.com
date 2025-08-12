@@ -8,12 +8,11 @@ import NoticePagination from "../notice/NoticePagination";
 import { post } from "@/lib/type";
 import MediaWriteButton from "./MediaWriteButton";
 import Link from "next/link";
-import { useAuth } from "@clerk/clerk-react"; 
+import { useTranslations } from "next-intl";
 
 interface MediaProps {
   searchParams: { [key: string]: string | undefined };
 }
-
 
 type Article = {
   id: number;
@@ -26,6 +25,7 @@ type Article = {
 };
 
 const Media = ({ searchParams } : MediaProps) => {
+  const t = useTranslations("media");
   const router = useRouter();
   const [articles, setArticles] = useState<Article[]>([]);
   const [isVisible, setIsVisible] = useState(false);
@@ -136,10 +136,10 @@ useEffect(() => {
             transition={{ duration: 0.8, delay: 0.3 }}
           >
             <h1 className="mb-4 text-4xl font-bold md:text-5xl lg:text-6xl">
-              언론보도
+              {t("banner.title")}
             </h1>
             <p className="text-lg md:text-xl lg:text-2xl text-gray-200">
-              Media Coverage
+              {t("banner.subtitle")}
             </p>
           </motion.div>
         </div>
@@ -158,10 +158,11 @@ useEffect(() => {
             variants={fadeInUp}
           >
             <h2 className="mb-6 text-3xl font-bold text-gray-800 md:text-4xl">
-              <span className="text-[#78b237]">언론</span> 보도
+              <span className="text-[#78b237]">{t("section.titleHighlight")}</span>
+              {t("section.titleSuffix")}
             </h2>
             <p className="text-lg text-gray-600 md:text-xl">
-              나무아이앤씨의 혁신과 성장을 다룬 언론 보도를 확인하세요.
+              {t("section.desc")}
             </p>
           </motion.div>
 
@@ -171,23 +172,21 @@ useEffect(() => {
             variants={fadeInUp}
           >
             <div className="bg-gradient-to-r from-[#78b237] to-[#5a8a2a] p-6">
-              <h3 className="text-xl font-bold text-white">📰 최신 언론 보도</h3>
+              <h3 className="text-xl font-bold text-white">📰{t("board.heading")}</h3>
             </div>
             <div className="py-10 px-2 md:px-8">
               <div className="mb-4 flex items-center justify-between">
                 <div className="text-sm md:text-base lg:text-lg">
-                  총&nbsp;
-                  <span className="font-semibold text-blue-500">{totalPosts}</span>
-                  건이 검색되었습니다.
+                  {t("list.total", { count: totalPosts })}
                 </div>
               </div>
               <table className="w-full text-left border-t">
                 <thead>
                   <tr className="bg-gray-50 border-b">
-                    <th className="py-4 px-6 font-semibold text-gray-800">제목</th>
-                    <th className="py-4 px-6 font-semibold text-gray-800">언론사</th>
-                    <th className="py-4 px-6 font-semibold text-gray-800">날짜</th>
-                    <th className="py-4 px-6 font-semibold text-gray-800">바로가기</th>
+                    <th className="py-4 px-6 font-semibold text-gray-800">{t("table.title")}</th>
+                    <th className="py-4 px-6 font-semibold text-gray-800">{t("table.press")}</th>
+                    <th className="py-4 px-6 font-semibold text-gray-800">{t("table.date")}</th>
+                    <th className="py-4 px-6 font-semibold text-gray-800">{t("table.link")}</th>
                     <th className="py-4 px-6 font-semibold text-gray-800"></th> 
                   </tr>
                 </thead>
@@ -195,7 +194,7 @@ useEffect(() => {
                   {totalPosts === 0 ? (
                     <tr>
                       <td colSpan={6} className="py-8 text-center text-lg font-semibold text-gray-500">
-                        게시물이 없습니다.
+                        {t("list.empty")}
                       </td>
                     </tr>
                   ) : (
@@ -218,7 +217,7 @@ useEffect(() => {
                             rel="noopener noreferrer"
                             className="bg-[#78b237] text-white px-4 py-1 rounded-full text-sm hover:bg-[#6ba12f]"
                           >
-                            기사보기
+                            {t("buttons.view")}
                           </a>
                         </td>
                         <td className="py-4 px-6 text-right">
@@ -226,13 +225,13 @@ useEffect(() => {
                             onClick={() => handleDelete(post.id)}
                             className="bg-red-500 text-white px-3 py-1 rounded-full text-sm hover:bg-red-600"
                           >
-                            삭제
+                            {t("buttons.delete")}
                           </button>
                         </td>
                       </tr>
                     ))
                   )}
-                  {articles.map((article, index) => (
+                  {articles.map((article) => (
                     <motion.tr 
                       key={article.id} 
                       className="border-b hover:bg-gray-50 transition-colors duration-200"
@@ -266,7 +265,7 @@ useEffect(() => {
                             rel="noopener noreferrer" 
                             className="inline-block px-4 py-2 rounded-full bg-[#78b237] text-white font-semibold hover:bg-[#5a8a2a] transition-all duration-300 hover:scale-105 text-sm"
                           >
-                            기사보기
+                            {t("buttons.view")}
                           </a>
                         ) : (
                           <span className="text-gray-400">-</span>
@@ -300,17 +299,16 @@ useEffect(() => {
             <div className="text-center">
               <div className="mb-6 text-6xl">📢</div>
               <h3 className="mb-6 text-2xl font-bold text-gray-800 md:text-3xl">
-                언론 보도 관련 문의
+                {t("cta.title")}
               </h3>
               <p className="text-lg text-gray-700 leading-relaxed max-w-4xl mx-auto mb-8">
-                언론 보도 관련 문의사항이나 인터뷰 요청이 있으시면 언제든지 연락해 주세요. 
-                빠른 시일 내에 답변 드리겠습니다.
+                {t("cta.desc")}
               </p>
               <Link 
                 href="/inquiry/corecode-inquiry"
                 className="inline-block px-8 py-4 rounded-full bg-[#78b237] text-white font-semibold hover:bg-[#5a8a2a] transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
               >
-                문의하기
+                {t("cta.button")}
               </Link>
             </div>
           </motion.div>

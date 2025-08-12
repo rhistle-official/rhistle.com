@@ -17,6 +17,7 @@ import { useRouter } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { createMedia } from "@/lib/api";
 import dynamic from "next/dynamic";
+import { useTranslations } from "next-intl";
 
 const ToastEditor = dynamic(
   () => import("@toast-ui/react-editor").then(mod => mod.Editor),
@@ -24,21 +25,20 @@ const ToastEditor = dynamic(
 );
 import "@toast-ui/editor/dist/toastui-editor.css";
 
-const formSchema = z.object({
-    //1. 제목, 2. 언론사, 3. 날짜, 4. 바로가기
-  title: z.string().min(1, "제목을 입력해주세요."),
-  press: z.string(),
-  date: z.string(),
-  link: z.string().min(1, "링크를 입력해주세요."),
-});
-
 const NoticeWriteForm = () => {
+  const t = useTranslations("media");
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [adminId, setAdminId] = useState("");
   const [adminPw, setAdminPw] = useState("");
-  const [loginError, setLoginError] = useState("");
   const editorRef = useRef<any>(null);
+
+  const formSchema = z.object({
+    title: z.string().min(1, t("form.title.required")),
+    press: z.string(),
+    date: z.string(),
+    link: z.string().min(1, t("form.link.required")),
+  });
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -77,10 +77,10 @@ const NoticeWriteForm = () => {
           name="title"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="font-medium">제목</FormLabel>
+              <FormLabel className="font-medium">{t("form.title.label")}</FormLabel>
               <FormControl>
                 <Input
-                  placeholder="제목을 입력하세요."
+                  placeholder={t("form.title.placeholder")}
                   {...field}
                   className="focus:border-[#78b237]"
                 />
@@ -94,10 +94,10 @@ const NoticeWriteForm = () => {
           name="press"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="font-medium">언론사</FormLabel>
+              <FormLabel className="font-medium">{t("form.press.label")}</FormLabel>
               <FormControl>
                 <Input
-                  placeholder="언론사를 입력하세요."
+                  placeholder={t("form.press.placeholder")}
                   {...field}
                   className="focus:border-[#78b237]"
                 />
@@ -111,10 +111,10 @@ const NoticeWriteForm = () => {
           name="date"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="font-medium">날짜</FormLabel>
+              <FormLabel className="font-medium">{t("form.date.label")}</FormLabel>
               <FormControl>
                 <Input
-                  placeholder="기사 날짜를 입력하세요."
+                  placeholder={t("form.date.placeholder")}
                   {...field}
                   className="focus:border-[#78b237]"
                 />
@@ -128,10 +128,10 @@ const NoticeWriteForm = () => {
           name="link"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="font-medium">바로가기(링크)</FormLabel>
+              <FormLabel className="font-medium">{t("form.link.label")}</FormLabel>
               <FormControl>
                 <Input
-                  placeholder="링크를 입력하세요."
+                  placeholder={t("form.link.placeholder")}
                   {...field}
                   className="focus:border-[#78b237]"
                 />
@@ -147,14 +147,14 @@ const NoticeWriteForm = () => {
             onClick={() => router.back()}
             className="border-[#78b237] text-[#78b237] hover:bg-[#78b237]/10"
           >
-            취소
+            {t("form.buttons.cancel")}
           </Button>
           <Button
             type="submit"
             className="ml-2 bg-[#78b237] hover:bg-[#78b237]/90"
             disabled={isSubmitting}
           >
-            {isSubmitting ? "등록 중..." : "등록"}
+            {isSubmitting ? t("form.buttons.submitting") : t("form.buttons.submit")}
           </Button>
         </div>
       </form>

@@ -4,38 +4,13 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import KakaoMap from "./KakaoMap";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 const RouteGuide = () => {
-  const contactInfo = [
-    {
-      icon: "/image/tel_ic1.png",
-      title: "TEL",
-      value: "02-3018-5114",
-      color: "from-blue-500 to-blue-600"
-    },
-    {
-      icon: "/image/tel_ic2.png",
-      title: "FAX",
-      value: "02-3018-3026",
-      color: "from-green-500 to-green-600"
-    }
-  ];
-
-  const transportation = [
-    {
-      icon: "/image/tel_ic3.png",
-      title: "버스",
-      description: "양재역, 양재동 주민센터 하차",
-      color: "from-orange-500 to-orange-600"
-    },
-    {
-      icon: "/image/tel_ic4.png",
-      title: "지하철",
-      description: "양재역 1번 출구 도보로 3분, 양재시민의숲역 2번 출구 도보로 8분",
-      color: "from-purple-500 to-purple-600"
-    }
-  ];
-
+  const t = useTranslations("map");
+  const contactInfo = t.raw("contactInfo"); 
+  const transportation = t.raw("transportation.items");
+  
   const fadeInUp = {
     initial: { opacity: 0, y: 60 },
     animate: { opacity: 1, y: 0 },
@@ -89,7 +64,7 @@ const RouteGuide = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              찾아오시는 길
+              {t("hero.title")}
             </motion.h1>
             <motion.p 
               className="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto"
@@ -97,8 +72,7 @@ const RouteGuide = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              나무아이앤씨를 방문하시는 고객님들을 위한<br />
-              상세한 위치 안내와 교통편 정보를 제공합니다
+              {t("hero.subtitle")}
             </motion.p>
           </div>
         </motion.div>
@@ -128,10 +102,10 @@ const RouteGuide = () => {
                 transition={{ duration: 0.6, delay: 0.6 }}
               >
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                  회사 위치
+                  {t("map.title")}
                 </h2>
                 <p className="text-xl text-emerald-100 max-w-3xl mx-auto">
-                  서울 서초구 양재동에 위치한 나무아이앤씨 본사입니다
+                  {t("map.description")}
                 </p>
               </motion.div>
             </div>
@@ -163,10 +137,10 @@ const RouteGuide = () => {
                 transition={{ duration: 0.6, delay: 1 }}
               >
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                  주소 및 연락처
+                  {t("contactSection.title")}
                 </h2>
                 <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-                  언제든지 연락주시면 친절하게 안내해드리겠습니다
+                  {t("contactSection.description")}
                 </p>
               </motion.div>
             </div>
@@ -188,10 +162,10 @@ const RouteGuide = () => {
                       className="w-6 h-8"
                     />
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-800">주소</h3>
+                  <h3 className="text-2xl font-bold text-gray-800">{t("address.title")}</h3>
                 </div>
                 <p className="text-center text-lg text-gray-700 font-medium">
-                  서울 서초구 양재동 108-7 2층
+                  {t("address.value")}
                 </p>
               </motion.div>
 
@@ -200,7 +174,7 @@ const RouteGuide = () => {
                 className="grid grid-cols-1 md:grid-cols-2 gap-6"
                 variants={staggerContainer}
               >
-                {contactInfo.map((contact, index) => (
+                {contactInfo.map((contact: any, index: number) => (
                   <motion.div
                     key={index}
                     className="bg-gradient-to-br from-white to-gray-50 rounded-2xl p-6 shadow-lg border border-gray-100"
@@ -247,10 +221,10 @@ const RouteGuide = () => {
                 transition={{ duration: 0.6, delay: 1.2 }}
               >
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                  교통편 안내
+                  {t("transportation.title")}
                 </h2>
                 <p className="text-xl text-orange-100 max-w-3xl mx-auto">
-                  대중교통을 이용하여 편리하게 방문하실 수 있습니다
+                  {t("transportation.description")}
                 </p>
               </motion.div>
             </div>
@@ -260,7 +234,7 @@ const RouteGuide = () => {
                 className="grid grid-cols-1 lg:grid-cols-2 gap-8"
                 variants={staggerContainer}
               >
-                {transportation.map((transport, index) => (
+                {transportation.map((transport: any, index: number) => (
                   <motion.div
                     key={index}
                     className="bg-gradient-to-br from-white to-gray-50 rounded-2xl p-8 shadow-lg border border-gray-100"
@@ -308,10 +282,10 @@ const RouteGuide = () => {
             transition={{ duration: 0.3 }}
           >
             <h3 className="text-3xl font-bold text-gray-800 mb-4">
-              방문 전 문의하세요
+              {t("cta.title")}
             </h3>
             <p className="text-lg text-gray-600 mb-8">
-              방문 시간이나 추가 안내가 필요하시면 언제든 연락주세요
+              {t("cta.description")}
             </p>
             <motion.div
               whileHover={{ scale: 1.05 }}
@@ -321,7 +295,7 @@ const RouteGuide = () => {
                 href="/inquiry/corecode-inquiry"
                 className="inline-block bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white px-8 py-4 rounded-2xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
               >
-                방문 문의하기
+                {t("cta.button")}
               </Link>
             </motion.div>
           </motion.div>
