@@ -2,55 +2,58 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 const VisionContent = () => {
+  const t = useTranslations("Vision");
+
   const coreValues = [
     {
-      title: "혁신",
-      subtitle: "Innovation",
-      description: "기술 개발과 새로운 시도, 미래지향적 사고",
+      title: t("coreValues.0.title"),
+      subtitle: t("coreValues.0.subtitle"),
+      description: t("coreValues.0.description"),
       icon: "⚡",
       color: "from-blue-500 to-cyan-500",
       gradient: "from-blue-50 to-cyan-50"
     },
     {
-      title: "고객 중심",
-      subtitle: "Customer Commitment",
-      description: "고객의 니즈와 가치 제고를 최우선으로 생각하고, 맞춤형 서비스를 제공",
+      title: t("coreValues.1.title"),
+      subtitle: t("coreValues.1.subtitle"),
+      description: t("coreValues.1.description"),
       icon: "🎯",
       color: "from-purple-500 to-pink-500",
       gradient: "from-purple-50 to-pink-50"
     },
     {
-      title: "지속 성장",
-      subtitle: "Growth",
-      description: "고객, 임직원, 회사 모두의 지속 가능한 성장 추구",
+      title: t("coreValues.2.title"),
+      subtitle: t("coreValues.2.subtitle"),
+      description: t("coreValues.2.description"),
       icon: "📈",
       color: "from-emerald-500 to-teal-500",
       gradient: "from-emerald-50 to-teal-50"
     }
   ];
-
+  
   const techFeatures = [
     {
       icon: "🔗",
-      title: "데이터 통합",
-      description: "다양한 소스의 데이터를 통합하여 인사이트 도출"
+      title: t("techFeatures.0.title"),
+      description: t("techFeatures.0.description")
     },
     {
       icon: "🤖",
-      title: "AI/ML 기술",
-      description: "머신러닝과 인공지능으로 지능형 시스템 구축"
+      title: t("techFeatures.1.title"),
+      description: t("techFeatures.1.description")
     },
     {
       icon: "☁️",
-      title: "클라우드 네이티브",
-      description: "클라우드 기반의 확장 가능한 아키텍처"
+      title: t("techFeatures.2.title"),
+      description: t("techFeatures.2.description")
     },
     {
       icon: "🔒",
-      title: "보안 중심",
-      description: "엔터프라이즈급 보안과 데이터 보호"
+      title: t("techFeatures.3.title"),
+      description: t("techFeatures.3.description")
     }
   ];
 
@@ -129,11 +132,8 @@ const VisionContent = () => {
               className="relative"
             >
               <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
-                비전 & 미션
+                {t("heroTitle")}
               </h1>
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent animate-pulse opacity-50">
-                비전 & 미션
-              </div>
             </motion.div>
             <motion.p 
               className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed"
@@ -141,8 +141,9 @@ const VisionContent = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              나무아이앤씨는 사람과 기술이 함께 성장하는 혁신적인 디지털 환경을 구성하여<br />
-              고객의 경쟁력을 높이고, 더 나은 내일을 만들어갑니다
+              <p className="whitespace-pre-line">
+                {t("heroDesc")}
+              </p>
             </motion.p>
           </div>
         </motion.div>
@@ -180,7 +181,7 @@ const VisionContent = () => {
                 transition={{ duration: 0.6, delay: 0.6 }}
               >
                 <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
-                  Vision & Mission
+                  {t("vm.title")}
                 </h2>
               </motion.div>
             </div>
@@ -197,10 +198,10 @@ const VisionContent = () => {
                     <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center shadow-lg">
                       <span className="text-3xl">🚀</span>
                     </div>
-                    <h3 className="text-3xl font-bold text-white">Vision</h3>
+                    <h3 className="text-3xl font-bold text-white">{t("vm.vision.label")}</h3>
                   </div>
                   <p className="text-xl text-gray-300 leading-relaxed">
-                    "데이터와 기술로 진화하는 디지털 혁신의 리더"
+                    {t("vm.vision.text")}
                   </p>
                 </motion.div>
 
@@ -214,10 +215,10 @@ const VisionContent = () => {
                     <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center shadow-lg">
                       <span className="text-3xl">🎯</span>
                     </div>
-                    <h3 className="text-3xl font-bold text-white">Mission</h3>
+                    <h3 className="text-3xl font-bold text-white">{t("vm.mission.label")}</h3>
                   </div>
                   <p className="text-xl text-gray-300 leading-relaxed">
-                    "데이터 통합과 지능형 시스템 구축을 통해 고객의 경쟁력을 극대화한다"
+                    {t("vm.mission.text")}
                   </p>
                 </motion.div>
               </div>
@@ -239,10 +240,10 @@ const VisionContent = () => {
                 transition={{ duration: 0.6, delay: 0.8 }}
               >
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                  Core Values
+                  {t("core.title")}
                 </h2>
                 <p className="text-xl text-emerald-100 max-w-3xl mx-auto">
-                  우리가 추구하는 핵심 가치와 원칙
+                  {t("core.subtitle")}
                 </p>
               </motion.div>
             </div>
@@ -292,10 +293,10 @@ const VisionContent = () => {
                 transition={{ duration: 0.6, delay: 1 }}
               >
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                  핵심 기술
+                  {t("tech.title")}
                 </h2>
                 <p className="text-xl text-orange-100 max-w-3xl mx-auto">
-                  디지털 혁신을 이끄는 우리의 핵심 기술
+                  {t("tech.subtitle")}
                 </p>
               </motion.div>
             </div>
@@ -343,17 +344,17 @@ const VisionContent = () => {
             transition={{ duration: 0.3 }}
           >
             <h3 className="text-3xl font-bold text-white mb-4">
-              디지털 혁신의 미래를 함께 만들어가세요
+              {t("cta.title")}
             </h3>
             <p className="text-lg text-gray-300 mb-8">
-              나무아이앤씨와 함께 기술의 힘으로 더 나은 내일을 만들어가겠습니다
+              {t("cta.subtitle")}
             </p>
             <motion.button 
               className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-8 py-4 rounded-2xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              기술 솔루션 보기
+              {t("cta.button")}
             </motion.button>
           </motion.div>
         </div>

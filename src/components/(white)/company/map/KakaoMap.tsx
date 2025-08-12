@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useTranslations } from "next-intl"; 
 
 declare global {
   interface Window {
@@ -11,6 +12,7 @@ declare global {
 const KakaoMap = () => {
   const mapRef = useRef<HTMLDivElement>(null);
   const [scriptLoad, setScriptLoad] = useState(false);
+  const t = useTranslations("map.kakaoMap");
 
   // 서울 서초구 양재동 108-7 좌표
   const companyLat = 37.47739558483108;
@@ -26,7 +28,7 @@ const KakaoMap = () => {
     const apiKey = process.env.NEXT_PUBLIC_KAKAO_MAP_KEY;
     
     if (!apiKey) {
-      console.error("Kakao Map API key is not configured");
+      console.error(t("errors.missingApiKey"));
       return;
     }
 
@@ -59,16 +61,16 @@ const KakaoMap = () => {
 
             const iwContent = `
               <div style="padding:10px; min-width:200px;">
-                <div style="font-weight:bold; font-size:14px; margin-bottom:5px;">(주)나무아이앤씨</div>
-                <div style="font-size:12px; color:#666; margin-bottom:8px;">서울 서초구 양재동 108-7 2층</div>
+                <div style="font-weight:bold; font-size:14px; margin-bottom:5px;">${t("companyName")}</div>
+                <div style="font-size:12px; color:#666; margin-bottom:8px;">${t("address")}</div>
                 <div style="display:flex; gap:10px;">
                   <a href="https://map.kakao.com/link/map/나무아이앤씨,${companyLat},${companyLng}" 
                      style="color:#96cb4f; text-decoration:none; font-size:12px;" target="_blank">
-                    큰지도보기
+                    ${t("actions.viewLargeMap")}
                   </a>
                   <a href="https://map.kakao.com/link/to/나무아이앤씨,${companyLat},${companyLng}" 
                      style="color:#96cb4f; text-decoration:none; font-size:12px;" target="_blank">
-                    길찾기
+                    ${t("actions.directions")}
                   </a>
                 </div>
               </div>
@@ -109,8 +111,8 @@ const KakaoMap = () => {
       ) : (
         <div className="relative h-[20rem] sm:h-[25rem] lg:h-[35rem] bg-gray-100 flex items-center justify-center">
           <div className="text-center space-y-2">
-            <div className="text-gray-500">지도를 불러오는 중...</div>
-            <div className="text-sm text-gray-400">카카오맵을 로딩하고 있습니다</div>
+            <div className="text-gray-500">{t("loading.title")}</div>
+            <div className="text-sm text-gray-400">{t("loading.subtitle")}</div>
           </div>
         </div>
       )}

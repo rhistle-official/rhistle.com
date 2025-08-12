@@ -2,8 +2,11 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 const SolutionStack = () => {
+  const t = useTranslations("SolutionStack");
+
   const fadeInUp = {
     hidden: { opacity: 0, y: 60 },
     visible: { opacity: 1, y: 0 }
@@ -19,28 +22,8 @@ const SolutionStack = () => {
     }
   };
 
-  const features = [
-    {
-      icon: "🔄",
-      title: "Fan-in, Fan-out",
-      description: "유연한 데이터 흐름 제어"
-    },
-    {
-      icon: "🌿",
-      title: "Branching & Merging",
-      description: "복잡한 비즈니스 로직 처리"
-    },
-    {
-      icon: "⚡",
-      title: "Level 1,2 통합",
-      description: "높은 성능과 속도"
-    },
-    {
-      icon: "🛠️",
-      title: "재활용성",
-      description: "높은 생산성 개발 툴"
-    }
-  ];
+  const features = t.raw("features") as { icon: string; title: string; description: string }[];
+  const paragraphs = t.raw("description.paragraphs") as string[];
 
   return (
     <motion.div 
@@ -89,13 +72,11 @@ const SolutionStack = () => {
         variants={fadeInUp}
       >
         <div className="space-y-4 text-lg leading-relaxed text-blue-800">
-          <p>
-            CoreCode의 프레임워크는 Fan-in, Fan-out, Branching and merging 등의 유연성을 갖춘 Router를 통해
-            자유롭게 비즈니스 로직을 설계와 변경이 가능하여 재활용성과 생산성이 높은 개발 툴입니다.
-          </p>
-          <p>
-            또한, 필요에 따라 level 1,2 단을 한번에 아우를 수 있는 구조로 속도와 성능에서 매우 뛰어난 품질을 보여줍니다.
-          </p>
+           {paragraphs.map((p, i) => (
+            <p key={i} className="whitespace-pre-line">
+              {p}
+            </p>
+          ))}
         </div>
       </motion.div>
 

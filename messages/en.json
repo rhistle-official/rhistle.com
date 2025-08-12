@@ -7,7 +7,7 @@
       "title": "Vision",
       "subMenu": {
         "vision": {
-          "title": "비전 소개"
+          "title": "Vision"
         }
       }
     },
@@ -197,5 +197,881 @@
   "Partners": {
     "title": "Global Partnership",
     "description": "We develop innovative solutions with leading companies worldwide"
+  },
+
+
+  "Vision": {
+    "heroTitle": "Vision & Mission",
+    "heroDesc": "Namoo INC builds an innovative digital environment where people and technology grow together, enhancing customer competitiveness and creating a better tomorrow.",
+    "vm": {
+      "title": "Vision & Mission",
+      "vision": {
+        "label": "Vision",
+        "text": "A leader in digital innovation evolving with data and technology"
+      },
+      "mission": {
+        "label": "Mission",
+        "text": "Maximizing customer competitiveness through data integration and intelligent systems"
+      }
+    },
+    "core": {
+      "title": "Core Values",
+      "subtitle": "Our core values and principles"
+    },
+    "tech": {
+      "title": "Core Technologies",
+      "subtitle": "Our technologies driving digital innovation"
+    },
+    "cta": {
+      "title": "Join us in shaping the future of digital innovation",
+      "subtitle": "With Namoo I&C, we’ll build a better tomorrow through the power of technology",
+      "button": "Explore Tech Solutions"
+    },
+    "coreValues": [
+      {
+        "title": "Innovation",
+        "subtitle": "Innovation",
+        "description": "Technology development, new challenges, and future-oriented thinking"
+      },
+      {
+        "title": "Customer Commitment",
+        "subtitle": "Customer Commitment",
+        "description": "Prioritizing customer needs and value enhancement, providing tailored services"
+      },
+      {
+        "title": "Growth",
+        "subtitle": "Growth",
+        "description": "Pursuing sustainable growth for customers, employees, and the company"
+      }
+    ],
+    "techFeatures": [
+      {
+        "title": "Data Integration",
+        "description": "Integrating data from various sources to derive insights"
+      },
+      {
+        "title": "AI/ML Technology",
+        "description": "Building intelligent systems with machine learning and AI"
+      },
+      {
+        "title": "Cloud Native",
+        "description": "Scalable architecture based on the cloud"
+      },
+      {
+        "title": "Security Focused",
+        "description": "Enterprise-grade security and data protection"
+      }
+    ]
+  },
+  "Corecode": {
+    "heroTitle": "CoreCode",
+    "heroDesc": "Data Integration system based on equipment/sensor linkage technology",
+
+    "featuresTitle": "Key Features",
+    "featuresSubtitle": "Efficiently link equipment and sensors to build a real-time data integration system",
+    "featuresList": [
+      { "icon": "🔗", "title": "Equipment/Sensor Linkage", "desc": "Efficiently connect various equipment and sensors for real-time data collection" },
+      { "icon": "📊", "title": "Data Integration", "desc": "Manage consistent information through an integrated data platform" },
+      { "icon": "⚡", "title": "Real-time Processing", "desc": "Support immediate decision-making with fast response speed" },
+      { "icon": "🛡️", "title": "Reliability", "desc": "Provide high reliability and system stability" }
+    ],
+
+    "techTitle": "Technical Specifications",
+    "techSubtitle": "Core technologies and architecture of CoreCode",
+    "techSpecs": [
+      { "icon": "⚙️", "title": "Modular Architecture", "desc": "Expandable module-based design" },
+      { "icon": "🔧", "title": "API-based Integration", "desc": "Easy integration through standard APIs" },
+      { "icon": "📱", "title": "Responsive UI", "desc": "Optimized interface on all devices" },
+      { "icon": "🔐", "title": "Enhanced Security", "desc": "Enterprise-grade security system" }
+    ],
+
+    "detailTitle": "CoreCode Details",
+    "detailSubtitle": "Learn more about the system configuration and functions",
+
+    "ctaTitle": "CoreCode Inquiry Guide",
+    "ctaSubtitle": "Leave your questions, and our representative will contact you shortly.\nConsult with an expert to find the optimal solution.",
+    "ctaButton": "Inquire Now"
+  },
+  "SolutionConcept": {
+    "title": "Concept",
+    "subtitle": "CoreCode \"Manufacturing Message Bus Framework\"",
+    "paragraphs": [
+      "CoreCode is a manufacturing message bus that directly collects all data generated on the plant floor in real-time and links it to IT systems in a standardized manner, providing a standard framework that enables Smart Factory.",
+      "A Smart Factory secures data visibility on the plant floor, allowing monitoring and control of all situations on the business floor."
+    ]
+  },
+   "SolutionOverview": {
+    "problem": {
+      "title": "Current Issues in Manufacturing Sites",
+      "paragraphs": [
+        "Manufacturing sites are becoming increasingly complex due to individual/vertical 1:N interface connections,\nand the complexity further increases when introducing new systems, requiring significant time, manpower, and cost.",
+        "As a result, companies are dependent on equipment suppliers or developers for equipment integration,\nwhich makes it impossible to respond quickly to changes."
+      ],
+      "imageAlt": "Complex interface connections in current manufacturing sites"
+    },
+    "solution": {
+      "title": "CoreCode's Solution",
+      "paragraphs": [
+        "CoreCode, as a standardized Manufacturing Message Bus, allows easy modification or addition of equipment and systems like Lego blocks.",
+        "It also provides a variety of pre-verified built-in components (adapters) and an API for developing custom components.",
+        "The core functions of the CoreCode engine are patented in Korea, the United States, and Japan."
+      ]
+    }
+  },
+   "SolutionStack": {
+    "features": [
+      { "icon": "🔄", "title": "Fan-in, Fan-out", "description": "Flexible data flow control" },
+      { "icon": "🌿", "title": "Branching & Merging", "description": "Handling complex business logic" },
+      { "icon": "⚡", "title": "Level 1,2 Integration", "description": "High performance and speed" },
+      { "icon": "🛠️", "title": "Reusability", "description": "Highly productive development tools" }
+    ],
+    "description": {
+      "paragraphs": [
+        "The CoreCode framework, equipped with a flexible router that supports Fan-in, Fan-out, Branching and Merging, allows for easy design and modification of business logic, offering high reusability and productivity.",
+        "Additionally, its structure can cover both Level 1 and Level 2 at once when needed, delivering excellent speed and performance."
+      ]
+    }
+  },
+  "SolutionComposition": {
+    "features": [
+      {
+        "icon": "🔧",
+        "title": "Modeling-based Tools",
+        "description": "Provides various modeling-based tools and industrial built-in adapters to easily develop interfaces when linking equipment and systems"
+      },
+      {
+        "icon": "⚙️",
+        "title": "Adapter SDK",
+        "description": "Offers a framework-based adapter SDK so developers can quickly and easily build equipment integration interfaces"
+      },
+      {
+        "icon": "🛠️",
+        "title": "Integrated Development Environment",
+        "description": "Provides an integrated environment covering modeling, testing, debugging, and deployment to improve development convenience"
+      }
+    ]
+  },
+    "SolutionFeature": {
+    "title": "Key Features",
+    "features": [
+      {
+        "icon": "🔗",
+        "title": "Standardized Interface",
+        "description": "With a strict separation between Data I/O and business logic, components are developed independently to minimize developer dependency.\nAll data from heterogeneous systems/equipment are linked via a unified standard interface, maintaining consistency, simplifying management, and reducing interface complexity.",
+        "color": "from-blue-50 to-blue-100 border-blue-400 text-blue-800"
+      },
+      {
+        "icon": "⚡",
+        "title": "Improved Developer Productivity",
+        "description": "Intuitive and convenient development tools (GUI Modeler, Debugger, Remote Agent, Adapter Register, Web Admin, Code Templates, Code Tutorials, etc.).\nProvides ~100 verified built-in components and APIs for custom component development.",
+        "color": "from-green-50 to-green-100 border-green-400 text-green-800"
+      },
+      {
+        "icon": "🔄",
+        "title": "Flexibility & Scalability",
+        "description": "Vendor/developer-independent architecture for easy maintenance and reduced OPEX; Plug & Play with reusable components. Supports multiple protocols: OPC, SOAP, TCP/IP, XML, HTTP, RMI, MODBUS, RS232/422/485, etc. Interfaces with widely used PLC/DCS (Mitsubishi Melsec, Siemens S7, LS Glofa, ABB, ...) Supports 1:1, 1:N, and M:N message patterns for diverse architectures.\nAdapter Framework infrastructure ensures future flexibility and scalability.",
+        "color": "from-purple-50 to-purple-100 border-purple-400 text-purple-800"
+      },
+      {
+        "icon": "🛡️",
+        "title": "Redundancy & Load Balancing",
+        "description": "Active-Active and Active-Standby configurations for non-stop operation.\nAutomatic load balancing, fault monitoring, and fail-over for a stable integrated system.",
+        "color": "from-red-50 to-red-100 border-red-400 text-red-800"
+      },
+      {
+        "icon": "🏭",
+        "title": "Optimal Integration between Plant and Enterprise",
+        "description": "Handles real-time, high-volume messages with proven performance.\nAllows custom logic via Function Call for analysis and utilization of plant-floor data.\nAdapter development tools available both online and offline for continuous operation environments.",
+        "color": "from-orange-50 to-orange-100 border-orange-400 text-orange-800"
+      }
+    ]
+  },
+
+
+  "Vexi": {
+    "hero": {
+      "title": "VEXI",
+      "subtitle": "Building Control Digital Twin Systems"
+    },
+    "features": {
+      "title": "Key Features of VEXI",
+      "desc": "Supports industry-standard protocols for communication with various equipment and sensors,\nrefines and manages data to enable flexible integration with heterogeneous devices,\nand enables real-time integration and utilization of large-scale data.",
+      "items": [
+        {
+          "icon": "🔗",
+          "title": "Integration with Equipment, Sensors, and IoT Devices",
+          "description": "Collects real-time data from equipment, sensors, and IoT devices across manufacturing, environmental, logistics, and other sites.",
+          "color": "from-blue-500 to-cyan-500",
+          "bgColor": "from-blue-900/50 to-cyan-900/50"
+        },
+        {
+          "icon": "📊",
+          "title": "Data Aggregation and Cleansing",
+          "description": "Standardizes, cleanses, and processes raw data to improve quality and convert it into actionable formats.",
+          "color": "from-emerald-500 to-teal-500",
+          "bgColor": "from-emerald-900/50 to-teal-900/50"
+        },
+        {
+          "icon": "⚙️",
+          "title": "Integration with Target Systems",
+          "description": "Flexibly integrates refined data with ERP, MES, monitoring systems, and big data platforms to drive data-driven innovation and automation.",
+          "color": "from-purple-500 to-pink-500",
+          "bgColor": "from-purple-900/50 to-pink-900/50"
+        }
+      ]
+    },
+    "protocols": {
+      "title": "Supported Protocols",
+      "desc": "Supports a wide range of industry-standard protocols to integrate with any equipment.",
+      "items": [
+        { "icon": "🔌", "name": "Modbus", "color": "from-blue-500 to-cyan-500" },
+        { "icon": "📡", "name": "MQTT", "color": "from-emerald-500 to-teal-500" },
+        { "icon": "🌐", "name": "OPC-UA", "color": "from-purple-500 to-pink-500" },
+        { "icon": "📟", "name": "Serial Communication", "color": "from-orange-500 to-red-500" },
+        { "icon": "🔗", "name": "HTTP/REST API", "color": "from-indigo-500 to-blue-500" }
+      ]
+    },
+    "applications": {
+      "title": "Foundation for Digital Innovation",
+      "desc": "Builds the foundation for services such as smart factories, environmental & equipment monitoring, and AI-based digital twins.",
+      "items": [
+        { "icon": "🏭", "title": "Smart Factory", "description": "Digitization of manufacturing sites", "color": "from-blue-500 to-cyan-500" },
+        { "icon": "🌍", "title": "Environmental & Equipment Monitoring", "description": "Real-time condition monitoring", "color": "from-emerald-500 to-teal-500" },
+        { "icon": "🤖", "title": "AI-based Digital Twin", "description": "Virtual modeling and simulation", "color": "from-purple-500 to-pink-500" }
+      ]
+    },
+    "tech": {
+      "title": "Technical Advantages",
+      "desc": "Explore VEXI’s core technologies and performance.",
+      "items": [
+        { "icon": "⚡", "title": "Real-time Processing", "description": "Millisecond-level data processing" },
+        { "icon": "🔒", "title": "Enhanced Security", "description": "Enterprise-grade security" },
+        { "icon": "📈", "title": "Scalability", "description": "Supports thousands of concurrent device connections" },
+        { "icon": "🔄", "title": "High Availability", "description": "Over 99.9% system uptime" }
+      ]
+    },
+    "cta": {
+      "title": "Start Your Digital Transformation with VEXI",
+      "desc": "Integrate all on-site data with a Control Digital Twin system and\nmaximize operational efficiency through real-time monitoring and predictive analytics.",
+      "button": "Contact Us"
+    }
+  },
+
+
+  "Mexi": {
+    "slogan": "The beginning of manufacturing innovation leading the future",
+    "advantagesTitle": "MEXI adoption enhances manufacturing competitiveness",
+    "advantagesSubtitle": "Smart factory experts with years of field experience and advanced technical capabilities provide the optimal solution",
+    "advantages": [
+      {
+        "icon": "🎯",
+        "title": "Tailored Diagnostics by Experts",
+        "description": "We accurately identify manufacturing site needs to propose optimal smart factory solutions.",
+        "color": "from-cyan-500 to-blue-500"
+      },
+      {
+        "icon": "🚀",
+        "title": "Latest Technology Meets Practical Experience",
+        "description": "Delivering effective solutions that combine automation, data analytics, and IoT.",
+        "color": "from-purple-500 to-pink-500"
+      },
+      {
+        "icon": "💪",
+        "title": "Execution-Oriented Consulting",
+        "description": "Providing actionable plans applicable directly to the field, beyond theory.",
+        "color": "from-emerald-500 to-teal-500"
+      }
+    ],
+    "servicesTitle": "Consulting Services for MEXI Transformation",
+    "servicesSubtitle": "Supporting successful smart factory implementation with a systematic and professional approach",
+    "services": [
+      {
+        "icon": "🏭",
+        "title": "Strategic Planning",
+        "subtitle": "Master Planning",
+        "description": "Analyze current state and establish a smart factory roadmap aligned with your vision.",
+        "features": ["Status Diagnosis", "Goal Setting", "Step-by-step Plan", "Investment Efficiency Analysis"],
+        "color": "from-blue-500 to-cyan-500",
+        "bgColor": "from-blue-900/50 to-cyan-900/50"
+      },
+      {
+        "icon": "⚡",
+        "title": "Process Innovation",
+        "subtitle": "Process Innovation",
+        "description": "Revolutionize existing manufacturing processes to maximize productivity and quality.",
+        "features": ["Process Analysis", "Identify Improvements", "Automation Design", "Quality Management"],
+        "color": "from-purple-500 to-pink-500",
+        "bgColor": "from-purple-900/50 to-pink-900/50"
+      },
+      {
+        "icon": "🤖",
+        "title": "Automation Design",
+        "subtitle": "Automation Design",
+        "description": "Design and build customized automation systems using the latest technology.",
+        "features": ["System Design", "Equipment Selection", "Integration", "Operator Training"],
+        "color": "from-emerald-500 to-teal-500",
+        "bgColor": "from-emerald-900/50 to-teal-900/50"
+      },
+      {
+        "icon": "📊",
+        "title": "Data Analytics",
+        "subtitle": "Data Analytics",
+        "description": "Leverage big data analysis to improve productivity and decision-making.",
+        "features": ["Data Collection", "Analytical Models", "Visualization", "Predictive Systems"],
+        "color": "from-orange-500 to-red-500",
+        "bgColor": "from-orange-900/50 to-red-900/50"
+      }
+    ],
+    "techTitle": "Core Technical Capabilities",
+    "techSubtitle": "Latest technology stack for building MEXI",
+    "techFeatures": [
+      {
+        "icon": "🔗",
+        "title": "IoT Integration",
+        "description": "Real-time data collection from sensors and devices",
+        "color": "from-orange-500 to-red-500"
+      },
+      {
+        "icon": "☁️",
+        "title": "Cloud-based",
+        "description": "Build scalable cloud infrastructure",
+        "color": "from-orange-500 to-red-500"
+      },
+      {
+        "icon": "🔒",
+        "title": "Enhanced Security",
+        "description": "Apply enterprise-grade security systems",
+        "color": "from-orange-500 to-red-500"
+      },
+      {
+        "icon": "📈",
+        "title": "Performance Measurement",
+        "description": "KPI-based performance monitoring system",
+        "color": "from-orange-500 to-red-500"
+      }
+    ],
+    "ctaTitle": "Start your MEXI transformation",
+    "ctaSubtitle": "Lead your manufacturing innovation with our expert consultants. We offer a free consultation with tailored solutions.",
+    "ctaButton": "Request Free Consultation"
+  },
+  
+
+  "library": {
+    "banner": {
+      "title": "Library",
+      "subtitle": "Resources"
+    },
+    "section": {
+      "titleHighlight": "Download",
+      "titleSuffix": " Resources",
+      "desc": "Download NamooINC product brochures and reference materials."
+    },
+    "buttons": {
+      "download": "Download",
+      "downloading": "Downloading..."
+    },
+    "cta": {
+      "title": "Need more materials?",
+      "desc": "If you need additional product information or technical documents, please contact us. Our specialists will assist you.",
+      "button": "Contact us"
+    },
+    "files": [
+      {
+        "key": "companyIntro",
+        "icon": "📄",
+        "color": "from-blue-50 to-blue-100 border-blue-400",
+        "title": "Company Introduction (Korean)",
+        "description": "NamooINC company introduction (Korean)",
+        "file": "NamooINC Company Introduction_2025 v_1.1.pdf"
+      },
+      {
+        "key": "corecodeIntro",
+        "icon": "📋",
+        "color": "from-green-50 to-green-100 border-green-400",
+        "title": "CoreCode Solution Introduction (Korean)",
+        "description": "CoreCode solution overview",
+        "file": "CoreCode Solution Introduction_2024 v_1.5.pdf"
+      }
+    ]
+  },
+
+
+  "media": {
+    "banner": { "title": "Media", "subtitle": "Media Coverage" },
+    "section": {
+      "titleHighlight": "Media",
+      "titleSuffix": " Reports",
+      "desc": "Check out press coverage of NamooINC’s innovation and growth."
+    },
+    "list": {
+      "total": "{count} results found.",
+      "empty": "No posts."
+    },
+    "table": {
+      "title": "Title",
+      "press": "Press",
+      "date": "Date",
+      "link": "Link"
+    },
+    "buttons": {
+      "view": "View article",
+      "delete": "Delete",
+      "confirmDelete": "Are you sure you want to delete?",
+      "deleted": "Deleted.",
+      "deleteFail": "Failed to delete.",
+      "error": "An error occurred."
+    },
+    "board": { "heading": "Latest Media Reports" },
+    "cta": {
+      "title": "Media inquiries",
+      "desc": "For media inquiries or interview requests, please contact us. We’ll respond as soon as possible.",
+      "button": "Contact us"
+    },
+    "mediaWrite": { "button" : "Write" },
+    "form": {
+      "title": {
+        "label": "Title",
+        "placeholder": "Enter the title.",
+        "required": "Please enter the title."
+      },
+      "press": {
+        "label": "Press",
+        "placeholder": "Enter the press name."
+      },
+      "date": {
+        "label": "Date",
+        "placeholder": "Enter the article date."
+      },
+      "link": {
+        "label": "Link",
+        "placeholder": "Enter the link.",
+        "required": "Please enter the link."
+      },
+      "buttons": {
+        "cancel": "Cancel",
+        "submit": "Submit",
+        "submitting": "Submitting..."
+      },
+      "alerts": {
+        "success": "The post has been registered.",
+        "error": "Failed to register the post."
+      }
+    }
+  },
+
+
+  "notice": {
+    "banner": { "title": "Notices", "subtitle": "Notice & News" },
+    "section": {
+      "titleHighlight": "Notice",
+      "titleSuffix": " Board",
+      "desc": "Check the latest news and notices from NamooINC."
+    },
+    "board": { "heading": "Notice List" },
+    "cta": {
+      "title": "Notice inquiries",
+      "desc": "If you have questions about notices, please contact us. We’ll respond as soon as possible.",
+      "button": "Contact us"
+    },
+    "noticeWrite": { "button" : "Write" },
+    "list": {
+      "loading": "Loading...",
+      "total": "{count} results found.",
+      "empty": "No posts.",
+      "table": {
+        "title": "Title",
+        "date": "Date"
+      }
+    },
+    "write": {
+      "title": "Write Notice"
+    },
+    "form": {
+      "title": {
+        "label": "Title",
+        "placeholder": "Enter the title.",
+        "required": "Please enter the title."
+      },
+      "content": {
+        "label": "Content",
+        "placeholder": "Enter the content.",
+        "required": "Please enter the content."
+      },
+      "buttons": {
+        "cancel": "Cancel",
+        "submit": "Submit",
+        "submitting": "Submitting..."
+      },
+      "alerts": {
+        "success": "The post has been registered.",
+        "error": "Failed to register the post."
+      }
+    },
+     "detail": {
+      "category": "Notice",
+      "backToList": "Back to list",
+      "next": "Next",
+      "prev": "Previous",
+      "noNext": "No next post.",
+      "noPrev": "No previous post."
+    },
+    "delete": {
+      "button": "Delete",
+      "title": "Are you sure you want to delete?",
+      "desc": "This action cannot be undone.",
+      "cancel": "Cancel",
+      "confirm": "Confirm",
+      "success": "The post has been deleted.",
+      "fail": "Failed to delete the post."
+    }
+  },
+
+
+  "ceo": {
+    "banner": { "title": "CEO", "subtitle": "Connecting Values"},
+    "section": {
+      "ceoMessage": {
+        "titleHighlight": "CEO",
+        "titleSuffix": " Message",
+        "desc": "We connect customer value to create greater value."
+      },
+      "values": { "title": "Our Values", "desc": "We deliver sustainable value to every stakeholder." },
+      "mission": { "title": "Our Mission",
+        "body": "We lead differentiated value through digitalization,\nproviding sustainable growth for customers, employees and partners.\nThrough Connecting Values, we create greater value together."
+      }
+    },
+    "message": {
+      "title": "CEO Greeting: Trust, Expertise and Innovation",
+      "hello": "Hello,\nI’m the CEO of NamooINC.",
+      "p1": "With deep expertise in software for manufacturing, NamooINC drives business innovation together with our customers.",
+      "p2": "We maintain high standards and cutting-edge technology, delivering valuable services and solutions with proven outcomes.",
+      "p3": "Beyond building systems, we pursue continuous R&D and product/service innovation to be a reliable partner for your growth and success.",
+      "p4": "With extensive project experience and advanced solutions such as IoT and digital twin, we are proven across diverse industrial sites.",
+      "bullets": [
+        "From design to completion, we build systems meticulously through tailored design and structured project management.",
+        "We value transparent communication and integrity to be a partner you can trust.",
+        "We take your vision as our goal and deliver high-quality solutions with full accountability."
+      ],
+      "thanks": "Thank you.\nCEO, NamooINC"
+    },
+    "introCard": {
+      "title": "Connecting Values",
+      "desc": "With 20 years of data technology expertise, NamooINC leads differentiated value creation through digitalization, from manufacturing sites to integrated logistics, customer touchpoints, and operational efficiency."
+    },
+    "achievements": [
+      { "number": "20", "unit": "yrs", "description": "Data tech capability" },
+      { "number": "100+", "unit": "projects", "description": "Successful deliveries" },
+      { "number": "50+", "unit": "partners", "description": "Partner ecosystem" }
+    ],
+    "values": [
+      { "icon": "🤝", "title": "Customers", "description": "Building lasting trust by presenting the best solutions", "color": "from-blue-50 to-blue-100 border-blue-400" },
+      { "icon": "👥", "title": "Employees", "description": "Providing opportunities to grow into experts through capability building", "color": "from-green-50 to-green-100 border-green-400" },
+      { "icon": "🤝", "title": "Partners", "description": "Co-growing the ecosystem by creating synergy", "color": "from-purple-50 to-purple-100 border-purple-400" }
+    ]
+  },
+
+
+  "ethics": {
+    "banner": { "title": "Ethical Management", "subtitle": "Transparent and Fair Culture" },
+    "philosophy": {
+      "title": "Philosophy",
+      "desc": "All employees act with honesty, trust, compliance and transparency,",
+      "desc2": "fulfilling social responsibility and pursuing co-prosperity with stakeholders."
+    },
+    "principles": [
+      { "icon": "🤝", "title": "Honesty & Trust", "description": "Act honestly in all work and put trust first.", "color": "from-blue-500 to-blue-600" },
+      { "icon": "⚖️", "title": "Compliance & Transparency", "description": "Comply with laws and practice transparent management.", "color": "from-emerald-500 to-emerald-600" },
+      { "icon": "🌱", "title": "Mutual Growth & Respect", "description": "Practice co-prosperity and mutual respect with all stakeholders.", "color": "from-purple-500 to-purple-600" },
+      { "icon": "🌍", "title": "Social Responsibility", "description": "Fulfill social responsibility and pursue sustainability.", "color": "from-orange-500 to-orange-600" }
+    ],
+    "commitments": {
+      "title": "Our Commitments",
+      "desc": "We present our genuine commitments and actions to all stakeholders.",
+      "areas": [
+        { "title": "To Customers", "items": ["Provide top-quality products and services", "Protect customer data and security", "Continuous tech innovation & improvements"] },
+        { "title": "To Employees", "items": ["Safe and healthy workplace", "Fair evaluation and rewards", "Continuous learning and growth"] },
+        { "title": "To Society", "items": ["Environmental protection & sustainability", "Expand social contribution", "Co-growth with local communities"] }
+      ]
+    },
+    "cta": { "title": "Ethics, Together", "desc": "Through continuous ethical management, we will build a better future.", "button": "Learn more about company" }
+  },
+
+
+  "recruit": {
+    "banner": {
+      "title": "Careers",
+      "subtitle": "With innovative technology and creative ideas,\nwe want to build the future together with great people"
+    },
+    "talent": {
+      "title": "Who We Look For",
+      "desc": "We’re waiting for passionate talents to grow with NamooINC",
+      "traits": [
+        { "trait": "Innovative Thinking", "icon": "💡", "description": "Creatively solving problems with new ideas" },
+        { "trait": "Teamwork Spirit", "icon": "👥", "description": "A team player who grows and collaborates together" },
+        { "trait": "Continuous Learning", "icon": "📈", "description": "Constantly learning new skills and knowledge" },
+        { "trait": "Customer-centric Mindset", "icon": "🎯", "description": "Prioritizing customer needs" },
+        { "trait": "Responsibility & Passion", "icon": "🔥", "description": "Owning your work with passion" },
+        { "trait": "Global Perspective", "icon": "🌍", "description": "Thinking and acting with a global mindset" }
+      ]
+    },
+    "benefits": {
+      "title": "Benefits",
+      "desc": "We offer various benefits for growth and work–life balance",
+      "items": [
+        { "name": "Flexible hours", "icon": "⏰", "color": "from-blue-500 to-blue-600" },
+        { "name": "Remote work", "icon": "🏠", "color": "from-green-500 to-green-600" },
+        { "name": "Lunch stipend", "icon": "🍽️", "color": "from-orange-500 to-orange-600" },
+        { "name": "Family event support", "icon": "🎁", "color": "from-purple-500 to-purple-600" },
+        { "name": "Learning budget", "icon": "📚", "color": "from-indigo-500 to-indigo-600" },
+        { "name": "Health checkups", "icon": "🏥", "color": "from-red-500 to-red-600" },
+        { "name": "Team activities", "icon": "🤝", "color": "from-teal-500 to-teal-600" },
+        { "name": "Performance bonus", "icon": "💰", "color": "from-yellow-500 to-yellow-600" }
+      ]
+    },
+    "openings": {
+      "title": "Open Positions",
+      "desc": "Check current openings and apply",
+      "apply": "Apply",
+      "positions": [
+        {
+          "title": "Frontend Engineer",
+          "type": "Full-time",
+          "location": "Gangnam-gu, Seoul",
+          "experience": "Entry/Mid",
+          "description": "Build web apps with React and Next.js",
+          "skills": ["React", "TypeScript", "Next.js", "Tailwind CSS"],
+          "icon": "💻"
+        },
+        {
+          "title": "Backend Engineer",
+          "type": "Full-time",
+          "location": "Gangnam-gu, Seoul",
+          "experience": "3+ years",
+          "description": "Develop backend systems with Spring Boot",
+          "skills": ["Java", "Spring Boot", "MySQL", "Redis"],
+          "icon": "⚙️"
+        },
+        {
+          "title": "AI/ML Engineer",
+          "type": "Full-time",
+          "location": "Gangnam-gu, Seoul",
+          "experience": "2+ years",
+          "description": "Develop smart factory AI solutions",
+          "skills": ["Python", "TensorFlow", "PyTorch", "OpenCV"],
+          "icon": "🤖"
+        }
+      ]
+    },
+    "cta": {
+      "title": "We’re waiting for talents to grow together",
+      "desc": "With innovative technology and creative ideas,\nwe want to build the future together",
+      "inquire": "Recruitment inquiry",
+      "download": "Download company brochure"
+    }
+  },
+
+
+  "welfare": {
+    "hero": {
+      "title": "Benefits",
+      "subtitle": "Various benefit programs for a happy workplace"
+    },
+    "main": {
+      "title1": "For a happy workplace",
+      "title2": "Various benefits",
+      "description": "Namoo INC operates various benefit programs to improve employees' quality of life and job satisfaction."
+    },
+    "categories": [
+      {
+        "title": "Work Environment",
+        "color": "from-blue-500 to-blue-600",
+        "items": [
+          { "icon": "🏢", "name": "Flexible Work Hours", "description": "Flexible working hours and remote work support" },
+          { "icon": "🏠", "name": "Remote Work", "description": "Providing a remote work environment suited to job needs" },
+          { "icon": "👔", "name": "Casual Dress Code", "description": "Comfortable and casual dress policy" }
+        ]
+      },
+      {
+        "title": "Life Support",
+        "color": "from-green-500 to-green-600",
+        "items": [
+          { "icon": "🎁", "name": "Event Support", "description": "Support for weddings, childbirth, funerals, etc." }
+        ]
+      },
+      {
+        "title": "Growth Support",
+        "color": "from-purple-500 to-purple-600",
+        "items": [
+          { "icon": "📚", "name": "Education Support", "description": "Support for work-related education and certifications" },
+          { "icon": "📖", "name": "Book Purchase", "description": "Support for necessary book purchases" },
+          { "icon": "🎤", "name": "Conference Participation", "description": "Support for attending work-related conferences" }
+        ]
+      },
+      {
+        "title": "Leisure Activities",
+        "color": "from-orange-500 to-orange-600",
+        "items": [
+          { "icon": "🏖️", "name": "Vacation Policy", "description": "Free use of annual leave and half-day leave" }
+        ]
+      },
+      {
+        "title": "Financial Benefits",
+        "color": "from-yellow-500 to-yellow-600",
+        "items": [
+          { "icon": "💰", "name": "Performance Bonus", "description": "Performance-based bonuses twice a year" },
+          { "icon": "📈", "name": "Stock Options", "description": "Stock options for employees" },
+          { "icon": "🏦", "name": "Retirement Pension", "description": "Defined benefit retirement pension system" }
+        ]
+      }
+    ],
+    "additionalBenefits": {
+      "title": "Additional Benefits",
+      "description": "Enhancing employee satisfaction with even more benefits",
+      "items": [
+        { "icon": "🎂", "name": "Birthday Bonus" },
+        { "icon": "🎁", "name": "Holiday Gifts" },
+        { "icon": "☀️", "name": "Summer Vacation Allowance" },
+        { "icon": "❄️", "name": "Winter Vacation Allowance" },
+        { "icon": "🎓", "name": "Children's Tuition Support" },
+        { "icon": "💒", "name": "Wedding Congratulations" },
+        { "icon": "👶", "name": "Childbirth Congratulations" },
+        { "icon": "🏆", "name": "Long Service Award" },
+        { "icon": "🚗", "name": "Travel Allowance for Holidays" }
+      ]
+    },
+    "cta": {
+      "title": "Have any questions?",
+      "description": "Feel free to contact us for more details about our benefits",
+      "contact": "Contact for Benefits",
+      "recruit": "View Job Openings"
+    }
+  },
+
+
+  "map": {
+    "hero": {
+      "title": "Directions",
+      "subtitle": "Detailed location and public transport info for your visit to Namoo Inc."
+    },
+    "map": {
+      "title": "Office Location",
+      "description": "Namoo Inc. HQ is located in Yangjae-dong, Seocho-gu, Seoul."
+    },
+    "contactSection": {
+      "title": "Address & Contact",
+      "description": "Feel free to contact us anytime for friendly assistance."
+    },
+    "address": {
+      "title": "Address",
+      "value": "2F, 108-7, Yangjae-dong, Seocho-gu, Seoul"
+    },
+    "contactInfo": [
+      { "icon": "/image/tel_ic1.png", "title": "TEL", "value": "+82-2-3018-5114", "color": "from-blue-500 to-blue-600" },
+      { "icon": "/image/tel_ic2.png", "title": "FAX", "value": "+82-2-3018-3026", "color": "from-green-500 to-green-600" }
+    ],
+    "transportation": {
+      "title": "How to Get Here",
+      "description": "You can conveniently visit us using public transportation.",
+      "items": [
+        { "icon": "/image/tel_ic3.png", "title": "Bus", "description": "Get off at Yangjae Station or Yangjae-dong Community Center.", "color": "from-orange-500 to-orange-600" },
+        { "icon": "/image/tel_ic4.png", "title": "Subway", "description": "3 min walk from Yangjae Stn Exit 1, 8 min walk from Yangjae Citizens’ Forest Stn Exit 2.", "color": "from-purple-500 to-purple-600" }
+      ]
+    },
+    "cta": {
+      "title": "Contact Us Before Your Visit",
+      "description": "If you need visiting hours or additional guidance, feel free to reach out.",
+      "button": "Inquiry About Visit"
+    },
+    "kakaoMap": {
+      "companyName": "Namoo Inc.",
+      "address": "2F, 108-7, Yangjae-dong, Seocho-gu, Seoul",
+      "actions": {
+        "viewLargeMap": "View large map",
+        "directions": "Directions"
+      },
+      "loading": {
+        "title": "Loading map...",
+        "subtitle": "Map is being loaded"
+      },
+      "errors": {
+        "missingApiKey": "Kakao Map API key is not configured"
+      }
+    }
+  },
+
+
+  "inquiry": {
+    "title": "Contact Us",
+    "subtitle": "Leave your inquiry and our team will get back to you shortly.",
+    "submit": "Submit",
+    "fields": {
+      "name": "Name",
+      "email": "Email",
+      "company": "Company / Organization",
+      "rank": "Position",
+      "industry": "Industry",
+      "detail": "Message"
+    },
+    "options": {
+      "rank": {
+        "executive": "Executive",
+        "manager": "Manager",
+        "staff": "Staff",
+        "student": "Student"
+      },
+      "industry": {
+        "it": "IT / Telecom",
+        "public": "Public Sector",
+        "education": "Education",
+        "finance": "Finance",
+        "service": "Service",
+        "retail": "Retail",
+        "manufacturing": "Manufacturing",
+        "medical": "Medical / Pharma",
+        "energy": "Energy"
+      },
+      "common": { "etc": "Other" }
+    },
+    "agreements": {
+      "all": "Agree to all.",
+      "allNotice": "(By checking this, you are deemed to have read and agreed to all items below.)",
+      "privacy": "I agree to the collection and use of personal information.",
+      "over14": "I confirm I am at least 14 years old and agree."
+    },
+    "errors": {
+      "required": "This field is required.",
+      "invalidEmail": "Invalid email address.",
+      "mustCheck": "This checkbox is required.",
+      "needDetail": "Please enter your message."
+    },
+    "alerts": {
+      "sendSuccess": "Email was sent successfully.",
+      "sendFail": "Failed to send email."
+    },
+    "privacyDialog": {
+      "title": "Consent to Collection and Use of Personal Information",
+      "content": [
+        "Namoo I&C website collects only the minimum personal information required to use the service, limited to the information entered by the user in the 'Inquiry' board. To use the services of Namoo I&C, you must enter your email, which will be used to provide the service.",
+        "Items Collected: Email (Required)",
+        "Purpose: To respond to inquiry contents",
+        "Retention Period: 1 year or as required by relevant laws",
+        "You have the right to refuse consent to the collection and use of personal information, but in such cases, service use may be restricted."
+      ],
+      "confirm": "Confirm"
+    },
+    "ageDialog": {
+      "title": "Consent: Age 14 or Older",
+      "body": {
+        "line1": "I am at least 14 years old and fully understand and consent to the collection and use of personal information.",
+        "line2": "※ Those under 14 require the consent of a legal guardian."
+      },
+      "confirm": "Confirm"
+    }
+  },
+
+
+  "pagination": {
+    "prev": "Prev",
+    "next": "Next"
   }
 }

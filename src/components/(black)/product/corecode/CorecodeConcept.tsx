@@ -2,8 +2,12 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 const SolutionConcept = () => {
+  const t = useTranslations("SolutionConcept");
+  const paragraphs = t.raw("paragraphs") as string[];
+
   const fadeInUp = {
     hidden: { opacity: 0, y: 60 },
     visible: { opacity: 1, y: 0 }
@@ -32,10 +36,10 @@ const SolutionConcept = () => {
         variants={fadeInUp}
       >
         <h2 className="mb-4 text-4xl font-bold text-gray-800 md:text-5xl">
-          <span className="text-[#78b237]">Concept</span>
+          <span className="text-[#78b237]">{t("title")}</span>
         </h2>
         <h3 className="mb-8 text-2xl font-semibold text-gray-100 md:text-3xl">
-          CoreCode "Manufacturing Message Bus Framework"
+          {t("subtitle")}
         </h3>
       </motion.div>
 
@@ -44,15 +48,9 @@ const SolutionConcept = () => {
         variants={fadeInUp}
       >
         <div className="space-y-6 text-lg leading-relaxed text-white md:text-xl">
-          <p>
-            CoreCode는 Plant Floor에서 발생하는 모든 데이터들을 실시간으로 장비로부터 직접 수집하여 
-            IT 시스템에 표준화된 방식으로 연계 시켜주는 Manufacturing Message Bus로, 
-            Smart Factory를 실현시켜 주는 표준 프레임워크를 제공합니다.
-          </p>
-          <p>
-            Smart Factory는 Plant Floor의 Data Visibility를 확보하여 Business Floor에서 
-            모든 상황을 모니터링 및 통제가 가능하게 됩니다.
-          </p>
+          {paragraphs.map((p, i) => (
+            <p key={i} className="whitespace-pre-line">{p}</p>
+          ))}
         </div>
       </motion.div>
 

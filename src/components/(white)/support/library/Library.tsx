@@ -4,35 +4,28 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
-const pdfFiles = [
-  {
-    title: "Company Introduction (국문)",
-    description: "나무아이앤씨 회사 소개 (국문)",
-    file: "NamooINC Company Introduction_2025 v_1.1.pdf",
-    icon: "📄",
-    color: "from-blue-50 to-blue-100 border-blue-400"
-  },
-  {
-    title: "CoreCode Solution Introduction (국문)",
-    description: "코어코드 솔루션 소개",
-    file: "CoreCode Solution Introduction_2024 v_1.5.pdf",
-    icon: "📋",
-    color: "from-green-50 to-green-100 border-green-400"
-  },
-];
+type PdfFile = {
+  key: string;
+  title: string;
+  description: string;
+  file: string;
+  icon: string;
+  color: string;
+};
 
 const Library = () => {
+  const t = useTranslations("library");
   const [isVisible, setIsVisible] = useState(false);
   const [downloading, setDownloading] = useState<string | null>(null);
+  const pdfFiles = t.raw("files") as PdfFile[];
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
 
   const handleDownload = (filename: string) => {
-    console.log('다운로드 시도:', filename);
-    
     try {
       setDownloading(filename);
       
@@ -44,9 +37,7 @@ const Library = () => {
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      
-      console.log('다운로드 링크 생성 완료');
-      
+            
     } catch (error) {
       console.error('다운로드 오류:', error);
       alert('다운로드에 실패했습니다. 다시 시도해 주세요.');
@@ -96,10 +87,10 @@ const Library = () => {
             transition={{ duration: 0.8, delay: 0.3 }}
           >
             <h1 className="mb-4 text-4xl font-bold md:text-5xl lg:text-6xl">
-              라이브러리
+              {t("banner.title")}
             </h1>
             <p className="text-lg md:text-xl lg:text-2xl text-gray-200">
-              자료실
+              {t("banner.subtitle")}
             </p>
           </motion.div>
         </div>
@@ -118,10 +109,11 @@ const Library = () => {
             variants={fadeInUp}
           >
             <h2 className="mb-6 text-3xl font-bold text-gray-800 md:text-4xl">
-              <span className="text-[#78b237]">다운로드</span> 자료
+              <span className="text-[#78b237]">{t("section.titleHighlight")}</span>
+              {t("section.titleSuffix")}
             </h2>
             <p className="text-lg text-gray-600 md:text-xl">
-              나무아이앤씨의 제품 소개서와 참고 자료를 다운로드하세요.
+              {t("section.desc")}
             </p>
           </motion.div>
 
@@ -155,7 +147,7 @@ const Library = () => {
                     className="inline-block px-6 py-3 rounded-full bg-[#78b237] text-white font-semibold hover:bg-[#5a8a2a] transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl disabled:opacity-50 cursor-pointer"
                     style={{ position: 'relative', zIndex: 10 }}
                   >
-                    {downloading === pdf.file ? '다운로드 중...' : '다운로드'}
+                    {downloading === pdf.file ? t("buttons.downloading") : t("buttons.download")}
                   </button>
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-br from-[#78b237]/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
@@ -172,17 +164,16 @@ const Library = () => {
             <div className="text-center">
               <div className="mb-6 text-6xl">📚</div>
               <h3 className="mb-6 text-2xl font-bold text-gray-800 md:text-3xl">
-                더 많은 자료가 필요하신가요?
+                {t("cta.title")}
               </h3>
               <p className="text-lg text-gray-700 leading-relaxed max-w-4xl mx-auto mb-8">
-                추가적인 제품 정보나 기술 자료가 필요하시면 언제든지 문의해 주세요. 
-                전문 상담사가 도움을 드리겠습니다.
+                {t("cta.desc")}
               </p>
               <Link 
                 href="/inquiry/corecode-inquiry"
                 className="inline-block px-8 py-4 rounded-full bg-[#78b237] text-white font-semibold hover:bg-[#5a8a2a] transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
               >
-                문의하기
+                {t("cta.button")}
               </Link>
             </div>
           </motion.div>
