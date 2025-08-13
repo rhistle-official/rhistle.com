@@ -3,8 +3,11 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import History from "./History";
+import { useTranslations } from "next-intl"; 
 
 const CompanyHistory = () => {
+  const t = useTranslations("history");
+
   const fadeInUp = {
     initial: { opacity: 0, y: 60 },
     animate: { opacity: 1, y: 0 },
@@ -48,7 +51,7 @@ const CompanyHistory = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              회사 연혁
+              {t("title")}
             </motion.h1>
             <motion.p 
               className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto"
@@ -56,7 +59,7 @@ const CompanyHistory = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              나무아이앤씨의 성장과 혁신의 발자취를 함께 살펴보세요
+              {t("subtitle")}
             </motion.p>
           </div>
         </motion.div>
@@ -91,7 +94,7 @@ const CompanyHistory = () => {
                 </div>
                 <div>
                   <h2 className="text-2xl font-bold text-white">History</h2>
-                  <p className="text-emerald-100">지속 가능한 성장을 향한 나무아이앤씨의 발걸음</p>
+                  <p className="text-emerald-100">{t("historyline")}</p>
                 </div>
               </motion.div>
             </div>
@@ -118,17 +121,17 @@ const CompanyHistory = () => {
             transition={{ duration: 0.3 }}
           >
             <h3 className="text-3xl font-bold text-gray-800 mb-4">
-              더 나은 미래를 함께 만들어가겠습니다
+              {t("ctaCard.title")}
             </h3>
             <p className="text-lg text-gray-600 mb-8">
-              지속적인 혁신과 기술 발전을 통해 고객에게 최고의 가치를 제공하겠습니다
+              {t("ctaCard.description")}
             </p>
             <motion.button 
               className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-2xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              회사 소개 더 보기
+              {t("ctaCard.button")}
             </motion.button>
           </motion.div>
         </div>

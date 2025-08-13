@@ -1064,6 +1064,406 @@
     }
   },
 
+  
+  "history": {
+    "title": "Company History",
+    "subtitle": "Growth and Footsteps of Namoo Inc.",
+    "historyline": "Namoo INC’s Journey Toward Sustainable Growth",
+    "seeMoreHint": "Click to view details",
+    "product": "2005 - Present",
+    "ctaCard": {
+      "title": "We Will Build a Better Future Together",
+      "description": "Through continuous innovation and technological advancement, we will provide the highest value to our customers",
+      "button": "Learn More"
+    },
+    "highlights": [
+      {
+        "date": "2025",
+        "items": [
+          "Planned launch of Vexi (Control DT Solution)",
+          "Launch of Nexum (Manufacturing IT Framework)",
+          "Supply of CoreCode Suite to Celltrion Pharmaceutical"
+        ]
+      },
+      {
+        "date": "2024",
+        "items": [
+          "Launch of CoreCode Suite V5",
+          "Expansion of Smart Factory business (Consulting, System Construction)"
+        ]
+      },
+      {
+        "date": "2023",
+        "items": [
+          "Supply of CoreCode Suite to LG Electronics",
+          "Strategic alliance with LS Mtron"
+        ]
+      },
+      {
+        "date": "2022",
+        "items": [
+          "Selected as an LGCNS partner"
+        ]
+      },
+      {
+        "date": "2020",
+        "items": [
+          "Supply of CoreCode Suite to SK Hynix",
+          "Supply of CoreCode Suite to Celltrion"
+        ]
+      },
+      {
+        "date": "2018",
+        "items": [
+          "Supply of CoreCode Suite to Kia Motors",
+          "Supply of CoreCode Suite to Hyundai Steel"
+        ]
+      },
+      {
+        "date": "2017",
+        "items": [
+          "Supply of CoreCode Suite to Hyundai Motor Company"
+        ]
+      },
+      {
+        "date": "2016",
+        "items": [
+          "Selected as a partner of Hyundai AutoEver",
+          "Supply of CoreCode to Hanwha Ocean"
+        ]
+      },
+      {
+        "date": "2015",
+        "items": [
+          "Selected as a partner of SK AX"
+        ]
+      },
+      {
+        "date": "2014",
+        "items": [
+          "CoreCode Suite GS Certification"
+        ]
+      },
+      {
+        "date": "2013",
+        "items": [
+          "CoreCode XSTORE GS Certification"
+        ]
+      },
+      {
+        "date": "2012",
+        "items": [
+          "Supply of CoreCode Suite to POSCO and POS HiMetal",
+          "Supply of CoreCode XSTORE to the Supreme Court"
+        ]
+      },
+      {
+        "date": "2011",
+        "items": [
+          "Selected as a POSCO DX partner",
+          "Supply of CoreCode to Samsung Electronics"
+        ]
+      },
+      {
+        "date": "2010",
+        "items": [
+          "Supply of CoreCode Suite to Samsung SDI",
+          "Supply of CoreCode Suite to Corning Precision Materials",
+          "Supply of CoreCode Suite to Samsung Display"
+        ]
+      },
+      {
+        "date": "2009",
+        "items": [
+          "Selected as a partner of Samsung SDS"
+        ]
+      },
+      {
+        "date": "2008",
+        "items": [
+          "Certified as an Innovative Small Business (INNO-BIZ) by the Ministry of SMEs and Startups"
+        ]
+      },
+      {
+        "date": "2007",
+        "items": [
+          "Filed patent for integrated interface device",
+          "Launch of CoreCode Suite V4 (Interface Middleware)"
+        ]
+      },
+      {
+        "date": "2006",
+        "items": [
+          "Launch of CoreCode XSTORE (XML Document Management Software)",
+          "Supply of CoreCode Suite to SK Hynix Wuxi, China",
+          "Launch of CoreCode Suite (Interface Middleware)",
+          "Established corporate research institute",
+          "Selected as an Excellent Technology Company"
+        ]
+      },
+      {
+        "date": "2005",
+        "items": [
+          "Founded Namoo Inc."
+        ]
+      }
+    ],
+    "histories": [
+      {
+        "date": "2025",
+        "items": [
+          "Vexi Control DT solution planned for release",
+          "Nexum (Manufacturing IT Framework) launched",
+          "Supplied CoreCode Suite to Celltrion Pharm",
+          "Built SK hynix Cheongju Environmental Safety IRIS Early Response Integrated System",
+          "Samsung Electronics Semiconductor Pyeongtaek EHS IDPS P4 implementation",
+          "Integrated leak detection system for Samsung Electronics Semiconductor Giheung/Hwaseong",
+          "Linked IDPS for the new NRD-K building at Samsung Electronics Giheung K1 site",
+          "Integrated EHS IDPS at Samsung Display Giheung",
+          "Samsung Display EHS Asan 1 SMCS gas monitoring, Phase 6",
+          "Samsung Display EHS Asan 2 A2 GDS gas monitoring rebuild",
+          "Corning Precision Materials additional ICS retrofit (NGSD KN17 automatic loading robot)",
+          "Celltrion EBR equipment integration",
+          "INNOX Lithium EIS integration",
+          "Integrated logistics equipment for Celltrion Pharm EWM implementation",
+          "Consulting for M.I.Tech and S&G Biotech"
+        ]
+      },
+      {
+        "date": "2024",
+        "items": [
+          "Released CoreCode Suite v5",
+          "Expanded smart factory business (consulting, system implementation)",
+          "Samsung Electronics Semiconductor Pyeongtaek EHS IDPS P4 implementation",
+          "Samsung Display EHS Asan 1 SMCS gas monitoring, Phase 5",
+          "Samsung Display EHS Cheonan SMCS gas monitoring implementation",
+          "Corning Precision Materials ICS system retrofit",
+          "Celltrion EBR equipment integration",
+          "SBTL MES temperature/humidity equipment integration",
+          "M.I.Tech MES PI implementation and PMO consulting"
+        ]
+      },
+      {
+        "date": "2023",
+        "items": [
+          "Entered a strategic partnership with LS TIRAYUTEC",
+          "Supplied CoreCode Suite to LG Electronics",
+          "Samsung Electronics Semiconductor Pyeongtaek EHS IDPS P3 implementation",
+          "Samsung Display India EHS IDPS integration",
+          "Samsung Display EHS Asan 1 SMCS gas monitoring, Phase 4",
+          "LG Electronics partner quality data integration system",
+          "Celltrion EBR equipment integration",
+          "Corning Precision Materials additional ICS retrofit",
+          "Haesung DS EAP system implementation (NIPA project)",
+          "Energy Materials MES implementation"
+        ]
+      },
+      {
+        "date": "2022",
+        "items": [
+          "Selected as LGCNS partner",
+          "SK hynix Icheon EHS IRIS Early Response Integrated System, Phase 3",
+          "Samsung Electronics Semiconductor Giheung/Hwaseong additional EHS IDPS implementation",
+          "Samsung Display EHS Asan 1 SMCS gas monitoring, Phase 3",
+          "Corning Precision Materials additional ICS retrofit"
+        ]
+      },
+      {
+        "date": "2021",
+        "items": [
+          "SK hynix Icheon EHS IRIS Early Response Integrated System, Phase 2",
+          "Samsung Electronics Semiconductor Pyeongtaek EHS IDPS P2 implementation",
+          "Samsung Electronics Semiconductor Giheung/Hwaseong additional EHS IDPS implementation",
+          "Hyundai Motor Ulsan Plants 2 & 3 intelligent system integration",
+          "Corning Precision Materials additional ICS retrofit",
+          "WONIK IPS equipment integration"
+        ]
+      },
+      {
+        "date": "2020",
+        "items": [
+          "Supplied CoreCode Suite to SK hynix",
+          "Supplied CoreCode Suite to Celltrion",
+          "Samsung Electronics Austin (USA) GCS EES Phase 2 integration and PM Web Manager implementation",
+          "SK hynix Icheon EHS IRIS Early Response Integrated System, Phase 1",
+          "Samsung Display EHS Asan 1 SMCS gas monitoring, Phase 2",
+          "Hyundai Motor Ulsan Paint Shop 3 intelligent factory management system IoT platform implementation",
+          "Hyundai–Kia Namyang R&D Center global electrical inspection IoT platform implementation",
+          "Celltrion EBR system implementation",
+          "Chong Kun Dang FEMS equipment data integration",
+          "Corning Precision Materials additional ICS retrofit and optimization"
+        ]
+      },
+      {
+        "date": "2019",
+        "items": [
+          "Samsung Electronics Semiconductor Xi'an (China) EHS IDPS, Phase 2 implementation",
+          "Samsung Electronics Semiconductor Giheung/Hwaseong EHS IDPS functional enhancement",
+          "Hyundai Motor Ulsan Plant 5-1 intelligent factory management system IoT platform implementation",
+          "Hyundai–Kia Namyang R&D environmental certification test management IoT platform implementation",
+          "Kia Sohari Plant 2 intelligent factory management system IoT platform implementation",
+          "Kia India GMES Infra Implementation manufacturing IoT platform implementation",
+          "Corning Precision Materials additional ICS retrofit",
+          "Celltrion ERP logistics equipment integration",
+          "China CARL automated data collection",
+          "SeAH Steel Digital Infra design consulting"
+        ]
+      },
+      {
+        "date": "2018",
+        "items": [
+          "Supplied CoreCode Suite to Kia",
+          "Supplied CoreCode Suite to Hyundai Steel",
+          "Samsung Display EHS Asan & Cheonan IDPS, Phase 2 implementation",
+          "Samsung Electronics Semiconductor Cheonan EHS IDPS implementation",
+          "China JV Corning Chengdu/Shenyang QMS implementation",
+          "Hyundai Steel Ulsan steel pipe quality IT system IoT platform implementation",
+          "Hyundai Motor Ulsan Plant 5 smart paint shop management system IoT platform implementation",
+          "Hyundai Motor Ulsan rear 8-speed automatic transmission machining line MES implementation (IoT development)",
+          "Hyundai Motor Ulsan new engine (New U + Gamma 2) plant machining line MES implementation (IoT development)",
+          "Corning Precision Materials additional ICS retrofit"
+        ]
+      },
+      {
+        "date": "2017",
+        "items": [
+          "Supplied CoreCode Suite to Hyundai Motor",
+          "SK hynix Wuxi (China) EHS CMS integrated monitoring, Phase 3",
+          "Samsung Display EHS Asan 1 SMCS gas monitoring, Phase 1",
+          "Samsung Display Asan 2 A3 GDS gas monitoring, Phase 2",
+          "Samsung Display Vietnam EHS IDPS V3 implementation",
+          "Hyundai AutoEver manufacturing IoT platform Phase 1 development and implementation",
+          "Daewoo Shipbuilding & Marine Engineering HVAC integrated control system implementation",
+          "Binggrae Gimhae plant EMS implementation",
+          "Xingshan (China) Cement Plant No. 2 FEMS implementation",
+          "Corning Precision Materials additional ICS retrofit"
+        ]
+      },
+      {
+        "date": "2016",
+        "items": [
+          "Selected as Hyundai AutoEver partner",
+          "Supplied CoreCode to Hanwha Ocean",
+          "Samsung Electronics Semiconductor Pyeongtaek EHS IDPS P1 implementation",
+          "Samsung Electronics Austin (USA) GCS EES Phase 1 integration",
+          "Samsung Display Asan 2 GCS EES integration",
+          "Samsung Display Asan 2 A3 FMCS EES integration",
+          "Samsung Display Suzhou (China) EHS IDPS Phase 2 implementation",
+          "Samsung Display Cheonan GRAYZONE EES integration",
+          "Samsung Display Vietnam EHS IDPS V1 & V2 implementation",
+          "Samsung Display Vietnam FMCS and EES integration",
+          "Daewoo Shipbuilding building EMS interface implementation",
+          "Monolith Jeju convergence theme park project (KOCCA)",
+          "Busan Smart City Phase 2 pilot project",
+          "SK hynix Wuxi (China) EHS CMS integrated monitoring, Phase 2",
+          "Corning Precision Materials additional ICS retrofit"
+        ]
+      },
+      {
+        "date": "2015",
+        "items": [
+          "Selected as SK AX partner",
+          "SK hynix Wuxi (China) EHS CMS integrated monitoring, Phase 1",
+          "Samsung Display EHS G-IDPS EES integration",
+          "Samsung Display Asan 2 A3 GDS gas monitoring, Phase 1",
+          "Corning Precision Materials additional ICS retrofit"
+        ]
+      },
+      {
+        "date": "2014",
+        "items": [
+          "CoreCode Suite GS certification",
+          "Samsung Electronics Semiconductor Giheung/Hwaseong EHS IDPS implementation",
+          "Samsung Electronics Semiconductor Giheung/Hwaseong EHS EES integration",
+          "Samsung Display Asan 2 A2 GDS gas monitoring, Phase 3",
+          "Samsung Display EHS G-IDPS integration",
+          "Corning Precision Materials additional ICS retrofit"
+        ]
+      },
+      {
+        "date": "2013",
+        "items": [
+          "CoreCode XSTORE GS certification",
+          "Samsung Display Asan 2 A2 GDS gas monitoring, Phase 2",
+          "Samsung Display EHS IDPS implementation",
+          "POSCO Suncheon Magnesium Plant 2 rolling/finishing process integration",
+          "Corning Precision Materials additional ICS retrofit"
+        ]
+      },
+      {
+        "date": "2012",
+        "items": [
+          "Supplied CoreCode Suite to POSCO and POSCO High Metal",
+          "Supplied CoreCode XSTORE to the Supreme Court",
+          "Samsung Electronics Giheung/Hwaseong EHS EES integration",
+          "Samsung Electronics Green Portal waste management integration",
+          "POSCO High Metal integrated security/disaster prevention system implementation",
+          "POSCO Suncheon Magnesium SCM implementation",
+          "Corning Precision Materials ICS stabilization and additional retrofit",
+          "Supreme Court judicial work computerization implementation",
+          "Supreme Court e-Litigation computerization implementation"
+        ]
+      },
+      {
+        "date": "2011",
+        "items": [
+          "Selected as POSCO DX partner",
+          "Supplied CoreCode to Samsung Electronics",
+          "Samsung Display Asan 2 A2 GDS gas monitoring improvement",
+          "Samsung Display greenhouse gas/energy management system implementation",
+          "Samsung Display EHS VESTA EES integration",
+          "Corning Precision Materials ICS Phase 2 implementation",
+          "Nongshim Gumi production information system implementation",
+          "Yulchon Chemical production information system implementation"
+        ]
+      },
+      {
+        "date": "2010",
+        "items": [
+          "Supplied CoreCode Suite to Samsung SDI",
+          "Supplied CoreCode Suite to Corning Precision Materials",
+          "Supplied CoreCode Suite to Samsung Display",
+          "Samsung Display Asan 2 A2 GDS gas monitoring, Phase 1",
+          "Corning Precision Materials ICS Phase 1 implementation"
+        ]
+      },
+      {
+        "date": "2009",
+        "items": [
+          "Selected as Samsung SDS partner"
+        ]
+      },
+      {
+        "date": "2008",
+        "items": [
+          "Certified as an INNO-BIZ (technology-innovative SME) by the Ministry of SMEs and Startups"
+        ]
+      },
+      {
+        "date": "2007",
+        "items": [
+          "Filed patent for integrated interface device",
+          "Released CoreCode Suite V4 (interface middleware)"
+        ]
+      },
+      {
+        "date": "2006",
+        "items": [
+          "Released CoreCode XSTORE (XML document management software)",
+          "Supplied CoreCode Suite to SK hynix Wuxi (China)",
+          "Released CoreCode Suite (interface middleware)",
+          "Established corporate R&D center",
+          "Selected as an Excellent Technology Company"
+        ]
+      },
+      {
+        "date": "2005",
+        "items": [
+          "Established Namoo I&C Co., Ltd."
+        ]
+      }
+    ]
+  },
 
   "pagination": {
     "prev": "Prev",
