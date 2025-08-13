@@ -742,7 +742,7 @@
     },
     "message": {
       "title": "CEO Greeting: Trust, Expertise and Innovation",
-      "hello": "Hello,\nI’m the CEO of NamooINC.",
+      "hello": "Hello\nI'm Kim Kyung-sik, CEO of Namu I&C.",
       "p1": "With deep expertise in software for manufacturing, NamooINC drives business innovation together with our customers.",
       "p2": "We maintain high standards and cutting-edge technology, delivering valuable services and solutions with proven outcomes.",
       "p3": "Beyond building systems, we pursue continuous R&D and product/service innovation to be a reliable partner for your growth and success.",
@@ -928,11 +928,6 @@
       "title": "Additional Benefits",
       "description": "Enhancing employee satisfaction with even more benefits",
       "items": [
-        { "icon": "🎂", "name": "Birthday Bonus" },
-        { "icon": "🎁", "name": "Holiday Gifts" },
-        { "icon": "☀️", "name": "Summer Vacation Allowance" },
-        { "icon": "❄️", "name": "Winter Vacation Allowance" },
-        { "icon": "🎓", "name": "Children's Tuition Support" },
         { "icon": "💒", "name": "Wedding Congratulations" },
         { "icon": "👶", "name": "Childbirth Congratulations" },
         { "icon": "🏆", "name": "Long Service Award" },
