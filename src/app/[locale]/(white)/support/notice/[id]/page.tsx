@@ -4,7 +4,7 @@ import NoticeDeleteButton from '@/components/(white)/support/notice/NoticeDelete
 import Link from 'next/link';
 import {getTranslations, setRequestLocale} from "next-intl/server";
 
-interface Props { params: { id: string; locale: string } }
+interface Props { params: Promise<{ id: string; locale: string }>; }
 
 export default async function NoticeDetailPage({ params }: Props) {
   const { id, locale } = await params;
