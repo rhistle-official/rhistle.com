@@ -112,9 +112,7 @@ export default function SignInPage() {
         <div className="mt-4 text-sm text-gray-500 flex justify-center space-x-2">
           <a href="/sign-up" className="hover:underline">회원가입</a>
           <span className="text-gray-300">|</span>
-          <a href="/" className="hover:underline">아이디 찾기</a>
-          <span className="text-gray-300">|</span>
-          <a href="/" className="hover:underline">비밀번호 찾기</a>
+          <a href="/forgot-password" className="hover:underline">비밀번호 찾기</a>
         </div>
       </div>
     </div>
