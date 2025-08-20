@@ -121,18 +121,6 @@ export default function SignUpPage() {
       
       if (result.status === "complete") {
         await setActive({ session: result.createdSessionId });
-        // await fetch("/api/update-user", {
-        //   method: "POST",
-        //   headers: { "Content-Type": "application/json" },
-        //   body: JSON.stringify({
-        //     publicMetadata: {
-        //       name: name,
-        //       dept: department, 
-        //       field: field,
-        //       bio: bio,
-        //     },
-        //   }),
-        // });
         router.push("/");
       }
     } catch (err: any) {
