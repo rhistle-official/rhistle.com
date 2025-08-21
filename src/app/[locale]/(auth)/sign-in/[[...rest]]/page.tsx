@@ -1,8 +1,9 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { useRouter, useSearchParams } from "next/navigation"
-import { useUser, useSignIn } from "@clerk/clerk-react"
+import Image from "next/image";
+import Link from "next/link";
+import { useSignIn } from "@clerk/clerk-react"
 
 export default function SignInPage() {
   const { isLoaded, signIn, setActive } = useSignIn()
@@ -70,10 +71,17 @@ export default function SignInPage() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-white to-[#f4f7ec]">
       <div className="mb-4">
-        <img src="/image/ci_green.png" alt="로고" className="h-16 mx-auto" />
+        <Link href={"/"}>
+					<Image
+						src="/image/ci_green.png"
+						alt="로고"
+						width={1000}
+						height={308}
+						priority
+						className="mb-6 h-16 w-48"
+					/>
+				</Link>
       </div>
-
-      <h1 className="text-lg text-gray-500 mb-4">로그인</h1>
 
       <div className="w-full max-w-sm p-8 bg-white rounded-xl shadow-2xl border border-gray-100">
         {/* 이메일 입력 */}

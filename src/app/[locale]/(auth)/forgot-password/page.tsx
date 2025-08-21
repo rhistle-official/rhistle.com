@@ -1,6 +1,8 @@
 "use client";
 import { useState } from "react";
 import { useSignIn } from "@clerk/nextjs";
+import Image from "next/image";
+import Link from "next/link";
 
 // 이메일 유효성 검사 함수
 const isValidEmail = (email: string) =>
@@ -77,9 +79,16 @@ export default function ForgotPasswordPage() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-white to-[#f4f7ec]">
-      <div className="mb-4">
-        <img src="/image/ci_green.png" alt="로고" className="h-16 mx-auto" />
-      </div>
+      <Link href={"/"}>
+        <Image
+          src="/image/ci_green.png"
+          alt="로고"
+          width={1000}
+          height={308}
+          priority
+          className="mb-6 h-16 w-48"
+        />
+      </Link>
 
       <h1 className="text-lg text-gray-500 mb-4">비밀번호 찾기</h1>
 
@@ -90,7 +99,7 @@ export default function ForgotPasswordPage() {
           onChange={(e) => setEmail(e.target.value)}
           placeholder="이메일"
           onKeyDown={handleKeyDown}
-          className={`w-full mb-4 px-4 py-2 border rounded bg-gray-50 ${
+          className={`w-full mb-4 px-10 py-2 border rounded bg-gray-50 ${
             email && !isValidEmail(email) ? "border-red-500" : ""
           }`}
         />
