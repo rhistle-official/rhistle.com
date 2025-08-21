@@ -6,7 +6,8 @@ import LocaleSwicher from "../LocaleSwicher";
 import Logo from "../ui/Logo";
 import MobileMenu from "../MobileMenu";
 import NavMenu from "./NavMenu";
-import { SignedIn, SignedOut, SignOutButton } from "@clerk/clerk-react"
+import { SignOutButton } from "@clerk/clerk-react"
+import { useAuth } from "@clerk/nextjs";
 import LoginButton from "@/components/auth/LoginButton";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -16,6 +17,18 @@ const NavBar = ({ bgColor }: { bgColor: string }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [image, setImage] = useState("");
+  const { isLoaded, isSignedIn } = useAuth();
+
+  const [isClient, setIsClient] = useState(false);
+  useEffect(() => setIsClient(true), []);
+  
+  const pathname = usePathname();
+  const isOnInquiryPage = pathname.includes("inquiry");
+  const isAuthPage = pathname.includes("/sign-in") 
+  || pathname.includes("/sign-up") 
+  || pathname.includes("/forgot-password");
+
+  const t = useTranslations("NavBar");   
   
   useEffect(() => {
     const scrollHandler = () => {
@@ -47,11 +60,7 @@ const NavBar = ({ bgColor }: { bgColor: string }) => {
     bgColor === "bg-black"
       ? setImage("ci_white.png")
       : setImage("ci_green.png");
-  });
-
-  const pathname = usePathname();
-  const isOnInquiryPage = pathname.includes("inquiry");
-  const t = useTranslations("NavBar"); 
+  }, [bgColor]);
 
   return (
     <header className="fixed z-20 w-full">
@@ -78,18 +87,25 @@ const NavBar = ({ bgColor }: { bgColor: string }) => {
               )
             }
             <LocaleSwicher />
-            <SignedOut>
-             <LoginButton />
-            </SignedOut>
+            {!isAuthPage && (   
+              <>
+                {!isLoaded && (
+                  <button className="ml-2 rounded bg-[#78b237] text-white px-6 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-300 w-auto max-w-[150px] whitespace-nowrap">
+                    ...
+                  </button>
+                )}
 
-            {/* 로그인 된 경우 → 로그아웃 버튼 */}
-            <SignedIn>
-              <SignOutButton>
-                <button className="ml-2 rounded bg-gray-200 px-4 py-2 text-sm font-semibold text-gray-700 rounded hover:bg-gray-300 w-auto max-w-[150px] whitespace-nowrap">
-                  {t("logoutButton.logout")}
-                </button>
-              </SignOutButton>
-            </SignedIn>
+                {isLoaded && !isSignedIn && <LoginButton />}
+
+                {isLoaded && isSignedIn && (
+                  <SignOutButton>
+                    <button className="ml-2 rounded bg-gray-200 px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-300 w-auto max-w-[150px] whitespace-nowrap">
+                      {t("logoutButton.logout")}
+                    </button>
+                  </SignOutButton>
+                )}
+              </>
+            )}
           </div>
         )}
       </div>

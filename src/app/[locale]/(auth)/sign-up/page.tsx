@@ -3,6 +3,8 @@
 import { useSignUp} from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function SignUpPage() {
   const { isLoaded, signUp, setActive } = useSignUp();
@@ -148,8 +150,17 @@ export default function SignUpPage() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-white to-[#eaf6db] px-4 py-8">
-      <div className="mb-6">
-        <img src="/image/ci_green.png" alt="로고" className="h-16 mx-auto" />
+      <div className="mb-2">
+        <Link href={"/"}>
+          <Image
+            src="/image/ci_green.png"
+            alt="로고"
+            width={1000}
+            height={308}
+            priority
+            className="mb-6 h-16 w-48"
+          />
+        </Link>
       </div>
 
       <h1 className="text-xl text-gray-600 mb-6 font-semibold">
