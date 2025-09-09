@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import ArrowUpRight from "../../../public/svg/ArrowUpRight";
 import LocaleSwicher from "../LocaleSwicher";
 import Logo from "../ui/Logo";
-import MobileMenu from "../MobileMenu";
+import MobileMenu from "../menu/MobileMenu";
 import NavMenu from "./NavMenu";
 import { SignOutButton } from "@clerk/clerk-react"
 import { useAuth } from "@clerk/nextjs";
