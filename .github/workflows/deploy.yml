@@ -70,8 +70,8 @@ jobs:
 
             docker rm -f $CONTAINER_NAME || true
 
-            docker-compose -f /home/***/www.***.com/docker-compose.yml pull
-            docker-compose -f /home/homepage/www.namooinc.com/docker-compose.yml up -d --remove-orphans
+            docker-compose -f /namooinc/web/www/docker-compose.yml pull
+            docker-compose -f /namooinc/web/www/docker-compose.yml up -d --remove-orphans
 
             sleep 7
 
