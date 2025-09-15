@@ -139,7 +139,13 @@ const HomeItem1 = () => {
             <p className="text-md font-bold sm:text-xl md:text-2xl text-white/90 max-w-2xl">
               {t(slide.description)}
             </p>
-            <div className="pt-4">
+            <div className=" pt-4 md:pt-6
+    /* 모바일: 하단 중앙 고정 */
+    absolute left-1/2 -translate-x-1/2
+    h-10 flex items-center                 /* ← 화살표(40px)와 같은 높이로 맞춰 수직 중앙 정렬 */
+    z-[9997]
+    /* 데스크톱: 원래 자리로 복귀 */
+    md:static md:h-auto md:translate-x-0 md:left-auto md:bottom-autoo">
               <Button 
                 size="lg" 
                 className="bg-white text-black hover:bg-white/90 font-semibold px-8 py-3 text-lg"
