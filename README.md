@@ -39,7 +39,7 @@ NEXT_PUBLIC_KAKAO_MAP_KEY=your_kakao_map_api_key_here
 1. 이메일 발송에 사용할 계정을 준비하세요.  
    - Gmail → [앱 비밀번호](https://support.google.com/accounts/answer/185833) 생성  
    - 또는 회사 SMTP 계정 정보 사용
-2. 아래 값을 `.env` 파일에 추가:
+2. 아래 값을 `.env` 파일에 추가
 ```bash
 EMAIL_USER=발신자_이메일주소
 EMAIL_PASS=앱비밀번호_또는_SMTP_패스워드
