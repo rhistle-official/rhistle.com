@@ -44,6 +44,7 @@ NEXT_PUBLIC_KAKAO_MAP_KEY=your_kakao_map_api_key_here
 EMAIL_USER=발신자_이메일주소
 EMAIL_PASS=앱비밀번호_또는_SMTP_패스워드
 EMAIL_TO=수신자_이메일주소(ex: developer.namooinc.com)
+```
 
 ### 2. 개발 서버 실행
 
