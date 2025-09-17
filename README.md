@@ -17,7 +17,7 @@ NEXT_PUBLIC_KAKAO_MAP_KEY=your_kakao_map_api_key_here
 3. JavaScript 앱 키 복사
 4. `.env` 파일에 붙여넣기
 
-**CLERK API 키 발급 방법:**
+**CLERK API 키 발급 방법**
 1. [CLERK](https://dashboard.clerk.com/)에 로그인
 2. 애플리케이션 생성 → 프로젝트 선택
 3. Configure 탭, 좌측 메뉴 Developers -> API keys 클릭
@@ -25,7 +25,7 @@ NEXT_PUBLIC_KAKAO_MAP_KEY=your_kakao_map_api_key_here
 5. NEXT_PUBLIC_CLERK_DOMAIN -> Developers -> Domains 상단에 나온 값 복사
 6. `.env`  파일에 붙여넣기
 
-## Slack Webhook 설정
+**SLACK API 키 발급 방법**
 1. [Slack API](https://api.slack.com/apps) 페이지에 접속  
 2. **Create New App** → "From scratch" 선택  
 3. 앱 이름과 워크스페이스를 입력 후 생성  
@@ -35,8 +35,7 @@ NEXT_PUBLIC_KAKAO_MAP_KEY=your_kakao_map_api_key_here
 7. 생성된 **Webhook URL** 을 복사
 8. `.env`  파일에 붙여넣기
 
-## 이메일 환경 변수 설정
-
+**이메일 환경 변수 설정**
 1. 이메일 발송에 사용할 계정을 준비하세요.  
    - Gmail → [앱 비밀번호](https://support.google.com/accounts/answer/185833) 생성  
    - 또는 회사 SMTP 계정 정보 사용
