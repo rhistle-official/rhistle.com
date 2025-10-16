@@ -64,6 +64,7 @@ jobs:
             set -euxo pipefail
             
             CONTAINER_NAME=www-namoo
+            SERVICE=www-namoo
             BACKUP_IMAGE=${CONTAINER_NAME}:backup
             
             # 0) 환경 고정
@@ -79,7 +80,6 @@ jobs:
             echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u rhistle-official --password-stdin
             
             # 3) 현재 서비스 컨테이너 ID 조회
-            SERVICE=www-namoo                                 # compose의 서비스명
             CID="$(docker compose ps -q "$SERVICE" || true)"  # 실제 컨테이너 ID (없으면 빈 값)
             
             # 4) 백업 이미지 커밋
@@ -94,22 +94,39 @@ jobs:
             # 6) 기동
             docker compose -f docker-compose.yml up -d --remove-orphans
             
-            # 7) 내부 헬스체크, 컨테이너 내부 127.0.0.1 검사
-            #    -L: 리다이렉트 대비, -sS: 조용히/에러는 표시
-            CID="$(docker compose ps -q "$SERVICE")"          # 새로 뜬 컨테이너 ID 재조회
-            RETRIES=24                                        # 최대 2분 대기
+            # 7) 내부 헬스체크
+            CID="$(docker compose ps -q "$SERVICE")"          # 새 컨테이너 ID 재조회
+            [ -n "$CID" ]                                     # 방어: 비어있으면 실패
+            
+            # 7-0) curl 보장(Alpine/Debian/RHEL 순으로 설치 시도)
+            docker exec "$CID" sh -lc "command -v curl >/dev/null \
+              || (apk add --no-cache curl >/dev/null 2>&1 \
+              || (apt-get update -y >/dev/null 2>&1 && apt-get install -y curl >/dev/null 2>&1) \
+              || (microdnf install -y curl >/dev/null 2>&1 || true))"
+      
+            # 7-1) /api/health 200 나올 때까지 대기(최대 1분: 5s*12)
+            RETRIES=12
             SLEEP=5
-                        
-            # 7-1) 실패 시 롤백
+            until docker exec "$CID" sh -lc "curl -fsS -o /dev/null http://127.0.0.1:3000/api/health"; do
+              ((RETRIES--)) || break                                 # 재시도 소진 시 탈출
+              sleep "$SLEEP"                                         # 대기 후 재시도
+            done
+
+            # 7-2) 실패 시 롤백 분기
             if [ "$RETRIES" -le 0 ]; then
               echo "healthcheck failed → rollback start"
-              if [ -n "${BACKUP_IMAGE:-}" ]; then
-                # 새 스택 중지
-                docker compose -f docker-compose.yml down || true
-                # 기존 롤백 컨테이너 정리 후 기동
-                docker rm -f "${COMPOSE_PROJECT_NAME}-${SERVICE}-rollback" || true
+
+              docker compose -f docker-compose.yml down || true      # 새 스택 중지
+
+              # 과거 롤백 컨테이너 정리 후 구동
+              docker rm -f "${COMPOSE_PROJECT_NAME}-${SERVICE}-rollback" || true
+
+              if [ -n "${BACKUP_IMAGE:-}" ] && docker image inspect "$BACKUP_IMAGE" >/dev/null 2>&1; then
                 docker run -d --name "${COMPOSE_PROJECT_NAME}-${SERVICE}-rollback" -p 3000:3000 "$BACKUP_IMAGE" || true
+              else
+                echo "주의: BACKUP_IMAGE 미존재 → 이미지 롤백 생략"
               fi
+
               exit 1
             fi
             
@@ -117,3 +134,5 @@ jobs:
             if [ -n "${BACKUP_IMAGE:-}" ]; then
               docker image rm "$BACKUP_IMAGE" || true
             fi
+            
+            echo "✅ www.namoo is healthy"
