@@ -1,6 +1,7 @@
 import { dynamicFetchPost, fetchPosts } from '@/lib/api';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import { sanitizeHtml } from '@/lib/sanitize';
 
 interface Props {
   params: Promise<{ id: string; locale: string }>;
@@ -26,7 +27,7 @@ export default async function NoticeDetailPage({ params }: Props) {
         <div className="text-3xl font-bold mb-2">{detailPost.title}</div>
         <div className="text-gray-500 text-base mb-6">{detailPost.createdAt?.split('T')[0].replace(/-/g, '.')}</div>
         <hr className="mb-8" />
-        <div className="prose max-w-none min-h-[10rem]" dangerouslySetInnerHTML={{ __html: detailPost.content }} />
+        <div className="prose max-w-none min-h-[10rem]" dangerouslySetInnerHTML={{ __html: sanitizeHtml(detailPost.content) }} />
       </div>
       <div className="flex mb-8">
         <Link href={`/support/notice`} className="flex items-center text-black font-semibold hover:underline">

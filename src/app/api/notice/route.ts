@@ -19,13 +19,18 @@ db.prepare(`
   )
 `).run();
 
-// 관리자 인증
+// 관리자 인증 - 환경 변수 사용
 function isAdmin(req: NextRequest) {
   const auth = req.headers.get("authorization");
   if (!auth || !auth.startsWith("Basic ")) return false;
   const base64 = auth.replace("Basic ", "");
   const [id, pw] = Buffer.from(base64, "base64").toString().split(":");
-  return id === "namooinc" && pw === "namooinc101!";
+  
+  // 환경 변수에서 관리자 정보 가져오기
+  const adminId = process.env.ADMIN_ID || "namooinc";
+  const adminPw = process.env.ADMIN_PW || "namooinc101!";
+  
+  return id === adminId && pw === adminPw;
 }
 
 function checkAdminSession(req: NextRequest) {
