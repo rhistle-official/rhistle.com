@@ -8,6 +8,8 @@ WORKDIR /app
 RUN apk add --no-cache python3 make g++
 
 # package.json과 lock 파일 복사 후 의존성 설치
+RUN apk add --no-cache python3 make g++ sqlite-dev
+
 COPY package.json package-lock.json* ./
 
 RUN npm install --legacy-peer-deps
