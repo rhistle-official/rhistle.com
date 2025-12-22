@@ -10,8 +10,8 @@ export async function POST(req: NextRequest) {
     const { id, password } = body;
 
     // 환경 변수에서 관리자 정보 가져오기
-    const adminId = process.env.ADMIN_ID || "namooinc";
-    const adminPw = process.env.ADMIN_PW || "namooinc101!";
+    const adminId = process.env.ADMIN_ID;
+    const adminPw = process.env.ADMIN_PW;
 
     // 인증 확인
     if (id === adminId && password === adminPw) {

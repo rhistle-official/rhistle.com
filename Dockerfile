@@ -4,6 +4,9 @@ FROM node:lts-alpine AS builder
 
 WORKDIR /app
 
+# better-sqlite3 빌드를 위한 빌드 도구 설치
+RUN apk add --no-cache python3 make g++
+
 # package.json과 lock 파일 복사 후 의존성 설치
 COPY package.json package-lock.json* ./
 
