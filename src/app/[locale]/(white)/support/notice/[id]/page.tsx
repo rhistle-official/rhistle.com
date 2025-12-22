@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import NoticeDeleteButton from '@/components/(white)/support/notice/NoticeDeleteButton';
 import Link from 'next/link';
 import {getTranslations, setRequestLocale} from "next-intl/server";
+import { sanitizeHtml } from '@/lib/sanitize';
 
 interface Props { params: Promise<{ id: string; locale: string }>; }
 
@@ -35,7 +36,7 @@ export default async function NoticeDetailPage({ params }: Props) {
         </div>
 
         <hr className="mb-8" />
-        <div className="prose max-w-none min-h-[10rem]" dangerouslySetInnerHTML={{ __html: detailPost.content }} />
+        <div className="prose max-w-none min-h-[10rem]" dangerouslySetInnerHTML={{ __html: sanitizeHtml(detailPost.content) }} />
       </div>
       <div className="flex mb-8">
         <Link href={`/support/notice`} className="flex items-center text-black font-semibold hover:underline">

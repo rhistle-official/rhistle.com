@@ -32,6 +32,7 @@ const NoticeWriteForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [adminId, setAdminId] = useState("");
   const [adminPw, setAdminPw] = useState("");
+  const [loginError, setLoginError] = useState("");
   const editorRef = useRef<any>(null);
 
   const formSchema = z.object({
@@ -55,8 +56,26 @@ const NoticeWriteForm = () => {
     };
     try {
       setIsSubmitting(true);
-      const auth = "Basic " + btoa(`${adminId}:${adminPw}`);
-      const res = await createNotice(finalData, auth);
+      
+      // 서버 사이드 인증 API 호출
+      const authRes = await fetch("/api/admin/auth", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: adminId, password: adminPw }),
+      });
+
+      if (!authRes.ok) {
+        alert("관리자 인증 실패");
+        return;
+      }
+
+      const authData = await authRes.json();
+      if (!authData.success) {
+        alert("관리자 인증 실패");
+        return;
+      }
+
+      const res = await createNotice(finalData);
       if (res.error) throw new Error(res.error);
       alert(t("form.alerts.success"));
       router.push("/support/notice");
@@ -73,6 +92,22 @@ const NoticeWriteForm = () => {
         onSubmit={form.handleSubmit(onSubmit)}
         className="space-y-4 rounded-lg border p-10 shadow-md"
       >
+        <div className="flex gap-2 items-center">
+          <Input
+            placeholder="관리자 아이디"
+            value={adminId}
+            onChange={e => setAdminId(e.target.value)}
+            className="w-40"
+          />
+          <Input
+            placeholder="비밀번호"
+            type="password"
+            value={adminPw}
+            onChange={e => setAdminPw(e.target.value)}
+            className="w-40"
+          />
+          {loginError && <span className="text-red-500 text-sm">{loginError}</span>}
+        </div>
         <FormField
           control={form.control}
           name="title"
