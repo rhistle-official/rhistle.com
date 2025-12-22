@@ -86,27 +86,27 @@ export async function createMedia(
   return response.json();
 }
 
-// 등록
-export async function createNotice({ title, content }: { title: string; content: string }, auth: string) {
+// 등록 (세션 쿠키 사용)
+export async function createNotice({ title, content }: { title: string; content: string }) {
   const response = await fetch(getApiUrl("/api/notice"), {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": auth,
     },
+    credentials: "include", // 쿠키 포함
     body: JSON.stringify({ title, content }),
   });
   return response.json();
 }
 
-// 수정
-export async function updateNotice(id: string, { title, content }: { title: string; content: string }, auth: string) {
+// 수정 (세션 쿠키 사용)
+export async function updateNotice(id: string, { title, content }: { title: string; content: string }) {
   const response = await fetch(getApiUrl("/api/notice"), {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": auth,
     },
+    credentials: "include", // 쿠키 포함
     body: JSON.stringify({ id, title, content }),
   });
   return response.json();
@@ -118,13 +118,11 @@ export async function getNoticeById(id: string) {
   return response.json();
 }
 
-// 삭제
-export async function deleteNotice(id: number, auth: string) {
+// 삭제 (세션 쿠키 사용)
+export async function deleteNotice(id: number) {
   const response = await fetch(getApiUrl(`/api/notice?id=${id}`), {
     method: "DELETE",
-    headers: {
-      "Authorization": auth,
-    },
+    credentials: "include", // 쿠키 포함
   });
   return response.json();
 }

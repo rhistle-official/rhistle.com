@@ -44,3 +44,10 @@ next-env.d.ts
 #
 homepage-namoo.tar
 data/app.db
+
+# 보안 관련 문서 (Git에 올리지 않음)
+SECURITY_ANALYSIS.md
+SECURITY_UPDATES.md
+SECURITY_FIXES_SUMMARY.md
+RCE_VULNERABILITY_ANALYSIS.md
+DEPENDENCY_ISSUES.md

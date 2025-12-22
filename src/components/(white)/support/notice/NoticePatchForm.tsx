@@ -101,20 +101,33 @@ const NoticePatchForm = ({ id }: NoticePatchFormProps) => {
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     setLoginError("");
-    if (adminId !== "namooinc" || adminPw !== "namooinc101!") {
-      setLoginError("관리자 인증 실패");
-      return;
-    }
     
-    const finalData = {
-      ...data,
-      content: editorContent || data.content
-    };
-
+    // 서버 사이드 인증 API 호출
     try {
       setIsSubmitting(true);
-      const auth = "Basic " + btoa(`${adminId}:${adminPw}`);
-      const res = await updateNotice(id, finalData, auth);
+      const authRes = await fetch("/api/admin/auth", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: adminId, password: adminPw }),
+      });
+
+      if (!authRes.ok) {
+        setLoginError("관리자 인증 실패");
+        return;
+      }
+
+      const authData = await authRes.json();
+      if (!authData.success) {
+        setLoginError("관리자 인증 실패");
+        return;
+      }
+      
+      const finalData = {
+        ...data,
+        content: editorContent || data.content
+      };
+
+      const res = await updateNotice(id, finalData);
       if (res.error) throw new Error(res.error);
       alert("게시물이 수정되었습니다.");
       router.push("/support/notice");
