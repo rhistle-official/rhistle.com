@@ -167,7 +167,7 @@ const CompanyVision = () => {
                   우리의 비전
                 </h2>
                 <p className="text-xl text-emerald-100 max-w-4xl mx-auto">
-                  나무아이앤씨는 기술 혁신을 통해 산업의 디지털 전환을 선도하고, 
+                  리슬은 기술 혁신을 통해 산업의 디지털 전환을 선도하고, 
                   지속가능한 미래를 만들어가는 글로벌 기술 기업이 되겠습니다
                 </p>
               </motion.div>
@@ -343,7 +343,7 @@ const CompanyVision = () => {
               함께 만들어가는 미래
             </h3>
             <p className="text-lg text-gray-600 mb-8">
-              나무아이앤씨와 함께 혁신적인 미래를 만들어가겠습니다
+              리슬과 함께 혁신적인 미래를 만들어가겠습니다
             </p>
             <motion.button 
               className="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white px-8 py-4 rounded-2xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"

@@ -16,8 +16,8 @@ const pretendard = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Namoo INC",
-  description: "Namoo INC",
+  title: "Rhistle INC",
+  description: "Rhistle INC",
 };
 
 /*
