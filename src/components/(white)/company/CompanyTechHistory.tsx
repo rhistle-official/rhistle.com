@@ -56,7 +56,7 @@ const CompanyHistory = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              나무아이앤씨의 성장과 혁신의 발자취를 함께 살펴보세요
+              리슬의 성장과 혁신의 발자취를 함께 살펴보세요
             </motion.p>
           </div>
         </motion.div>
