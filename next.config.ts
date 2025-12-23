@@ -3,19 +3,9 @@ import createNextIntlPlugin from "next-intl/plugin";
 
 // ────────────────────────────────────────────────
 // Next.js 기본 설정 + 국제화 플러그인(next-intl)
-// + 내부 백엔드(dev-backend:8080)로 리버스 프록시
 // ────────────────────────────────────────────────
 
 const nextConfig: NextConfig = {
-  async rewrites() {
-    return [
-      {
-        // 브라우저 → /api/* 요청 시 컨테이너 내부 백엔드로 프록시
-        source: "/api/:path*",
-        destination: "http://localhost:3000/api/:path*",
-      },
-    ];
-  },
   async headers() {
     return [
       {
@@ -25,12 +15,14 @@ const nextConfig: NextConfig = {
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval'", // 에디터 라이브러리 필요
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://dapi.kakao.com https://t1.daumcdn.net http://t1.daumcdn.net https://*.clerk.accounts.dev https://*.clerk.com", // 에디터 라이브러리 + 카카오맵 + Clerk
+              "worker-src 'self' blob:", // Clerk worker 지원
               "style-src 'self' 'unsafe-inline'",
-              "img-src 'self' data: https:",
+              "img-src 'self' data: http://t1.daumcdn.net https://t1.daumcdn.net http://mts.daumcdn.net https://mts.daumcdn.net", // 카카오맵 이미지 및 타일 지원 (https: 와일드카드 제거)
               "font-src 'self' data:",
-              "connect-src 'self'",
+              "connect-src 'self' https://dapi.kakao.com https://*.kakao.com https://*.clerk.accounts.dev https://*.clerk.com https://api.clerk.com https://clerk-telemetry.com", // HTTP 연결 제거 (보안 강화)
               "frame-ancestors 'none'",
+              "frame-src 'self' https://*.clerk.accounts.dev https://*.clerk.com",
               "base-uri 'self'",
               "form-action 'self'",
             ].join('; ')
