@@ -18,7 +18,7 @@ const navMenus: NavMenu[] = [
     title: "solution",
     subMenu: [
       { key: "corecode", href: "/product/corecode" },
-      { key: "nexum", href: "/product/nexum" },
+      { key: "nexumm", href: "/product/nexumm" },
       // { key: "vexi", href: "/product/vexi" },
       // { key: "mexi", href: "/product/mexi" },
     ],

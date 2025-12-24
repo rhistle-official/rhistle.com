@@ -18,8 +18,8 @@
           "title": "CoreCode",
           "subTitle": "설비/센서 연계 기술"
         },
-        "nexum": {
-          "title": "Nexum",
+        "nexumm": {
+          "title": "Nexumm",
           "subTitle": "설비/센서 연계 기술"
         },
         "vexi": {
@@ -72,7 +72,7 @@
     },
     "business": {
       "title": "비즈니스",
-      "items": ["CoreCode", "VEXI", "MEXI"]
+      "items": ["CoreCode", "Nexumm"]
     },
     "company": {
       "title": "회사소개",
@@ -1085,7 +1085,7 @@
         "items": [
           "상호명 변경 (주)리슬",
           "Vexi (관제 DT 솔루션) 출시 예정",
-          "Nexum (제조 IT Framework) 출시",
+          "Nexumm (제조 IT Framework) 출시",
           "셀트리온 제약 CoreCode Suite 공급"
         ]
       },
@@ -1218,7 +1218,7 @@
         "items": [
           "상호명 변경 (주)리슬",
           "Vexi 관제 DT 솔루션 출시 예정",
-          "Nexum (제조 IT Framework) 출시 ",
+          "Nexumm (제조 IT Framework) 출시 ",
           "셀트리온 제약 CoreCode Suite 공급",
           "SK 하이닉스 청주 환경안전 IRIS 조기대응 통합 시스템 구축",
           "삼성전자 반도체 평택 환경안전 IDPS P4 구축",

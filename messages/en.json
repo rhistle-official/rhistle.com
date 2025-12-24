@@ -18,8 +18,8 @@
           "title": "CoreCode",
           "subTitle": "Facility/Sensor Connectivity Technology"
         },
-        "nexum": {
-          "title": "Nexum",
+        "nexumm": {
+          "title": "Nexumm",
           "subTitle": ""
         },
         "vexi": {
@@ -72,7 +72,7 @@
     },
     "business": {
       "title": "Business",
-      "items": ["CoreCode", "VEXI", "MEXI"]
+      "items": ["CoreCode", "Nexumm"]
     },
     "company": {
       "title": "About Us",
@@ -1086,7 +1086,7 @@
         "items": [
           "Change in Company Name Rhistle INC",
           "Planned launch of Vexi (Control DT Solution)",
-          "Launch of Nexum (Manufacturing IT Framework)",
+          "Launch of Nexumm (Manufacturing IT Framework)",
           "Supply of CoreCode Suite to Celltrion Pharmaceutical"
         ]
       },
@@ -1219,7 +1219,7 @@
         "items": [
           "Change in Company Name Rhistle INC",
           "Vexi Control DT solution planned for release",
-          "Nexum (Manufacturing IT Framework) launched",
+          "Nexumm (Manufacturing IT Framework) launched",
           "Supplied CoreCode Suite to Celltrion Pharm",
           "Built SK hynix Cheongju Environmental Safety IRIS Early Response Integrated System",
           "Samsung Electronics Semiconductor Pyeongtaek EHS IDPS P4 implementation",

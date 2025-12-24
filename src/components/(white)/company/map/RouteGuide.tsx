@@ -154,13 +154,15 @@ const RouteGuide = () => {
               >
                 <div className="flex items-center justify-center gap-4 mb-4">
                   <div className="w-12 h-12 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center shadow-lg">
-                    <Image
-                      src="/image/map_ic.png"
-                      alt="주소"
-                      width={24}
-                      height={32}
-                      className="w-6 h-8"
-                    />
+                    <div className="w-7 h-7 bg-white rounded-full flex items-center justify-center">
+                      <Image
+                        src="/image/map_ic.png"
+                        alt="주소"
+                        width={24}
+                        height={32}
+                        className="w-4 h-5"
+                      />
+                    </div>
                   </div>
                   <h3 className="text-2xl font-bold text-gray-800">{t("address.title")}</h3>
                 </div>
