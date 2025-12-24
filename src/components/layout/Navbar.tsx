@@ -59,7 +59,7 @@ const NavBar = ({ bgColor }: { bgColor: string }) => {
   useEffect(() => {
     bgColor === "bg-black"
       ? setImage("ci_white.png")
-      : setImage("ci_green.png");
+      : setImage("ci_black.png");
   }, [bgColor]);
 
   return (
