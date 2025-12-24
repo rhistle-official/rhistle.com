@@ -26,12 +26,12 @@ const CompanyGreeting = () => {
             <div>|</div>
           </div>
           <div className="text-xl font-extrabold md:text-2xl lg:text-3xl">
-            나무아이앤씨: 미래를 여는 기술, 축적된 역량과 경험을 기반으로 고객의
+            리슬: 미래를 여는 기술, 축적된 역량과 경험을 기반으로 고객의
             가치를 높이다.
           </div>
           <div className="space-y-6 text-lg md:text-xl lg:text-2xl">
             <div className="leading-relaxed">
-              나무아이앤씨는 20년간의 경험을 통해 축적한 업종 지식과
+              리슬은 20년간의 경험을 통해 축적한 업종 지식과
               사물인터넷(IoT), 빅데이터(Big Data), 인공지능(AI) 등 최첨단 ICT
               기술을 통해 고객의 가치를 극대화하는 것을 목표로 합니다. 우리는
               혁신적인 솔루션을 제공하여 고객의 비즈니스 성장을 지원하고, 더
@@ -61,11 +61,11 @@ const CompanyGreeting = () => {
               <div className="leading-relaxed">을 약속 드립니다.</div>
             </div>
             <div>
-              나무아이앤씨는 끊임없는 기술혁신과 최고의 역량으로 고객의 가치
+              리슬은 끊임없는 기술혁신과 최고의 역량으로 고객의 가치
               제고에 기여하고, 임직원의 열정과 고객의 신뢰가 어우러진 최고의
               파트너로서 지속적인 성장을 위해 노력하겠습니다.
             </div>
-            <div className="leading-relaxed">나무아이앤씨 임직원 일동</div>
+            <div className="leading-relaxed">리슬 임직원 일동</div>
           </div>
         </div>
       </div>

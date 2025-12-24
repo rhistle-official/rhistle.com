@@ -20,8 +20,8 @@ const Footer = () => {
           <div className="space-y-4 space-x-10">
             <div className="flex items-center space-x-2">
               <Image
-                src="/image/ci_white.png"
-                alt="나무아이앤씨 로고"
+                src="/image/ci_white_footer.png"
+                alt="리슬 로고"
                 width={120}
                 height={40}
                 className="h-8 w-auto"
@@ -104,7 +104,7 @@ const Footer = () => {
         <div className="mt-12 border-t border-gray-800 pt-8">
           <div className="flex flex-col items-center justify-between space-y-4 md:flex-row md:space-y-0">
             <p className="text-sm text-gray-400">
-              © 2025 (주)나무아이앤씨. All rights reserved.
+              © 2026 Rhistle INC. All rights reserved.
             </p>
             <div className="flex space-x-6 text-sm text-gray-400">
               <Link href="/" className="hover:text-white transition-colors">

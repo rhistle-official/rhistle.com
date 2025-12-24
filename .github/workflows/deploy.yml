@@ -26,10 +26,10 @@ jobs:
           echo "NEXT_PUBLIC_KAKAO_MAP_KEY=${{ secrets.KAKAO_MAP_KEY }}" >> .env
           echo "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=${{ secrets.CLERK_PUBLISHABLE_KEY }}" >> .env
           echo "CLERK_SECRET_KEY=${{ secrets.CLERK_SECRET_KEY }}" >> .env
-          echo "NEXT_PUBLIC_CLERK_SIGN_IN_URL=https://www.namooinc.com/sign-in" >> .env
-          echo "NEXT_PUBLIC_CLERK_SIGN_UP_URL=https://www.namooinc.com/sign-up" >> .env
-          echo "NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=https://developer.namooinc.com" >> .env
-          echo "NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=https://developer.namooinc.com" >> .env
+          echo "NEXT_PUBLIC_CLERK_SIGN_IN_URL=https://www.rhistle.com/sign-in" >> .env
+          echo "NEXT_PUBLIC_CLERK_SIGN_UP_URL=https://www.rhistle.com/sign-up" >> .env
+          # echo "NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=https://developer.namooinc.com" >> .env
+          # echo "NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=https://developer.namooinc.com" >> .env
           echo "NEXT_PUBLIC_CLERK_DOMAIN=super-crawdad-33.clerk.accounts.dev" >> .env
           echo "EMAIL_USER=leehopl2@gmail.com" >> .env
           echo "EMAIL_PASS=${{ secrets.EMAIL_PASS }}" >> .env
@@ -41,15 +41,15 @@ jobs:
 
       - name: Build Docker image (with .env)
         run: |
-          docker build -t ghcr.io/rhistle-official/homepage-namoo:${{ steps.extract_tag.outputs.TAG }} .
+          docker build -t ghcr.io/rhistle-official/homepage-rhistle:${{ steps.extract_tag.outputs.TAG }} .
 
       - name: Tag image as latest
-        run: docker tag ghcr.io/rhistle-official/homepage-namoo:${{ steps.extract_tag.outputs.TAG }} ghcr.io/rhistle-official/homepage-namoo:latest
+        run: docker tag ghcr.io/rhistle-official/homepage-rhistle:${{ steps.extract_tag.outputs.TAG }} ghcr.io/rhistle-official/homepage-rhistle:latest
 
       - name: Push Docker images
         run: |
-          docker push ghcr.io/rhistle-official/homepage-namoo:${{ steps.extract_tag.outputs.TAG }}
-          docker push ghcr.io/rhistle-official/homepage-namoo:latest
+          docker push ghcr.io/rhistle-official/homepage-rhistle:${{ steps.extract_tag.outputs.TAG }}
+          docker push ghcr.io/rhistle-official/homepage-rhistle:latest
 
       - name: SSH & Deploy on Server
         uses: appleboy/ssh-action@v0.1.10
@@ -58,20 +58,20 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           passphrase: ${{ secrets.SSH_PASSPHRASE }}
-          port: 32111
+          port: 26351
           script: |
             # 안전 모드: 에러 즉시 중단
             set -euxo pipefail
             
-            CONTAINER_NAME=www-namoo
-            SERVICE=www-namoo
+            CONTAINER_NAME=www-rhistle
+            SERVICE=www-narhistle
             BACKUP_IMAGE=${CONTAINER_NAME}:backup
             
             # 0) 환경 고정
             export PATH="/usr/local/bin:/usr/bin:$PATH"       # docker/compose 경로 보정
             unset DOCKER_HOST || true                         # 엉뚱한 컨텍스트 방지
             docker context use default
-            export COMPOSE_PROJECT_NAME=www-namoo             # 컨테이너 네이밍 일관성
+            export COMPOSE_PROJECT_NAME=www-rhistle             # 컨테이너 네이밍 일관성
             
             # 1) 경로 이동
             cd /namooinc/web/www                              # compose 파일 위치
@@ -135,4 +135,4 @@ jobs:
               docker image rm "$BACKUP_IMAGE" || true
             fi
             
-            echo "✅ www.namoo is healthy"
+            echo "✅ www.rhistle is healthy"
