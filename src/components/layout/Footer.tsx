@@ -20,7 +20,7 @@ const Footer = () => {
           <div className="space-y-4 space-x-10">
             <div className="flex items-center space-x-2">
               <Image
-                src="/image/ci_white.png"
+                src="/image/ci_white_footer.png"
                 alt="리슬 로고"
                 width={120}
                 height={40}
