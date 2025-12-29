@@ -8,6 +8,7 @@ import HideFooterOnAuthPages from "@/components/layout/HideFooterOnAuthPages";
 import { routing } from "@/i18n/routing";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
+import BrandChangeModal from "@/components/layout/BrandChangeModal";
 
 const pretendard = localFont({
   src: "./font/PretendardVariable.woff2",
@@ -34,9 +35,7 @@ export default async function RootLayout({
 }>) {
   const { locale } = await params;
 
-  if (!hasLocale(routing.locales, locale)) {
-    notFound();
-  }
+  if (!hasLocale(routing.locales, locale)) notFound();
 
   return (
     <html lang={locale}>
@@ -44,8 +43,15 @@ export default async function RootLayout({
         <ClerkWrapper>
           <NextIntlClientProvider>
             <SessionProvider>
+              {/* ✅ 사명 변경 모달 */}
+              <BrandChangeModal
+                oldName="(주)나무아이앤씨"
+                newName="(주)리슬(Rhistle)"
+                newSiteUrl="https://www.rhistle.com"
+              />
+
               {children}
-              {/* Footer 조건부 렌더링 */}
+
               <HideFooterOnAuthPages>
                 <Footer />
               </HideFooterOnAuthPages>
